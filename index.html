@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>스포츠지도사 기출 - 데모</title>
+<title>스포츠지도사 기출</title>
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
@@ -14,7 +14,7 @@ header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:bl
 header h1{font-size:16px;margin:0;flex:1}
 .back{border:0;background:none;font-size:20px;color:var(--ink);padding:0 4px;cursor:pointer}
 .wrap{padding:16px;max-width:640px;margin:0 auto}
-.demo-note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:12px;line-height:1.5;padding:10px 12px;border-radius:10px;margin-bottom:14px}
+.note{background:#f3f4f6;border:1px solid var(--line);color:var(--sub);font-size:12px;line-height:1.5;padding:10px 12px;border-radius:10px;margin-bottom:14px}
 .chips{display:flex;gap:8px;margin-bottom:16px}
 .chip{flex:1;padding:10px;border:1px solid var(--line);background:#fff;border-radius:12px;font-size:14px;font-weight:600;color:var(--sub);cursor:pointer}
 .chip.on{border-color:var(--brand);color:var(--brand);background:#eff6ff}
@@ -96,10 +96,10 @@ function home(){
   document.getElementById('title').textContent = '스포츠지도사 기출';
   document.getElementById('back').hidden = true;
   app().innerHTML = `
-  <div class="demo-note">내부 검토용 데모 · 2025년 공단 공개 문제지에서 자동 추출한 ${byLevel('2급').length + byLevel('1급').length}문항(그림·표만 있는 문항 제외)입니다. 외부 배포 전 저작권 협의가 필요합니다.</div>
+  <div class="note">2025년 국민체육진흥공단 공개 문제지 기반 · 2급 ${byLevel('2급').length}문항 / 1급 ${byLevel('1급').length}문항 (그림·표만 있는 문항 제외)</div>
   <div class="chips">
-    <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (200문항)</button>
-    <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (120문항)</button>
+    <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (${byLevel('2급').length}문항)</button>
+    <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (${byLevel('1급').length}문항)</button>
   </div>
   <div class="grid">
     ${subs.map(s => `<button class="subj" data-subj="${s}"><b>${s}</b><span>${bySubject(lv,s).length}문항 · 정답률 ${rateOf(lv,s)}</span></button>`).join('')}
