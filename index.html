@@ -112,6 +112,9 @@ footer i{font-style:normal;font-size:18px}
 .mev b{font-variant-numeric:tabular-nums}
 .mini{font-size:11px;color:var(--sub);line-height:1.6}
 a.inline{color:var(--brand);text-decoration:none;font-weight:700}
+/* 하단 고정 탭이 콘텐츠를 가리지 않도록 여유 확보 */
+body{padding-bottom:96px}
+.row:last-child{margin-bottom:24px}
 </style>
 </head>
 <body>
@@ -280,6 +283,7 @@ function answer(pick, q){
   document.getElementById('nextRow').style.display = 'flex';
   document.getElementById('next').onclick = next;
   document.getElementById('next').textContent = state.idx + 1 >= state.items.length ? '결과 보기' : '다음 문제';
+  setTimeout(function(){ const nr = document.getElementById('nextRow'); if(nr && nr.scrollIntoView) nr.scrollIntoView({ block: 'center' }); }, 40);
 }
 function next(){
   state.idx++;
