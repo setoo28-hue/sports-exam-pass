@@ -602,11 +602,11 @@ function showWrong(){
         <p class="mini" style="margin:6px 0 0">${esc(cut(q.stem, 70))}</p>
         <p class="muted" style="margin:6px 0 0">정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p></div>`).join('')}
       <div class="lockcard">
-        <b>오답 ${items.length - shown.length}문항이 더 있습니다</b>
-        <p>이용권을 등록하면 전체 오답노트를 보고 오답만 다시 풀 수 있습니다.</p>
+        <b>${items.length > shown.length ? '오답 ' + (items.length - shown.length) + '문항이 더 있습니다' : '전체 오답노트 · 오답 다시 풀기'}</b>
+        <p>${items.length > shown.length ? '이용권을 등록하면 전체 오답노트를 보고 오답만 다시 풀 수 있습니다.' : '이용권을 등록하면 모든 오답을 모아서 다시 풀 수 있습니다.'}</p>
         <button id="goPay">전체 오답노트 열기</button>
       </div>
-      <div class="row"><button class="btn ghost" id="solve3">최근 3문항 다시 풀기</button></div>`;
+      <div class="row"><button class="btn ghost" id="solve3">${items.length > shown.length ? '최근 3문항 다시 풀기' : '이 3문항 다시 풀기'}</button></div>`;
     document.getElementById('goPay').onclick = () => paywall('wrong_locked');
     document.getElementById('solve3').onclick = () => start(shown, '오답 다시 풀기', 'practice');
     return;
@@ -725,7 +725,7 @@ function metrics(){
   const cnt = n => list.filter(e => e.name === n).length;
   const fs = cnt('free_start'), fc = cnt('free_complete'), pv = cnt('paywall_view'), cc = cnt('checkout_click');
   const sc = cnt('share_click') + cnt('share_copy');
-  const rate = (a,b) => b ? Math.round(a/b*100) + '%' : '-';
+  const rate = (a,b) => b ? Math.min(100, Math.round(a/b*100)) + '%' : '-';
   const row = (label, v) => `<div class="mev"><span>${label}</span><b>${v}</b></div>`;
   const utmSrc = {};
   list.forEach(e => { if(e.src) utmSrc[e.src] = (utmSrc[e.src] || 0) + 1; });
@@ -746,7 +746,8 @@ function metrics(){
     ${row('공유 클릭/복사', sc)}
     ${row('공유 이용률', rate(sc, fc))}
     ${row('이용권 코드 등록', cnt('pass_redeem'))}
-    <p class="mini" style="margin-top:12px">유입 경로(utm_source): ${Object.keys(utmSrc).length ? Object.keys(utmSrc).map(k => esc(k) + ' ' + utmSrc[k]).join(' · ') : '기록 없음'}</p>
+    <p class="mini" style="margin-top:12px">비율은 기기 안 이벤트 횟수 기준(무료 테스트 재시작이 많으면 100%로 표시)</p>
+    <p class="mini">유입 경로(utm_source): ${Object.keys(utmSrc).length ? Object.keys(utmSrc).map(k => esc(k) + ' ' + utmSrc[k]).join(' · ') : '기록 없음'}</p>
     <p class="mini">최근 이벤트: ${list.slice(-5).reverse().map(e => esc(e.name)).join(' ← ') || '없음'}</p>
     <p class="mini">결제 성공·실패는 래피드(외부 결제)에서 처리되어 앱에서는 확인할 수 없습니다.</p>
     <div class="rowx"><button id="mClose">닫기</button></div>
