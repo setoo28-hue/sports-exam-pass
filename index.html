@@ -52,6 +52,7 @@ header h1{font-size:16px;margin:0;flex:1}
 .lock h3{margin:0 0 6px;font-size:15px}
 .lock p{margin:0 0 12px;font-size:12px;color:#cbd5e1;line-height:1.5}
 .lock input{width:100%;padding:12px;border-radius:10px;border:0;font-size:14px;margin-bottom:10px}
+.card input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid var(--line);font-size:14px;margin-bottom:8px;background:#fff;color:var(--ink)}
 .lock button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;font-size:14px}
 .okmsg{font-size:12px;color:#a7f3d0;margin-top:8px}
 footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
@@ -531,7 +532,7 @@ function paywall(reason, subj){
       <button class="btn" id="pwBuy" style="margin-top:10px">1,900원 결제하고 전체 열기 (래피드)</button>
       <p class="mini" style="margin:8px 0 6px">이미 코드가 있다면</p>
       <input id="pwCode" placeholder="이용권 코드 (예: EARLY-1900)" autocomplete="off">
-      <button id="pwRedeem" style="margin-top:8px">코드 등록</button>
+      <button id="pwRedeem" style="width:100%;padding:12px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;font-size:14px;cursor:pointer">코드 등록</button>
       <p class="okmsg" id="pwMsg"></p>
       <p class="mini" style="margin-top:10px">래피드 상품 veLnh · 카드 정보는 앱에서 다루지 않습니다.</p>
     </div>
