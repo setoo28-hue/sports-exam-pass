@@ -579,7 +579,7 @@ function home(){
     ${tag}
     <b>전 과목 5문항씩, 먼저 풀어보세요</b>
     <p>2급·1급 16과목의 1~5번 문항을 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
-    <button id="freeStart">${FREE_SUBJECT} 1~5번 무료로 풀기</button>
+    <button id="freeStart">${subs[0]} 1~5번 무료로 풀기</button>
     <p class="hero-sub">${last ? `지난 ${esc(last.subject || '')} ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">결과 보기</a>` : (paid ? '이용권 사용 중 · 전체 문항을 쓸 수 있습니다' : `이미 코드가 있다면 <a href="#" id="openCode">코드 등록</a>`)}</p>
   </div>
   <div class="chips">
@@ -611,9 +611,10 @@ function home(){
     start(items, subj + ' 1~5번 · 무료', 'free5', { subject: subj });
   });
   document.getElementById('freeStart').onclick = () => {
-    const items = freeHead(FREE_LEVEL, FREE_SUBJECT);
-    track('free_start', { level: FREE_LEVEL, subject: FREE_SUBJECT, n: items.length, free: FREE_N });
-    start(items, FREE_SUBJECT + ' 1~5번 · 무료', 'free5', { subject: FREE_SUBJECT });
+    const subj = levelSubjects(lv)[0];
+    const items = freeHead(lv, subj);
+    track('free_start', { level: lv, subject: subj, n: items.length, free: FREE_N });
+    start(items, subj + ' 1~5번 · 무료', 'free5', { subject: subj });
   };
   document.getElementById('quick').onclick = () => { if(!isPaid()) return gate('random'); start(shuffle(byLevel(lv)).slice(0,20), '랜덤 20문항', 'practice', { gate: true }); };
   document.getElementById('wrongBtn').onclick = showWrong;
@@ -652,15 +653,18 @@ function showWrong(){
 
   if(!isPaid()){
     const free = items.filter(isFreeQ);
+    const firstSubj = levelSubjects(S.level)[0];
     app().innerHTML = `
       <p class="muted" style="margin-top:0">5문항에서 틀린 문항 ${free.length}개${items.length > free.length ? ` · 6번 이후 오답 ${items.length - free.length}개는 이용권에 포함` : ''}</p>
       ${free.length ? free.map(wrongCard).join('')
         : `<div class="empty">아직 오답이 없습니다.<br>과목을 골라 1~5번 문항을 풀면 틀린 문항이 여기 쌓입니다.
-             <div class="row"><button class="btn" id="goFree">${FREE_SUBJECT} 1~5번 풀기</button></div></div>`}
-      ${free.length ? offerCard('오답 자동 복습', '틀린 문항을 모아 다시 풀고, 오답이 많은 과목부터 정리합니다. 전체 오답노트도 함께 열립니다.') : ''}
+             <div class="row"><button class="btn" id="goFree">${firstSubj} 1~5번 풀기</button></div></div>`}
+      ${free.length ? `<div class="card"><b style="font-size:14px">오답 자동 복습</b><p class="muted" style="margin:6px 0 10px;line-height:1.6">틀린 문항을 모아 다시 풀고, 오답이 많은 과목부터 정리합니다. 전체 오답노트도 함께 열립니다.</p><button class="btn" id="review" style="width:100%">오답 복습 열기</button></div>` : ''}
     `;
+    const rv = document.getElementById('review');
+    if(rv) rv.onclick = () => gate('wrong');
     const g = document.getElementById('goFree');
-    if(g) g.onclick = () => { const it = freeHead(FREE_LEVEL, FREE_SUBJECT); track('free_start', { level: FREE_LEVEL, subject: FREE_SUBJECT, n: it.length, free: FREE_N }); start(it, FREE_SUBJECT + ' 1~5번 · 무료', 'free5', { subject: FREE_SUBJECT }); };
+    if(g) g.onclick = () => { const it = freeHead(S.level, firstSubj); track('free_start', { level: S.level, subject: firstSubj, n: it.length, free: FREE_N }); start(it, firstSubj + ' 1~5번 · 무료', 'free5', { subject: firstSubj }); };
     bindOffer();
     return;
   }
