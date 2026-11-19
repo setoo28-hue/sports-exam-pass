@@ -403,7 +403,8 @@ function renderFreeResult(res, fresh){
 }
 
 /* ---------- 공유 ---------- */
-function shareUrl(){ return location.origin + location.pathname + '?utm_source=threads&utm_medium=share&utm_campaign=free10'; }
+const APP_URL = 'https://setoo28-hue.github.io/sports-exam-pass/';
+function shareUrl(){ return APP_URL + '?utm_source=threads&utm_medium=share&utm_campaign=free10'; }
 function shareText(res){
   return '오늘의 학습 완료!\n' + res.total + '문제 중 ' + res.correct + '문제 정답.\n오늘도 하나씩 실력을 쌓는 중입니다.\n\n무료 학습은 ALPHA 2027에서!';
 }
