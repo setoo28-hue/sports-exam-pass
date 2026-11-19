@@ -115,6 +115,9 @@ a.inline{color:var(--brand);text-decoration:none;font-weight:700}
 /* 하단 고정 탭이 콘텐츠를 가리지 않도록 여유 확보 */
 body{padding-bottom:96px}
 .row:last-child{margin-bottom:24px}
+/* 풀이 중에는 하단 탭을 숨겨 '다음 문제' 버튼이 가려지지 않게 한다 */
+body.quiz-mode{padding-bottom:24px}
+body.quiz-mode footer{display:none}
 </style>
 </head>
 <body>
@@ -247,6 +250,7 @@ function start(items, label, mode, opts){
 function renderQ(){
   const q = state.items[state.idx];
   state.answered = false;
+  document.body.classList.add('quiz-mode');
   document.getElementById('title').textContent = state.label;
   const pct = Math.round(state.idx / state.items.length * 100);
   document.getElementById('app').innerHTML = `
@@ -291,6 +295,7 @@ function next(){
   renderQ();
 }
 function finish(){
+  document.body.classList.remove('quiz-mode');
   const total = state.items.length, c = state.correct;
   const subjects = Array.from(new Set(state.items.map(q => q.subject)));
   const log = S.log.slice();
@@ -343,6 +348,7 @@ function weakOf(res){ const w = res.subs.filter(s => s.pct < 100); return w.leng
 function missQuestions(res){ return (res.missIds || []).map(id => QB.find(q => q.id === id)).filter(Boolean); }
 
 function renderFreeResult(res, fresh){
+  document.body.classList.remove('quiz-mode');
   state.view = 'freeResult';
   document.getElementById('title').textContent = '무료 학습 결과';
   document.getElementById('back').hidden = false;
@@ -465,6 +471,7 @@ function bindShare(res){
 
 /* ---------- 프리미엄 전환 화면 ---------- */
 function paywall(reason){
+  document.body.classList.remove('quiz-mode');
   track('paywall_view', { reason: reason || 'menu' });
   state.view = 'paywall';
   document.getElementById('title').textContent = '나의 학습 개선안';
@@ -577,6 +584,7 @@ function wrongItems(){
   return QB.filter(q => w[q.id] && !q.needsImage).sort((a,b) => (w[b.id].at||0) - (w[a.id].at||0));
 }
 function showWrong(){
+  document.body.classList.remove('quiz-mode');
   track('wrong_note_open', { paid: isPaid() });
   document.getElementById('title').textContent = '오답노트';
   document.getElementById('back').hidden = false;
@@ -615,6 +623,7 @@ function showWrong(){
 
 /* ---------- 취약 과목 집중 학습 ---------- */
 function weakScreen(){
+  document.body.classList.remove('quiz-mode');
   if(!isPaid()) return paywall('locked_weak');
   document.getElementById('title').textContent = '취약 과목 집중 학습';
   document.getElementById('back').hidden = false;
@@ -643,6 +652,7 @@ function mock(){
 
 /* ---------- 통계 ---------- */
 function stats(){
+  document.body.classList.remove('quiz-mode');
   document.getElementById('title').textContent = '학습 통계';
   document.getElementById('back').hidden = true;
   const log = S.log;
@@ -671,6 +681,7 @@ function stats(){
 
 /* ---------- 이용권 ---------- */
 function pass(){
+  document.body.classList.remove('quiz-mode');
   document.getElementById('title').textContent = '이용권';
   document.getElementById('back').hidden = true;
   const paid = isPaid();
@@ -747,6 +758,7 @@ function metrics(){
 
 /* ---------- 홈 ---------- */
 function home(){
+  document.body.classList.remove('quiz-mode');
   const lv = S.level, paid = isPaid();
   const subs = levelSubjects(lv);
   const wrongN = Object.keys(S.wrong).length;
