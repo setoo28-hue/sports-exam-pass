@@ -483,13 +483,13 @@ function renderFreeResult(res, fresh){
       <p class="mini" style="margin-top:10px">5문항 표본이라 합격 판정은 참고용입니다. 실제 검정은 과목별 20문항, 과목별 40% 이상·5과목 평균 60% 이상입니다.</p>
     </div>
 
+    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 전 과목 320문항 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
+
     <div class="card">
       <b style="font-size:14px">결과 공유</b>
       <p class="mini" style="margin:4px 0 0">정답률만 공유됩니다. 틀린 문항과 상세 기록은 공유 문구에 포함되지 않습니다.</p>
       ${shareBox()}
     </div>
-
-    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 전 과목 320문항 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
 
     <div class="row">
       <button class="btn ghost" id="retake">${esc(head)} 1~5번 다시 풀기</button>
