@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>스포츠지도사 기출 | ALPHA 2027</title>
-<meta name="description" content="2025년 공단 공개 기출 320문항. 무료 10문항으로 취약 과목을 진단하고, 오답노트·취약 과목 집중 학습·모의고사로 이어집니다. ALPHA 2027 무료 학습 테스트.">
+<meta name="description" content="2025년 공단 공개 기출 320문항. 2급 스포츠사회학 20문항 전체를 무료로 풀고 과락·합격선까지 확인합니다. 오답노트·취약 과목 집중 학습·모의고사로 이어집니다.">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
@@ -215,29 +215,25 @@ function toast(msg){
   clearTimeout(toast._tm); toast._tm = setTimeout(() => t.classList.remove('on'), 2200);
 }
 
-/* ---------- 오늘의 무료 문제 10문항 (날짜 고정) ---------- */
-function daySeed(){ const d = new Date(); return d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate(); }
-function rng(seed){ let s = (seed % 2147483647) || 1; return function(){ s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
-function freeSet(lv){
-  const r = rng(daySeed() + (lv === '1급' ? 17 : 5));
-  const out = [];
-  FREE_SUBJECTS[lv].forEach(sub => {
-    const pool = bySubject(lv, sub);
-    if(!pool.length) return;
-    const a = Math.floor(r() * pool.length);
-    let b = Math.floor(r() * pool.length);
-    if(pool.length > 1 && b === a) b = (a + 1) % pool.length;
-    out.push(pool[a]);
-    if(pool.length > 1 && pool[b] !== pool[a]) out.push(pool[b]);
-  });
-  return out.slice(0, 10);
-}
+/* ---------- 무료 1과목: 2급 스포츠사회학 20문항 전체 ---------- */
+const FREE_SUBJECT = '스포츠사회학';
+const FREE_LEVEL = '2급';
+function freeItems(){ return bySubject(FREE_LEVEL, FREE_SUBJECT); }
+function isFreeSubject(lv, subj){ return lv === FREE_LEVEL && subj === FREE_SUBJECT; }
 function freeStart(){
-  const lv = S.level;
-  const items = freeSet(lv);
-  if(items.length < 10){ toast('무료 문항을 준비하지 못했습니다.'); return; }
-  track('free_start', { level: lv, n: items.length });
-  start(items, '오늘의 무료 문제 ' + items.length + '개', 'free');
+  const items = freeItems();
+  if(!items.length){ toast('무료 문항을 준비하지 못했습니다.'); return; }
+  track('free_start', { level: FREE_LEVEL, subject: FREE_SUBJECT, n: items.length });
+  start(items, FREE_SUBJECT + ' 20문항 · 무료', 'free1');
+}
+/* 과락(40%)·합격선(60%) 판정 */
+function judge(correct, total){
+  const passLine = Math.ceil(total * 0.6);
+  const cutLine = Math.ceil(total * 0.4);
+  const pct = pctOf(correct, total);
+  if(correct < cutLine) return { k:'cut', label:'과락 기준 미달', color:'var(--bad)', cutLine, passLine, pct };
+  if(correct >= passLine) return { k:'pass', label:'합격선 통과', color:'var(--ok)', cutLine, passLine, pct };
+  return { k:'near', label:'과락은 면했지만 합격선 미달', color:'var(--amber)', cutLine, passLine, pct };
 }
 
 /* ---------- 풀이 ---------- */
@@ -305,10 +301,11 @@ function finish(){
   log.push({ level: S.level, subject: subjects.length === 1 ? subjects[0] : (state.mode === 'mock' ? '모의고사' : '혼합'), total: total, correct: c, at: Date.now(), mode: state.mode });
   lsSet(LS.log, log.slice(-200));
 
-  if(state.mode === 'free'){
-    const res = buildFreeResult(S.level, state.items, c, state.miss.map(q => q.id));
+  if(state.mode === 'free' || state.mode === 'free1'){
+    const res = buildFreeResult(FREE_LEVEL, state.items, c, state.miss.map(q => q.id));
+    res.subject = FREE_SUBJECT;
     lsSet(LS.free, res);
-    track('free_complete', { level: res.lv, correct: c, total: total, pct: pctOf(c,total) });
+    track('free_complete', { level: res.lv, correct: c, total: total, pct: pctOf(c,total), verdict: judge(c, total).k });
     renderFreeResult(res, true);
     return;
   }
@@ -353,49 +350,57 @@ function missQuestions(res){ return (res.missIds || []).map(id => QB.find(q => q
 function renderFreeResult(res, fresh){
   document.body.classList.remove('quiz-mode');
   state.view = 'freeResult';
-  document.getElementById('title').textContent = '무료 학습 결과';
+  document.getElementById('title').textContent = (res.subject || FREE_SUBJECT) + ' 무료 결과';
   document.getElementById('back').hidden = false;
   const pct = pctOf(res.correct, res.total);
-  const weak = weakOf(res);
+  const j = judge(res.correct, res.total);
   const misses = missQuestions(res);
   const when = new Date(res.at);
+  const head = res.subject || FREE_SUBJECT;
+  const remark = j.k === 'cut'
+    ? `과락 기준은 20문항 중 ${j.cutLine}문항(40점)입니다. 이 과목은 ${res.correct}문항 — 지금 점수로는 과락입니다. 실제 시험은 5과목 중 한 과목이라도 ${j.cutLine}문항 미만이면 그 자리에서 불합격입니다.`
+    : (j.k === 'pass'
+      ? `과락(${j.cutLine}문항)과 합격선(${j.passLine}문항)을 모두 넘었습니다. 5과목을 이 수준으로 유지하면 총점 300점(60%)을 넘습니다.`
+      : `과락(${j.cutLine}문항)은 넘었지만 합격선(${j.passLine}문항, 60%)에는 ${j.passLine - res.correct}문항 부족합니다. 그 ${j.passLine - res.correct}문항이 다음 목표입니다.`);
   app().innerHTML = `
     <div class="card">
-      <p class="muted" style="margin:0 0 2px">ALPHA 2027 무료 학습 테스트 · ${esc(res.lv)} · ${when.getMonth()+1}/${when.getDate()} ${String(when.getHours()).padStart(2,'0')}:${String(when.getMinutes()).padStart(2,'0')}</p>
-      <div class="big">${pct}%</div>
-      <p class="muted" style="margin:0">정답률 ${pct}% · ${weak.length ? '보완이 필요한 과목이 ' + weak.length + '개 보입니다' : '이번 10문항은 모두 맞혔습니다'}</p>
+      <p class="muted" style="margin:0 0 2px">무료 1과목 · ${esc(res.lv)} ${esc(head)} 20문항 · ${when.getMonth()+1}/${when.getDate()} ${String(when.getHours()).padStart(2,'0')}:${String(when.getMinutes()).padStart(2,'0')}</p>
+      <div class="big">${res.correct} / ${res.total}</div>
+      <p class="muted" style="margin:0">정답률 <b style="color:var(--ink)">${pct}%</b> · 오답 ${res.total - res.correct}문항은 오답노트에 저장됐습니다</p>
       <div class="kpi">
-        <div><b>${res.total}</b><span>총 문항</span></div>
-        <div><b style="color:var(--ok)">${res.correct}</b><span>정답</span></div>
+        <div><b>${res.correct}</b><span>정답</span></div>
         <div><b style="color:var(--bad)">${res.total - res.correct}</b><span>오답</span></div>
+        <div><b style="color:${j.color}">${pct}%</b><span>정답률</span></div>
       </div>
     </div>
 
     <div class="card">
-      <b style="font-size:14px">취약 과목 진단</b>
-      <p class="mini" style="margin:4px 0 0">이번 10문항의 실제 풀이 결과만으로 계산했습니다.</p>
-      ${res.subs.map(s => `
-        <div class="subjrow">
-          <div class="lab"><b style="font-weight:600">${esc(s.subject)}</b><span>${s.correct}/${s.total} · ${s.pct}%</span></div>
-          <div class="subjbar"><i class="${s.pct>=80?'':(s.pct>=50?'warn':'bad')}" style="width:${Math.max(4,s.pct)}%"></i></div>
-        </div>`).join('')}
+      <b style="font-size:14px">합격 판정 <span style="color:${j.color}">· ${esc(j.label)}</span></b>
+      <p class="muted" style="margin:6px 0 0;line-height:1.7">${esc(remark)}</p>
+      <div class="subjrow" style="margin-top:10px">
+        <div class="lab"><b style="font-weight:600">과락 기준 ${j.cutLine}문항 (40점)</b><span>${res.correct >= j.cutLine ? '통과' : '미달'}</span></div>
+        <div class="subjbar"><i class="${res.correct >= j.cutLine ? '' : 'bad'}" style="width:${Math.min(100, Math.round(res.correct / j.cutLine * 100))}%"></i></div>
+      </div>
+      <div class="subjrow">
+        <div class="lab"><b style="font-weight:600">합격선 ${j.passLine}문항 (60%)</b><span>${res.correct >= j.passLine ? '통과' : (j.passLine - res.correct) + '문항 부족'}</span></div>
+        <div class="subjbar"><i class="${res.correct >= j.passLine ? '' : 'warn'}" style="width:${Math.min(100, Math.round(res.correct / j.passLine * 100))}%"></i></div>
+      </div>
     </div>
 
     <div class="card">
-      <b style="font-size:14px">보완이 필요한 학습 영역</b>
+      <b style="font-size:14px">틀린 문항 ${misses.length}개</b>
       ${misses.length ? misses.map(q => `
         <p class="muted" style="margin:8px 0 0;line-height:1.6">
           <b style="color:var(--ink)">${esc(q.subject)} ${q.qno}번</b> · 정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}<br>
-          <span style="color:var(--sub)">${esc(cut(q.stem, 46))}</span>
+          <span style="color:var(--sub)">${esc(cut(q.stem, 54))}</span>
         </p>`).join('')
-      : '<p class="muted" style="margin:8px 0 0">틀린 문항이 없습니다. 다음 단계는 전체 과목 점검입니다.</p>'}
-      ${weak.length ? `<p class="mini" style="margin-top:10px">복습 우선순위: ${weak.slice(0,3).map((s,i)=> (i+1)+'. '+esc(s.subject)).join('  ·  ')}</p>` : ''}
+      : '<p class="muted" style="margin:8px 0 0">20문항을 모두 맞혔습니다. 다음은 나머지 15과목입니다.</p>'}
     </div>
 
     <div class="lockcard">
-      <b>내 오답 분석과 다음 학습 계획</b>
-      <p>어디서 틀렸는지, 무엇부터 다시 봐야 하는지까지 정리해 드립니다. 문제를 푸는 것보다 중요한 건, 틀린 이유를 아는 것입니다.</p>
-      <button id="goPay">내 오답 분석 자세히 보기</button>
+      <b>2과목부터는 이용권이 필요합니다</b>
+      <p>${esc(head)} 20문항은 여기까지입니다. 나머지 15과목 300문항(1급 120문항 포함)·전체 오답노트·취약 과목 집중 학습·실전 모의고사가 이용권에 포함됩니다.</p>
+      <button id="goPay">내 ${esc(head)} 점수로 다음 학습 열기</button>
     </div>
 
     <div class="card">
@@ -405,11 +410,11 @@ function renderFreeResult(res, fresh){
     </div>
 
     <div class="row">
-      <button class="btn ghost" id="retake">다시 풀기</button>
+      <button class="btn ghost" id="retake">스포츠사회학 다시 풀기</button>
       <button class="btn ghost" id="home2">홈으로</button>
     </div>`;
-  document.getElementById('goPay').onclick = () => paywall('free_result');
-  document.getElementById('retake').onclick = () => { S.level = res.lv; const set = freeSet(res.lv); start(set, '오늘의 무료 문제 ' + set.length + '개', 'free'); };
+  document.getElementById('goPay').onclick = () => paywall('free_subject_done');
+  document.getElementById('retake').onclick = () => freeStart();
   document.getElementById('home2').onclick = () => { state.view='home'; home(); };
   bindShare(res);
   if(fresh) window.scrollTo(0,0);
@@ -473,9 +478,9 @@ function bindShare(res){
 }
 
 /* ---------- 프리미엄 전환 화면 ---------- */
-function paywall(reason){
+function paywall(reason, subj){
   document.body.classList.remove('quiz-mode');
-  track('paywall_view', { reason: reason || 'menu' });
+  track('paywall_view', { reason: reason || 'menu', subject: subj || '' });
   state.view = 'paywall';
   document.getElementById('title').textContent = '나의 학습 개선안';
   document.getElementById('back').hidden = false;
@@ -486,13 +491,13 @@ function paywall(reason){
   app().innerHTML = `
     ${paid ? '<div class="note">이미 이용권이 등록되어 있습니다. 아래 전체 학습 메뉴를 바로 쓸 수 있습니다.</div>' : ''}
     <div class="card">
-      <p class="muted" style="margin:0 0 4px">나의 시험 결과 ${res ? '· ' + res.lv + ' 무료 10문항' : '· 아직 무료 테스트 기록이 없습니다'}</p>
-      ${res ? `
-        <div class="big" style="font-size:34px">${pctOf(res.correct, res.total)}%</div>
-        <p class="muted" style="margin:0">${res.total}문항 중 ${res.correct}문항 정답 · 오답 ${res.total - res.correct}문항</p>
-        <p class="muted" style="margin:6px 0 0">취약 영역: <b style="color:var(--ink)">${weak.length ? weak.slice(0,3).map(s=>esc(s.subject)).join(', ') : '없음 (전 문항 정답)'}</b></p>`
-      : `<p class="muted" style="margin:0">먼저 무료 10문항을 풀면 내 취약 과목과 오답 분석이 여기에 표시됩니다.</p>
-         <div class="row"><button class="btn" id="goFree">오늘의 무료 문제 10개 풀기</button></div>`}
+      <p class="muted" style="margin:0 0 4px">${res ? '나의 ' + esc(res.subject || FREE_SUBJECT) + ' 점수 · ' + res.lv + ' ' + res.total + '문항' : '나의 무료 학습 결과 · 아직 기록이 없습니다'}</p>
+      ${res ? (function(){ const j = judge(res.correct, res.total); return `
+        <div class="big" style="font-size:34px">${res.correct} <span style="font-size:18px;color:var(--sub)">/ ${res.total}</span></div>
+        <p class="muted" style="margin:0">정답률 ${j.pct}% · 오답 ${res.total - res.correct}문항 · <b style="color:${j.color}">${esc(j.label)}</b></p>
+        <p class="muted" style="margin:6px 0 0">과락 기준 ${j.cutLine}문항(40점) · 합격선 ${j.passLine}문항(60%) — 실제 시험은 5과목 중 한 과목이라도 ${j.cutLine}문항 미만이면 불합격입니다.</p>`; })()
+      : `<p class="muted" style="margin:0">먼저 무료 1과목(2급 ${FREE_SUBJECT} 20문항)을 풀면 내 점수와 오답 분석이 여기에 표시됩니다.</p>
+         <div class="row"><button class="btn" id="goFree">스포츠사회학 20문항 무료로 풀기</button></div>`}
     </div>
 
     <div class="sec-title">1. 나의 오답 분석</div>
@@ -502,7 +507,7 @@ function paywall(reason){
           <div style="font-size:13.5px"><b>${esc(q.subject)} ${q.qno}번</b> <span class="muted">· 정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</span></div>
           <div class="mini" style="margin-top:3px">${esc(cut(q.stem, 60))}</div>
         </div>`).join('')
-      : `<p class="muted" style="margin:0">${res ? '이번 테스트에서 틀린 문항이 없습니다.' : '무료 테스트를 완료하면 실제 틀린 문항이 여기에 정리됩니다.'}</p>`}
+      : `<p class="muted" style="margin:0">${res ? '무료 20문항에서 틀린 문항이 없습니다.' : '무료 1과목을 완료하면 실제 틀린 문항이 여기에 정리됩니다.'}</p>`}
       <p class="mini" style="margin-top:10px">이 분석은 실제 풀이 기록만 사용합니다. AI가 원인을 추론하는 기능은 아직 준비 중입니다.</p>
     </div>
 
@@ -519,7 +524,19 @@ function paywall(reason){
       : '<p class="muted" style="margin:0">무료 테스트를 먼저 완료해 주세요.</p>'}
     </div>
 
-    <div class="sec-title">3. 프리미엄 학습권</div>
+    <div class="sec-title">3. 지금 바로 열기</div>
+    <div class="card">
+      <b style="font-size:14px">1,900원 평생 이용권 <span class="badge">2026년 11월 30일까지</span></b>
+      <p class="muted" style="margin:6px 0 0">결제하면 코드가 안내되고, 앱에 입력하는 즉시 나머지 15과목 300문항이 열립니다.</p>
+      <button class="btn" id="pwBuy" style="margin-top:10px">1,900원 결제하고 전체 열기 (래피드)</button>
+      <p class="mini" style="margin:8px 0 6px">이미 코드가 있다면</p>
+      <input id="pwCode" placeholder="이용권 코드 (예: EARLY-1900)" autocomplete="off">
+      <button id="pwRedeem" style="margin-top:8px">코드 등록</button>
+      <p class="okmsg" id="pwMsg"></p>
+      <p class="mini" style="margin-top:10px">래피드 상품 veLnh · 카드 정보는 앱에서 다루지 않습니다.</p>
+    </div>
+
+    <div class="sec-title">4. 프리미엄 학습권</div>
     <div class="card">
       <div class="copy-line">문제를 푸는 것보다 중요한 건, 틀린 이유를 아는 것입니다.</div>
       <div class="copy-line">내가 자주 틀리는 문제부터 집중적으로 공부하세요.</div>
@@ -544,7 +561,7 @@ function paywall(reason){
       </div>
       <div class="plan">
         <div class="ptop"><b>무료 맛보기</b><span class="price">0원</span></div>
-        <p>지금 이 앱의 무료 10문항 + 5쪽 맛보기 PDF. <a class="inline" href="${STORE.free}" target="_blank" rel="noopener">무료 PDF 받기</a></p>
+        <p>지금 이 앱의 무료 1과목(2급 스포츠사회학 20문항) + 5쪽 맛보기 PDF. <a class="inline" href="${STORE.free}" target="_blank" rel="noopener">무료 PDF 받기</a></p>
       </div>
       <div class="plan">
         <div class="ptop"><b>7일 학습권 <span class="badge soon">판매 준비 중</span></b><span class="price">3,900원</span></div>
@@ -571,6 +588,21 @@ function paywall(reason){
       ${res ? shareBox(res) : '<p class="mini" style="margin:8px 0 0">무료 테스트를 완료하면 결과 공유 버튼이 나타납니다.</p>'}
     </div>`;
   const gf = document.getElementById('goFree'); if(gf) gf.onclick = freeStart;
+  document.getElementById('pwBuy').onclick = () => {
+    track('checkout_click', { product: 'pass_1900', price: 1900, duration: 'lifetime', from: 'paywall' });
+    window.open(STORE.pass, '_blank');
+    toast('래피드 구매 페이지를 열었습니다.');
+  };
+  document.getElementById('pwRedeem').onclick = () => {
+    const v = (document.getElementById('pwCode').value || '').trim().toUpperCase();
+    const msg = document.getElementById('pwMsg');
+    if(CODES.includes(v)){
+      const p2 = S.passes.slice(); p2.push({ code: v, at: Date.now() }); lsSet(LS.pass, p2);
+      track('pass_redeem', { code: v, from: 'paywall' });
+      msg.style.color = 'var(--ok)'; msg.textContent = '등록 완료. 전체 문항이 열렸습니다.';
+      setTimeout(() => { state.view='home'; home(); }, 700);
+    } else { msg.style.color = 'var(--bad)'; msg.textContent = '코드를 확인해 주세요.'; }
+  };
   document.getElementById('checkout').onclick = () => {
     track('checkout_click', { product: 'pass_1900', price: 1900, duration: 'lifetime' });
     window.open(STORE.pass, '_blank');
@@ -593,25 +625,25 @@ function showWrong(){
   document.getElementById('back').hidden = false;
   const items = wrongItems();
   if(!items.length){
-    app().innerHTML = '<div class="empty">아직 오답이 없습니다.<br>문제를 풀면 틀린 문항이 여기 쌓입니다.<div class="row"><button class="btn" id="goFree2">오늘의 무료 문제 풀기</button></div></div>';
+    app().innerHTML = '<div class="empty">아직 오답이 없습니다.<br>문제를 풀면 틀린 문항이 여기 쌓입니다.<div class="row"><button class="btn" id="goFree2">스포츠사회학 20문항 무료로 풀기</button></div></div>';
     document.getElementById('goFree2').onclick = freeStart;
     return;
   }
   if(!isPaid()){
-    const shown = items.slice(0, 3);
+    const freeIds = new Set(freeItems().map(q => q.id));
+    const shown = items.filter(q => freeIds.has(q.id));
+    const lockedN = items.length - shown.length;
     app().innerHTML = `
-      <p class="muted">전체 ${items.length}문항 중 최근 3문항 (무료)</p>
-      ${shown.map(q => `<div class="card"><div style="font-size:13px"><b>${esc(q.subject)} ${q.qno}번</b> <span class="muted">· ${q.year}년 ${esc(q.level)}</span></div>
+      <p class="muted">무료 1과목(${FREE_SUBJECT}) 오답 ${shown.length}문항 · 다른 과목 오답 ${lockedN}문항은 이용권 필요</p>
+      ${shown.length ? shown.map(q => `<div class="card"><div style="font-size:13px"><b>${esc(q.subject)} ${q.qno}번</b> <span class="muted">· ${q.year}년 ${esc(q.level)}</span></div>
         <p class="mini" style="margin:6px 0 0">${esc(cut(q.stem, 70))}</p>
-        <p class="muted" style="margin:6px 0 0">정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p></div>`).join('')}
-      <div class="lockcard">
-        <b>${items.length > shown.length ? '오답 ' + (items.length - shown.length) + '문항이 더 있습니다' : '전체 오답노트 · 오답 다시 풀기'}</b>
-        <p>${items.length > shown.length ? '이용권을 등록하면 전체 오답노트를 보고 오답만 다시 풀 수 있습니다.' : '이용권을 등록하면 모든 오답을 모아서 다시 풀 수 있습니다.'}</p>
-        <button id="goPay">전체 오답노트 열기</button>
-      </div>
-      <div class="row"><button class="btn ghost" id="solve3">${items.length > shown.length ? '최근 3문항 다시 풀기' : '이 3문항 다시 풀기'}</button></div>`;
-    document.getElementById('goPay').onclick = () => paywall('wrong_locked');
-    document.getElementById('solve3').onclick = () => start(shown, '오답 다시 풀기', 'practice');
+        <p class="muted" style="margin:6px 0 0">정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p></div>`).join('')
+      : '<div class="empty">아직 무료 과목 오답이 없습니다.<br>스포츠사회학 20문항을 풀면 여기에 쌓입니다.<div class="row"><button class="btn" id="goFree3">스포츠사회학 20문항 풀기</button></div></div>'}
+      ${lockedN > 0 ? `<div class="lockcard"><b>다른 과목 오답 ${lockedN}문항</b><p>이용권을 등록하면 모든 과목의 오답을 모아 보고 오답만 다시 풀 수 있습니다.</p><button id="goPay">전체 오답노트 열기</button></div>` : ''}
+      ${shown.length ? `<div class="row"><button class="btn ghost" id="solve3">스포츠사회학 오답 다시 풀기</button></div>` : ''}`;
+    const g3 = document.getElementById('goFree3'); if(g3) g3.onclick = freeStart;
+    const gp = document.getElementById('goPay'); if(gp) gp.onclick = () => paywall('wrong_locked');
+    const s3 = document.getElementById('solve3'); if(s3) s3.onclick = () => start(shown, '스포츠사회학 오답 다시 풀기', 'practice');
     return;
   }
   app().innerHTML = `
@@ -689,7 +721,7 @@ function pass(){
   document.getElementById('back').hidden = true;
   const paid = isPaid();
   app().innerHTML = `
-    ${paid ? '<div class="card"><b>이용권 사용 중</b><p class="muted">전체 문항과 오답노트를 제한 없이 사용할 수 있습니다.</p></div>' : ''}
+    ${paid ? '<div class="card"><b>이용권 사용 중</b><p class="muted">전체 문항과 오답노트를 제한 없이 사용할 수 있습니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a> — 코드를 다시 입력하거나 다른 기기에서 확인할 때 사용합니다.</p></div>' : ''}
     <div class="lock">
       <h3>1,900원 평생 이용권 (2026년 11월 30일까지)</h3>
       <p>결제 후 받은 코드를 입력하면 잠금이 풀립니다. 2027년 1월 1일부터는 월 1,900원 구독으로 전환될 예정입니다.</p>
@@ -700,7 +732,7 @@ function pass(){
     <div class="row"><button class="btn" id="buy">래피드에서 구매</button><button class="btn ghost" id="plan">학습 개선안 보기</button></div>
     <div class="card">
       <b style="font-size:14px">무료로 쓸 수 있는 범위</b>
-      <p class="muted">오늘의 무료 문제 10문항, 기본 채점·정답 확인, 최근 오답 3문항, 기본 학습 결과까지. 전체 ${TOTAL_Q}문항·전체 오답노트·취약 과목 집중 학습·모의고사·학습 기록은 이용권이 필요합니다.</p>
+      <p class="muted">2급 ${FREE_SUBJECT} 20문항 전체 — 즉시 채점·오답 분석·과락(40점)/합격(60점) 판정까지 무료입니다. 나머지 15과목 300문항(1급 120문항 포함)·전체 오답노트·취약 과목 집중 학습·모의고사·학습 기록은 이용권이 필요합니다.</p>
     </div>
     <div class="card">
       <b style="font-size:14px">안내</b>
@@ -720,6 +752,8 @@ function pass(){
   document.getElementById('buy').onclick = () => { track('checkout_click', { product: 'pass_1900', price: 1900, from: 'pass_tab' }); window.open(STORE.pass, '_blank'); };
   document.getElementById('plan').onclick = () => paywall('pass_tab');
   document.getElementById('mt').onclick = (e) => { e.preventDefault(); metrics(); };
+  const rl = document.getElementById('release');
+  if(rl) rl.onclick = (e) => { e.preventDefault(); if(confirm('이 기기에서 이용권을 해제할까요? 다시 쓰려면 코드를 입력해야 합니다.')){ lsSet(LS.pass, []); track('pass_release', {}); pass(); } };
 }
 
 /* ---------- 전환 지표 ---------- */
@@ -774,17 +808,17 @@ function home(){
   <div class="hero">
     ${tag}
     <b>ALPHA 2027에서 제공하는 무료 학습 테스트</b>
-    <p>2025년 공단 기출 ${TOTAL_Q}문항 중 오늘의 10문항. 회원가입 없이 3분이면 내 취약 과목이 보입니다.</p>
-    <button id="freeStart">오늘의 무료 문제 10개 풀어보기</button>
-    ${last ? `<p class="hero-sub">지난 결과 ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">내 오답 분석 보기</a></p>` : ''}
+    <p>2급 ${FREE_SUBJECT} 20문항 전체를 무료로. 즉시 채점·오답 분석·과락(40점)/합격(60점) 판정까지 회원가입 없이 확인합니다.</p>
+    <button id="freeStart">1과목(스포츠사회학 20문항) 무료로 풀어보기</button>
+    ${last ? `<p class="hero-sub">지난 ${esc(last.subject || FREE_SUBJECT)} ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">내 ${esc(last.subject || FREE_SUBJECT)} 결과 보기</a></p>` : ''}
   </div>
   <div class="chips">
     <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (${byLevel('2급').length}문항)</button>
     <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (${byLevel('1급').length}문항)</button>
   </div>
-  <div class="sec-title">과목별 학습 ${paid ? '' : '· 이용권 필요'}</div>
+  <div class="sec-title">과목별 학습 ${paid ? '' : '· 무료 1과목 + 이용권'}</div>
   <div class="grid">
-    ${subs.map(s => `<button class="subj ${paid?'':'locked'}" data-subj="${esc(s)}"><b>${esc(s)}</b><span>${bySubject(lv,s).length}문항 · 정답률 ${rateOf(lv,s)}</span></button>`).join('')}
+    ${subs.map(s => { const free = isFreeSubject(lv, s); return `<button class="subj ${paid || free ? '' : 'locked'}" data-subj="${esc(s)}"><b>${esc(s)}${free && !paid ? ' <span class="badge" style="vertical-align:2px">무료</span>' : ''}</b><span>${bySubject(lv,s).length}문항 · 정답률 ${rateOf(lv,s)}</span></button>`; }).join('')}
   </div>
   <div class="row">
     <button class="btn" id="quick">랜덤 20문항 풀기</button>
@@ -795,13 +829,15 @@ function home(){
     <button class="btn ghost" id="weakBtn">취약 과목 집중</button>
   </div>
   ${paid ? '<div class="card" style="padding:12px 14px"><p class="muted" style="margin:0">이용권 사용 중 · 전체 문항과 오답노트를 제한 없이 쓸 수 있습니다.</p></div>'
-         : `<div class="lockcard"><b>전체 ${TOTAL_Q}문항 · 전체 오답노트 · 모의고사</b><p>무료는 오늘의 10문항과 최근 오답 3문항까지입니다. 이용권을 등록하면 과목별 전체 문항과 취약 과목 집중 학습이 열립니다.</p><button id="openPlan">학습 개선안 · 이용권 보기</button></div>`}
+         : `<div class="lockcard"><b>무료는 2급 ${FREE_SUBJECT} 20문항까지</b><p>2과목(스포츠교육학·스포츠심리학·운동생리학·스포츠윤리)과 1급 과목은 이용권으로 열립니다. 이용권을 등록하면 나머지 15과목 300문항·전체 오답노트·취약 과목 집중 학습·모의고사가 열립니다.</p><button id="openPlan">학습 개선안 · 이용권 보기</button></div>`}
   <div class="lic">문항 출처: 국민체육진흥공단 체육지도자 자격검정·연수원 공개 문제지(2025년). 정답: 공단 최종 정답표. 해설은 공단 자료에 없어 미포함.</div>`;
 
   document.querySelectorAll('[data-lv]').forEach(b => b.onclick = () => { S.level = b.dataset.lv; home(); });
   document.querySelectorAll('[data-subj]').forEach(b => b.onclick = () => {
-    if(!isPaid()) return paywall('locked_subject');
-    start(bySubject(lv, b.dataset.subj), b.dataset.subj, 'practice', { gate: true });
+    const subj = b.dataset.subj;
+    if(isPaid()) return start(bySubject(lv, subj), subj, 'practice', { gate: true });
+    if(isFreeSubject(lv, subj)) return freeStart();
+    return paywall('locked_subject', subj);
   });
   document.getElementById('freeStart').onclick = freeStart;
   document.getElementById('quick').onclick = () => { if(!isPaid()) return paywall('locked_random'); start(shuffle(byLevel(lv)).slice(0,20), '랜덤 20문항', 'practice', { gate: true }); };
