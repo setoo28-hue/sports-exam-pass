@@ -381,7 +381,7 @@ function offerCard(title, desc){
   return `<div class="card">
     <b style="font-size:15px;line-height:1.5">${esc(title)}</b>
     <p class="muted" style="margin:6px 0 4px;line-height:1.65">${desc}</p>
-    <p class="feat">전 과목 ${nfmt(TOTAL_Q)}문항 — 2급 ${byLevel('2급').length} · 1급 ${byLevel('1급').length}</p>
+    <p class="feat">전 과목 ${nfmt(TOTAL_Q)}문항 — 2급 ${nfmt(byLevel('2급').length)} · 1급 ${nfmt(byLevel('1급').length)}</p>
     <p class="feat">내 약점 오답 자동 복습 · 오답만 다시 풀기</p>
     <p class="feat">취약 단원 진단 (내 오답 기록 기준)</p>
     <p class="feat">실전 모의고사 · 타이머</p>
@@ -724,8 +724,8 @@ function home(){
   </div>
   <div class="sec-title" style="margin-bottom:6px">연도별 기출 ${paid ? '' : '· 1~5번 무료'}</div>
   <div class="ychips">
-    <button class="ychip ${!y?'on':''}" data-year="all">전체 ${yearCount(lv, null)}</button>
-    ${YEARS.slice().sort((a,b)=>b-a).map(v => `<button class="ychip ${y===v?'on':''}" data-year="${v}">${v} <span>${yearCount(lv, v)}</span></button>`).join('')}
+    <button class="ychip ${!y?'on':''}" data-year="all">전체 ${nfmt(yearCount(lv, null))}</button>
+    ${YEARS.slice().sort((a,b)=>b-a).map(v => `<button class="ychip ${y===v?'on':''}" data-year="${v}">${v} <span>${nfmt(yearCount(lv, v))}</span></button>`).join('')}
   </div>
   <div class="sec-title">과목별 학습 · ${yLabel} ${paid ? '' : '· 과목마다 1~5번 무료'}</div>
   <div class="grid">
