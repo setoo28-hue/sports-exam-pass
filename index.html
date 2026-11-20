@@ -847,8 +847,9 @@ document.querySelectorAll('footer button').forEach(b => b.onclick = () => {
 document.getElementById('back').onclick = () => { state.view='home'; state.mode='practice'; home(); };
 
 /* ---------- 시작 ---------- */
+const QB_VER = '2026-11-21a';
 async function loadQB(){
-  const res = await fetch('qb.json', { cache: 'no-cache' });
+  const res = await fetch('qb.json?v=' + QB_VER, { cache: 'no-cache' });
   if(!res.ok) throw new Error('qb.json ' + res.status);
   QB = await res.json();
   YEARS = Array.from(new Set(QB.map(q => q.year))).sort((a,b) => b - a);
