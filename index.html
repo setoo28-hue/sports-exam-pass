@@ -342,6 +342,7 @@ function yearCount(lv, y){ return byLevel(lv, y).length; }
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 const levelSubjects = (lv) => SUBJ_ORDER.filter(s => bySubject(lv, s).length);
 let TOTAL_Q = 0;
+const nfmt = n => Number(n).toLocaleString('en-US');
 
 /* ---------- 무료 범위: 전 과목 1~5번 ---------- */
 function freeHead(lv, subj){ return bySubject(lv, subj).filter(q => q.qno <= FREE_N); }
@@ -380,7 +381,7 @@ function offerCard(title, desc){
   return `<div class="card">
     <b style="font-size:15px;line-height:1.5">${esc(title)}</b>
     <p class="muted" style="margin:6px 0 4px;line-height:1.65">${desc}</p>
-    <p class="feat">전 과목 ${TOTAL_Q}문항 — 2급 ${byLevel('2급').length} · 1급 ${byLevel('1급').length}</p>
+    <p class="feat">전 과목 ${nfmt(TOTAL_Q)}문항 — 2급 ${byLevel('2급').length} · 1급 ${byLevel('1급').length}</p>
     <p class="feat">내 약점 오답 자동 복습 · 오답만 다시 풀기</p>
     <p class="feat">취약 단원 진단 (내 오답 기록 기준)</p>
     <p class="feat">실전 모의고사 · 타이머</p>
@@ -708,18 +709,18 @@ function home(){
   state.view = 'home'; state.mode = 'practice';
   document.getElementById('title').textContent = '스포츠지도사 기출';
   document.getElementById('back').hidden = true;
-  const tag = `<span class="tag">공단 공개 기출 ${YEARS.slice().sort((a,b)=>a-b).join('·')} · ${TOTAL_Q}문항</span>`;
+  const tag = `<span class="tag">공단 공개 기출 ${YEARS.slice().sort((a,b)=>a-b).join('·')} · ${nfmt(TOTAL_Q)}문항</span>`;
   app().innerHTML = `
   <div class="hero">
     ${tag}
     <b>연도를 골라 기출을, 랜덤으로 실전을</b>
-    <p>2021~2025년 공단 공개 기출 ${TOTAL_Q}문항. 2급·1급 전 과목 1~5번은 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
+    <p>2021~2025년 공단 공개 기출 ${nfmt(TOTAL_Q)}문항. 2급·1급 전 과목 1~5번은 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
     <button id="freeStart">${subs[0]} 1~5번 무료로 풀기</button>
     <p class="hero-sub">${last ? `지난 ${esc(last.subject || '')} ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">결과 보기</a>` : (paid ? '이용권 사용 중 · 전체 문항을 쓸 수 있습니다' : `이미 코드가 있다면 <a href="#" id="openCode">코드 등록</a>`)}</p>
   </div>
   <div class="chips">
-    <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (${byLevel('2급').length}문항)</button>
-    <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (${byLevel('1급').length}문항)</button>
+    <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (${nfmt(byLevel('2급').length)}문항)</button>
+    <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (${nfmt(byLevel('1급').length)}문항)</button>
   </div>
   <div class="sec-title" style="margin-bottom:6px">연도별 기출 ${paid ? '' : '· 1~5번 무료'}</div>
   <div class="ychips">
@@ -902,8 +903,8 @@ function pass(){
   state.view = 'pass';
   const paid = isPaid();
   app().innerHTML = `
-    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">5개년 ${TOTAL_Q}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
-    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 5개년 ${TOTAL_Q}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
+    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">5개년 ${nfmt(TOTAL_Q)}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
+    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 5개년 ${nfmt(TOTAL_Q)}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
     ${paid ? '' : `<div class="card"><b style="font-size:14px">무료로 쓸 수 있는 범위</b><p class="muted" style="margin:6px 0 0;line-height:1.6">2급·1급 전 과목 1~5번 문항 — 즉시 채점과 정답 확인까지 무료입니다. 6번부터 20번, 오답 복습, 모의고사, 학습 기록은 이용권이 필요합니다.</p></div>`}
     <div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021~2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 해설은 공단 자료에 없어 아직 제공하지 않습니다.</p></div>
     <p style="text-align:center;margin:18px 0 8px"><a href="#" id="mt" class="mini" style="text-decoration:underline">전환 지표 보기 (관리자)</a></p>`;
