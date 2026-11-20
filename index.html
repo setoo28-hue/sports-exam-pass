@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>스포츠지도사 기출 | ALPHA 2027</title>
-<meta name="description" content="2021·2022·2023·2025년 국민체육진흥공단 공개 기출 1,280문항. 2급·1급 전 과목 1~5번 문항을 결제 없이 풀고 즉시 채점합니다. 연도별 기출·5개년 랜덤 모의고사·오답 자동 복습으로 이어집니다.">
+<meta name="description" content="2021·2022·2023·2025년 국민체육진흥공단 공개 기출 1,280문항. 2급·1급 전 과목 1~5번 문항을 결제 없이 풀고 즉시 채점합니다. 연도별 기출·4개년 랜덤 모의고사·오답 자동 복습으로 이어집니다.">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -317,7 +317,7 @@ function gate(reason, subj){
     random: '랜덤 20문항',
     stats: '과목별 정답률과 전체 학습 기록'
   };
-  const head = subj ? (esc(subj) + ' 6번부터 20문항이 남아 있습니다') : (heads[reason] || '내 약점 오답 자동 복습 · 5개년 기출');
+  const head = subj ? (esc(subj) + ' 6번부터 20문항이 남아 있습니다') : (heads[reason] || '내 약점 오답 자동 복습 · 4개년 기출');
   const lead = reason === 'wrong'
     ? '오답노트에 쌓인 틀린 문항을 모아 다시 풀고, 오답이 많은 단원부터 짚습니다.'
     : (reason === 'mock'
@@ -333,7 +333,7 @@ function gate(reason, subj){
       <b style="display:block;font-size:15px;line-height:1.5;margin:6px 0 0">${head}</b>
       <p class="muted" style="margin:6px 0 0;line-height:1.65">${lead}</p>
     </div>
-    ${offerCard('내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사', '6번부터 20번까지, 그리고 틀린 문항 복습까지 한 번에 엽니다.')}
+    ${offerCard('내 약점 오답 자동 복습 · 4개년 기출 & 실전 모의고사', '6번부터 20번까지, 그리고 틀린 문항 복습까지 한 번에 엽니다.')}
     <p class="mini" style="text-align:center;margin:14px 0 0">무료 범위는 2급·1급 전 과목 1~5번 문항입니다.</p>`;
   bindOffer();
   window.scrollTo(0,0);
@@ -499,7 +499,7 @@ function renderFreeResult(res, fresh){
       <p class="mini" style="margin-top:10px">5문항 표본이라 합격 판정은 참고용입니다. 실제 검정은 과목별 20문항, 과목별 40% 이상·5과목 평균 60% 이상입니다.</p>
     </div>
 
-    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
+    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 4개년 기출 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
 
     <div class="card">
       <b style="font-size:14px">결과 공유</b>
@@ -587,7 +587,7 @@ function home(){
   const subs = levelSubjects(lv);
   const wrongN = Object.keys(S.wrong).length;
   const last = S.freeLast;
-  const yLabel = y ? `${y}년` : '5개년';
+  const yLabel = y ? `${y}년` : '4개년';
   state.view = 'home'; state.mode = 'practice';
   document.getElementById('title').textContent = '스포츠지도사 기출';
   document.getElementById('back').hidden = true;
@@ -618,7 +618,7 @@ function home(){
     <button class="btn ghost" id="wrongBtn">오답 ${wrongN}개</button>
   </div>
   <div class="row">
-    <button class="btn ghost" id="mockBtn">실전 모의고사 (5개년 랜덤)</button>
+    <button class="btn ghost" id="mockBtn">실전 모의고사 (4개년 랜덤)</button>
   </div>
   <div class="row">
     <button class="btn ghost" id="weakBtn">취약 과목 집중</button>
@@ -638,7 +638,7 @@ function home(){
   document.querySelectorAll('[data-subj]').forEach(b => b.onclick = () => {
     const subj = b.dataset.subj;
     const items = bySubject(lv, subj);
-    if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 5개년'}`, 'practice', { gate: true, subject: subj });
+    if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 4개년'}`, 'practice', { gate: true, subject: subj });
     const free = freeHead(lv, subj);
     track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
     start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
@@ -785,8 +785,8 @@ function pass(){
   state.view = 'pass';
   const paid = isPaid();
   app().innerHTML = `
-    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">5개년 ${TOTAL_Q}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
-    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 5개년 ${TOTAL_Q}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
+    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">4개년 ${TOTAL_Q}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
+    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 4개년 ${TOTAL_Q}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
     ${paid ? '' : `<div class="card"><b style="font-size:14px">무료로 쓸 수 있는 범위</b><p class="muted" style="margin:6px 0 0;line-height:1.6">2급·1급 전 과목 1~5번 문항 — 즉시 채점과 정답 확인까지 무료입니다. 6번부터 20번, 오답 복습, 모의고사, 학습 기록은 이용권이 필요합니다.</p></div>`}
     <div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021·2022·2023·2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 해설은 공단 자료에 없어 아직 제공하지 않습니다.</p></div>
     <p style="text-align:center;margin:18px 0 8px"><a href="#" id="mt" class="mini" style="text-decoration:underline">전환 지표 보기 (관리자)</a></p>`;
