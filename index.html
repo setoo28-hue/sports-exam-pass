@@ -221,14 +221,14 @@ const isPaid = () => S.passes.length > 0;
 const pctOf = (c, t) => t ? Math.round(c / t * 100) : 0;
 const cut = (s, n) => { s = String(s).replace(/\s+/g,' ').trim(); return s.length > n ? s.slice(0, n) + '…' : s; };
 function byLevel(lv, y){ return QB.filter(q => q.level === lv && (!y || q.year === y)); }
-function bySubject(lv, subj, y){ const yy = (y === undefined) ? S.year : y; return byLevel(lv, yy).filter(q => q.subject === subj).sort((a,b)=>a.qno-b.qno); }
+function bySubject(lv, subj, y){ const yy = (y === undefined) ? S.year : y; return byLevel(lv, yy).filter(q => q.subject === subj).sort((a,b)=> (b.year - a.year) || (a.qno - b.qno)); }
 function yearCount(lv, y){ return byLevel(lv, y).length; }
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 const levelSubjects = (lv) => SUBJ_ORDER.filter(s => bySubject(lv, s).length);
 let TOTAL_Q = 0;
 
 /* ---------- 무료 범위: 전 과목 1~5번 ---------- */
-function freeHead(lv, subj){ return bySubject(lv, subj).slice(0, FREE_N); }
+function freeHead(lv, subj){ return bySubject(lv, subj).filter(q => q.qno <= FREE_N); }
 function isFreeQ(q){ return q.qno >= 1 && q.qno <= FREE_N; }
 function freeCount(lv){ return levelSubjects(lv).reduce((n, s) => n + freeHead(lv, s).length, 0); }
 
@@ -493,7 +493,7 @@ function renderFreeResult(res, fresh){
       ${misses.length ? misses.map(q => `
         <p class="muted" style="margin:8px 0 0;line-height:1.6">
           <b style="color:var(--ink)">${esc(q.subject)} ${q.qno}번</b> · 정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}<br>
-          <span style="color:var(--sub)">${esc(cut(q.stem, 54))}</span>
+          <span style="color:var(--sub)">${q.stem ? esc(cut(q.stem, 54)) : '그림·표 문항 — 앱에서 문제 보기'}</span>
         </p>`).join('')
       : '<p class="muted" style="margin:8px 0 0">5문항을 모두 맞혔습니다. 이 과목 6번부터 이어서 확인해 보세요.</p>'}
       <p class="mini" style="margin-top:10px">5문항 표본이라 합격 판정은 참고용입니다. 실제 검정은 과목별 20문항, 과목별 40% 이상·5과목 평균 60% 이상입니다.</p>
@@ -672,7 +672,7 @@ function wrongItems(){
 }
 function wrongCard(q){
   return `<div class="card"><div style="font-size:13px"><b>${esc(q.subject)} ${q.qno}번</b> <span class="muted">· ${q.year}년 ${esc(q.level)}</span></div>
-    <p class="mini" style="margin:6px 0 0">${esc(cut(q.stem, 70))}</p>
+    <p class="mini" style="margin:6px 0 0">${q.stem ? esc(cut(q.stem, 70)) : '그림·표 문항 — 앱에서 문제 보기'}</p>
     <p class="muted" style="margin:6px 0 0">정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p></div>`;
 }
 
