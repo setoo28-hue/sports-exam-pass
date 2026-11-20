@@ -1,4 +1,4 @@
-const C = 'sd-v5';
+const C = 'sd-v6';
 const CORE = ['./', './index.html', './qb.json', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {

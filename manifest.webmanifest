@@ -1,7 +1,7 @@
 {
  "name": "스포츠지도사 기출 · ALPHA 2027",
  "short_name": "기출",
- "description": "2021·2022·2023·2025년 국민체육진흥공단 공개 기출 1,280문항",
+ "description": "2021~2025년 국민체육진흥공단 공개 기출 1,600문항",
  "start_url": "./index.html",
  "scope": "./",
  "display": "standalone",
@@ -9,8 +9,23 @@
  "background_color": "#f6f7f9",
  "theme_color": "#111827",
  "icons": [
-  { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-  { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-  { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
  ]
 }

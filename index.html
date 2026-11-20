@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>스포츠지도사 기출 | ALPHA 2027</title>
-<meta name="description" content="2021·2022·2023·2025년 국민체육진흥공단 공개 기출 1,280문항. 2급·1급 전 과목 1~5번 문항을 결제 없이 풀고 즉시 채점합니다. 연도별 기출·4개년 랜덤 모의고사·오답 자동 복습으로 이어집니다.">
+<meta name="description" content="2021~2025년 국민체육진흥공단 공개 기출 1,600문항. 2급·1급 전 과목 1~5번 문항을 결제 없이 풀고 즉시 채점합니다. 연도별 기출·5개년 랜덤 모의고사·오답 자동 복습으로 이어집니다.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="스포츠지도사 기출 · ALPHA 2027">
+<meta property="og:title" content="스포츠지도사 기출 5개년 1,600문항 | 1~5번 무료">
+<meta property="og:description" content="2021~2025년 공단 공개 기출 1,600문항. 2급·1급 전 과목 1~5번을 결제 없이 풀고 바로 채점합니다. 연도별 학습·실전 모의고사·오답 자동 복습.">
+<meta property="og:url" content="https://setoo28-hue.github.io/sports-exam-pass/">
+<meta property="og:image" content="https://setoo28-hue.github.io/sports-exam-pass/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="스포츠지도사 기출 5개년 1,600문항 | 1~5번 무료">
+<meta name="twitter:description" content="2021~2025년 공단 공개 기출 1,600문항. 전 과목 1~5번 무료·즉시 채점.">
+<meta name="twitter:image" content="https://setoo28-hue.github.io/sports-exam-pass/og-cover.png">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -43,7 +56,16 @@ header h1{font-size:16px;margin:0;flex:1}
 .stem{font-size:16px;line-height:1.65;margin:0 0 16px;white-space:pre-wrap}
 .choices{display:flex;flex-direction:column;gap:10px}
 .qfig{margin:10px 0 14px;padding:8px;border:1px solid var(--line,#e3e6ea);border-radius:10px;background:#fff}
-.qfig img{display:block;width:100%;height:auto;border-radius:6px}
+.qfig img{display:block;width:100%;height:auto;border-radius:6px;cursor:zoom-in}
+.qfig{position:relative}
+.qfig .zoomhint{display:block;text-align:center;font-size:11px;color:#6b7280;margin-top:6px}
+.lb{position:fixed;inset:0;background:rgba(9,12,20,.93);z-index:80;display:none;touch-action:none;overscroll-behavior:contain}
+.lb.on{display:block}
+.lb img{position:absolute;top:50%;left:50%;transform-origin:50% 50%;will-change:transform;max-width:none;background:#fff;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb .lbbar{position:absolute;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:8px;padding:0 12px;background:linear-gradient(rgba(9,12,20,.85),rgba(9,12,20,0));color:#e5e7eb;font-size:13px;z-index:2}
+.lb .lbbar b{flex:1;font-weight:600}
+.lb .lbbar button{border:0;background:rgba(255,255,255,.14);color:#fff;font-size:13px;padding:9px 12px;border-radius:10px;cursor:pointer}
+.lb .lbtip{position:absolute;left:0;right:0;bottom:10px;text-align:center;color:#94a3b8;font-size:11px;pointer-events:none}
 .choice{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:13px 14px;border:1px solid var(--line);background:#fff;border-radius:12px;font-size:14px;line-height:1.55;cursor:pointer}
 .choice i{font-style:normal;font-weight:700;color:var(--sub);flex:0 0 18px}
 .choice.ok{border-color:var(--ok);background:#ecfdf5}
@@ -153,7 +175,9 @@ body.quiz-mode footer{display:none}
 /* ================= 스포츠지도사 기출 · ALPHA 2027 합격 코치 레이어 =================
    2026-11-19 개편: 2급·1급 전 과목 1~5번 문항을 결제 없이 오픈하고,
    6번부터·오답 복습·취약 단원·모의고사에서 담백한 이용권 안내로 이어집니다.
-   2026-11-20 5개년 확장: 2021·2022·2023·2025 공단 기출 1,280문항(qb.json + img/*.webp),
+   2026-11-21 5개년 확장: 2021~2025 공단 기출 1,600문항(qb.json + img/*.webp),
+   2024년 320문항은 스캔 문제지 문항별 이미지(imgonly)로 수록, 정답은 공단 최종 정답표.
+   그림 확대 모달(핀치·닫기), OG 미리보기 카드, 방문자 화면의 유입 라벨 숨김.
    연도 선택·연도 무작위 모의고사. 코드(EARLY-1900)·이벤트(sd_ev)·오답(sd_wrong) 유지.
 ============================================================================== */
 let QB = [];
@@ -187,6 +211,98 @@ const S = {
   set level(v){ lsSet(LS.level, v === '1급' ? '1급' : '2급'); },
   get freeLast(){ const v = lsGet(LS.free, null); return (v && typeof v === 'object' && v.total) ? v : null; }
 };
+
+/* ---------- 그림 확대(라이트박스): 탭·핀치·닫기 ---------- */
+function openLb(src, alt){
+  let lb = document.getElementById('lb');
+  if(!lb){
+    lb = document.createElement('div');
+    lb.id = 'lb'; lb.className = 'lb';
+    lb.innerHTML = '<div class="lbbar"><b></b><button type="button" data-z="in">확대</button><button type="button" data-cl>닫기 ✕</button></div>'
+                 + '<img alt=""><div class="lbtip">두 손가락으로 확대 · 끌어서 이동 · 두 번 탭하면 전체 보기</div>';
+    document.body.appendChild(lb);
+    bindLb(lb);
+  }
+  lb.querySelector('img').src = src;
+  lb.querySelector('img').alt = alt || '문제 자료';
+  lb.querySelector('.lbbar b').textContent = '문제 자료';
+  lb.classList.add('on');
+  document.body.style.overflow = 'hidden';
+  lbReset(lb);
+  track('img_zoom', {});
+}
+
+const LB = { s:1, x:0, y:0, base:1, init:1 };
+function lbApply(lb){
+  const im = lb.querySelector('img');
+  im.style.transform = `translate(-50%,-50%) translate(${LB.x}px,${LB.y}px) scale(${LB.s})`;
+}
+function lbReset(lb){
+  const im = lb.querySelector('img');
+  if(!im.naturalWidth){ LB.s = 1; lbApply(lb); return; }
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const fitW = vw / im.naturalWidth, fitH = (vh - 80) / im.naturalHeight;
+  LB.base = Math.min(fitW, 1);                    // 화면에 꽉 차게(전체 보기)
+  LB.init = Math.min(Math.max(fitW * 2, fitH), Math.min(fitW * 3, 1));  // 폰에서 글씨가 읽히는 배율
+  LB.s = LB.init; LB.x = 0; LB.y = 20;
+  lbApply(lb);
+}
+function closeLb(){
+  const lb = document.getElementById('lb');
+  if(!lb) return;
+  lb.classList.remove('on');
+  document.body.style.overflow = '';
+}
+function bindLb(lb){
+  const im = lb.querySelector('img');
+  lb.addEventListener('click', e => {
+    if(e.target === lb || e.target.hasAttribute('data-cl')) closeLb();
+    if(e.target.dataset && e.target.dataset.z === 'in'){ LB.s = Math.min(LB.s * 1.5, LB.base * 5); lbApply(lb); }
+  });
+  im.addEventListener('load', () => { if(lb.classList.contains('on')) lbReset(lb); });
+  let pinch = null, drag = null, lastTap = 0;
+  im.addEventListener('pointerdown', e => {
+    im.setPointerCapture && im.setPointerCapture(e.pointerId);
+    drag = { x:e.clientX, y:e.clientY, lx:LB.x, ly:LB.y };
+  });
+  im.addEventListener('pointermove', e => {
+    if(!drag || pinch) return;
+    LB.x = drag.lx + (e.clientX - drag.x);
+    LB.y = drag.ly + (e.clientY - drag.y);
+    lbApply(lb);
+  });
+  im.addEventListener('pointerup', e => {
+    if(drag && Math.abs(e.clientX-drag.x) < 6 && Math.abs(e.clientY-drag.y) < 6){
+      const now = Date.now();
+      if(now - lastTap < 300){ LB.s = (Math.abs(LB.s - LB.init) < 0.01) ? LB.base : LB.init; LB.x = 0; LB.y = 20; lbApply(lb); }
+      lastTap = now;
+    }
+    drag = null;
+  });
+  lb.addEventListener('touchstart', e => {
+    if(e.touches.length === 2){
+      const [a,b] = e.touches;
+      pinch = { d: Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY), s: LB.s };
+    }
+  }, { passive:true });
+  lb.addEventListener('touchmove', e => {
+    if(e.touches.length === 2 && pinch){
+      e.preventDefault();
+      const [a,b] = e.touches;
+      const d = Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY);
+      LB.s = Math.max(LB.base * 0.9, Math.min(pinch.s * (d / pinch.d), LB.base * 5));
+      lbApply(lb);
+    }
+  }, { passive:false });
+  lb.addEventListener('touchend', e => { if(e.touches.length < 2) pinch = null; });
+  lb.addEventListener('wheel', e => {
+    if(!lb.classList.contains('on')) return;
+    e.preventDefault();
+    LB.s = Math.max(LB.base * 0.9, Math.min(LB.s * (e.deltaY < 0 ? 1.12 : 0.89), LB.base * 5));
+    lbApply(lb);
+  }, { passive:false });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
+}
 
 /* ---------- 유입(UTM) ---------- */
 const UTM = (function(){
@@ -317,7 +433,7 @@ function gate(reason, subj){
     random: '랜덤 20문항',
     stats: '과목별 정답률과 전체 학습 기록'
   };
-  const head = subj ? (esc(subj) + ' 6번부터 20문항이 남아 있습니다') : (heads[reason] || '내 약점 오답 자동 복습 · 4개년 기출');
+  const head = subj ? (esc(subj) + ' 6번부터 20문항이 남아 있습니다') : (heads[reason] || '내 약점 오답 자동 복습 · 5개년 기출');
   const lead = reason === 'wrong'
     ? '오답노트에 쌓인 틀린 문항을 모아 다시 풀고, 오답이 많은 단원부터 짚습니다.'
     : (reason === 'mock'
@@ -333,7 +449,7 @@ function gate(reason, subj){
       <b style="display:block;font-size:15px;line-height:1.5;margin:6px 0 0">${head}</b>
       <p class="muted" style="margin:6px 0 0;line-height:1.65">${lead}</p>
     </div>
-    ${offerCard('내 약점 오답 자동 복습 · 4개년 기출 & 실전 모의고사', '6번부터 20번까지, 그리고 틀린 문항 복습까지 한 번에 엽니다.')}
+    ${offerCard('내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사', '6번부터 20번까지, 그리고 틀린 문항 복습까지 한 번에 엽니다.')}
     <p class="mini" style="text-align:center;margin:14px 0 0">무료 범위는 2급·1급 전 과목 1~5번 문항입니다.</p>`;
   bindOffer();
   window.scrollTo(0,0);
@@ -367,8 +483,8 @@ function renderQ(){
     <div class="pbar"><i style="width:${pct}%"></i></div>
     <div class="card">
       <p class="stem">${esc(q.stem)}</p>
-      ${q.img ? `<figure class="qfig"><img src="${q.img}" alt="문제 자료(그림·표)" loading="lazy"></figure>` : ''}
-      ${q.imgonly ? '<p class="mini" style="margin:2px 0 8px">보기 그림·표의 ①~④ 중에서 고르세요.</p>' : ''}
+      ${q.img ? `<figure class="qfig"><img src="${q.img}" alt="문제 자료(그림·표)" loading="lazy" data-zoom="1"${q.imgonly ? ' class="zoomable" style="cursor:zoom-in"' : ''}><span class="zoomhint">탭하면 크게 볼 수 있습니다</span></figure>` : ''}
+      ${q.imgonly ? '<p class="mini" style="margin:2px 0 8px">그림의 ①~④ 중에서 고르세요.</p>' : ''}
       <div class="choices ${q.imgonly ? 'imgonly' : ''}" id="ch">
         ${q.choices.map((c,i)=>`<button class="choice" data-i="${i+1}"><i>${CIRC[i]}</i>${q.imgonly ? '' : `<span>${esc(c)}</span>`}</button>`).join('')}
       </div>
@@ -377,6 +493,7 @@ function renderQ(){
       ${state.mode === 'free5' && state.idx + 1 >= state.items.length ? '<p class="mini" style="text-align:center;margin:0">이 과목은 6번부터 20문항이 남아 있습니다.</p>' : ''}
     </div>`;
   document.querySelectorAll('.choice').forEach(b => b.onclick = () => answer(parseInt(b.dataset.i,10), q));
+  document.querySelectorAll('img[data-zoom]').forEach(im => im.onclick = () => openLb(im.src, im.alt));
   if(state.mode === 'mock') startTimer(); else stopTimer();
 }
 
@@ -499,7 +616,7 @@ function renderFreeResult(res, fresh){
       <p class="mini" style="margin-top:10px">5문항 표본이라 합격 판정은 참고용입니다. 실제 검정은 과목별 20문항, 과목별 40% 이상·5과목 평균 60% 이상입니다.</p>
     </div>
 
-    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 4개년 기출 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
+    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
 
     <div class="card">
       <b style="font-size:14px">결과 공유</b>
@@ -587,16 +704,16 @@ function home(){
   const subs = levelSubjects(lv);
   const wrongN = Object.keys(S.wrong).length;
   const last = S.freeLast;
-  const yLabel = y ? `${y}년` : '4개년';
+  const yLabel = y ? `${y}년` : '5개년';
   state.view = 'home'; state.mode = 'practice';
   document.getElementById('title').textContent = '스포츠지도사 기출';
   document.getElementById('back').hidden = true;
-  const tag = UTM.source ? `<span class="tag">유입 ${esc(UTM.source)}${UTM.medium ? ' · ' + esc(UTM.medium) : ''}</span>` : `<span class="tag">공단 공개 기출 ${YEARS.slice().sort((a,b)=>a-b).join('·')} · ${TOTAL_Q}문항</span>`;
+  const tag = `<span class="tag">공단 공개 기출 ${YEARS.slice().sort((a,b)=>a-b).join('·')} · ${TOTAL_Q}문항</span>`;
   app().innerHTML = `
   <div class="hero">
     ${tag}
     <b>연도를 골라 기출을, 랜덤으로 실전을</b>
-    <p>2021·2022·2023·2025년 공단 공개 기출 ${TOTAL_Q}문항. 2급·1급 전 과목 1~5번은 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
+    <p>2021~2025년 공단 공개 기출 ${TOTAL_Q}문항. 2급·1급 전 과목 1~5번은 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
     <button id="freeStart">${subs[0]} 1~5번 무료로 풀기</button>
     <p class="hero-sub">${last ? `지난 ${esc(last.subject || '')} ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">결과 보기</a>` : (paid ? '이용권 사용 중 · 전체 문항을 쓸 수 있습니다' : `이미 코드가 있다면 <a href="#" id="openCode">코드 등록</a>`)}</p>
   </div>
@@ -618,7 +735,7 @@ function home(){
     <button class="btn ghost" id="wrongBtn">오답 ${wrongN}개</button>
   </div>
   <div class="row">
-    <button class="btn ghost" id="mockBtn">실전 모의고사 (4개년 랜덤)</button>
+    <button class="btn ghost" id="mockBtn">실전 모의고사 (5개년 랜덤)</button>
   </div>
   <div class="row">
     <button class="btn ghost" id="weakBtn">취약 과목 집중</button>
@@ -638,7 +755,7 @@ function home(){
   document.querySelectorAll('[data-subj]').forEach(b => b.onclick = () => {
     const subj = b.dataset.subj;
     const items = bySubject(lv, subj);
-    if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 4개년'}`, 'practice', { gate: true, subject: subj });
+    if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 5개년'}`, 'practice', { gate: true, subject: subj });
     const free = freeHead(lv, subj);
     track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
     start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
@@ -785,10 +902,10 @@ function pass(){
   state.view = 'pass';
   const paid = isPaid();
   app().innerHTML = `
-    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">4개년 ${TOTAL_Q}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
-    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 4개년 ${TOTAL_Q}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
+    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">5개년 ${TOTAL_Q}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
+    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 5개년 ${TOTAL_Q}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
     ${paid ? '' : `<div class="card"><b style="font-size:14px">무료로 쓸 수 있는 범위</b><p class="muted" style="margin:6px 0 0;line-height:1.6">2급·1급 전 과목 1~5번 문항 — 즉시 채점과 정답 확인까지 무료입니다. 6번부터 20번, 오답 복습, 모의고사, 학습 기록은 이용권이 필요합니다.</p></div>`}
-    <div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021·2022·2023·2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 해설은 공단 자료에 없어 아직 제공하지 않습니다.</p></div>
+    <div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021~2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 해설은 공단 자료에 없어 아직 제공하지 않습니다.</p></div>
     <p style="text-align:center;margin:18px 0 8px"><a href="#" id="mt" class="mini" style="text-decoration:underline">전환 지표 보기 (관리자)</a></p>`;
   bindOffer();
   const rl = document.getElementById('release');
@@ -847,7 +964,7 @@ document.querySelectorAll('footer button').forEach(b => b.onclick = () => {
 document.getElementById('back').onclick = () => { state.view='home'; state.mode='practice'; home(); };
 
 /* ---------- 시작 ---------- */
-const QB_VER = '2026-11-21a';
+const QB_VER = '2026-11-21b';
 async function loadQB(){
   const res = await fetch('qb.json?v=' + QB_VER, { cache: 'no-cache' });
   if(!res.ok) throw new Error('qb.json ' + res.status);
