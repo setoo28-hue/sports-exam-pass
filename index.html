@@ -641,13 +641,13 @@ function home(){
     if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 5개년'}`, 'practice', { gate: true, subject: subj });
     const free = freeHead(lv, subj);
     track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
-    start(free, subj + ' 1~5번 · 무료', 'free5', { subject: subj });
+    start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
   });
   document.getElementById('freeStart').onclick = () => {
     const subj = levelSubjects(lv)[0];
     const free = freeHead(lv, subj);
     track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
-    start(free, subj + ' 1~5번 · 무료', 'free5', { subject: subj });
+    start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
   };
   document.getElementById('quick').onclick = () => { if(!isPaid()) return gate('random'); start(shuffle(byLevel(lv)).slice(0,20), `${yLabel} 랜덤 20문항`, 'practice', { gate: true }); };
   document.getElementById('allYearBtn').onclick = () => { if(!isPaid()) return gate('random'); start(shuffle(byLevel(lv, y)), `${yLabel} 전체 랜덤`, 'practice', { gate: true }); };
