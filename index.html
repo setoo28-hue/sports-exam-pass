@@ -387,6 +387,7 @@ function areaOf(q){
     var a = s.areas[i], sc = 0, kws = [];
     for(var j=0;j<a.kw.length;j++){
       var k = a.kw[j];
+      if(k === q.subject) continue;
       if(stem.indexOf(k) >= 0){ sc += 3; kws.push(k); }
       else if(ch.indexOf(k) >= 0){ sc += 1; kws.push(k); }
     }
