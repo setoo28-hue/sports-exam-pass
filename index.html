@@ -177,7 +177,7 @@ body.quiz-mode footer{display:none}
 .mcard .cpt b{color:#111827}
 .mcard .acts{display:flex;gap:6px;margin-top:10px}
 .mcard .acts button{flex:1;padding:9px;border-radius:9px;border:1px solid var(--line);background:#fff;font-size:11.5px;font-weight:700;color:var(--ink);cursor:pointer}
-.mcard .thumb{display:block;width:96px;height:96px;object-fit:cover;border-radius:8px;border:1px solid var(--line);margin:8px 0 8px auto;cursor:zoom-in}
+.mcard .thumb{display:block;width:100%;height:auto;max-height:210px;object-fit:contain;background:#f9fafb;border:1px solid var(--line);border-radius:8px;margin:8px 0;cursor:zoom-in}
 .block{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;background:#fff}
 .block .w{font-size:11px;font-weight:800;color:var(--brand)}
 .block b{display:block;font-size:13.5px;margin:3px 0 2px}
@@ -1030,14 +1030,14 @@ function missCard(r, showAll){
       }
     }
   }
-  var stemLine = q.imgonly
-    ? '<img class="thumb" src="' + q.img + '" alt="문제 자료" data-zoom="1">'
-    : '<p class="q">' + esc(cut(q.stem || '', 80)) + '</p>';
+  var stemLine = q.imgonly ? '' : '<p class="q">' + esc(cut(q.stem || '', 80)) + '</p>';
+  var thumb = q.imgonly ? '<img class="thumb" src="' + q.img + '" alt="문제 자료" data-zoom="1">' : '';
   return '<div class="mcard">'
     + '<div class="top">' + esc(q.subject) + ' ' + q.qno + '번 <span>' + q.year + '년 ' + esc(q.level) + (r.w >= 2 ? ' · ' + r.w + '회 오답' : '') + '</span></div>'
     + '<div class="tags">' + tags + '</div>'
     + stemLine
     + '<p class="ans">내 답 <b>' + mine + '</b> · 정답 <b>' + ans + '</b></p>'
+    + thumb
     + cpt
     + '<div class="acts"><button data-retry="' + q.id + '">이 문항 다시 풀기</button>'
     + (m.area ? '<button data-block="s|' + esc(q.subject) + '|' + esc(m.area) + '">같은 영역 문제</button>' : '')
