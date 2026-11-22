@@ -916,11 +916,21 @@ function home(){
   var ga = document.getElementById('goAi'); if(ga) ga.onclick = function(e){ e.preventDefault(); aiScreen(); };
 }
 function rateOf(lv, subj){
-  var log = S.log.filter(function(x){ return x.level === lv && x.subject === subj; });
-  if(!log.length) return '-';
-  var t = 0, c = 0;
-  log.forEach(function(x){ t += x.total; c += x.correct; });
-  return pctOf(c, t) + '%';
+  var map = subjectRates();
+  return map[lv + '|' + subj] || '-';
+}
+function subjectRates(){
+  var a = answersRaw(), m = {};
+  for(var id in a){
+    var q = QID[id];
+    if(!q) continue;
+    var r = a[id], k = q.level + '|' + q.subject;
+    var s = m[k]; if(!s){ s = m[k] = { n:0, w:0 }; }
+    s.n += Math.max(1, r.n|0); s.w += Math.max(0, r.w|0);
+  }
+  var out = {};
+  Object.keys(m).forEach(function(k){ out[k] = m[k].n ? Math.round((m[k].n - m[k].w) / m[k].n * 100) + '%' : '-'; });
+  return out;
 }
 
 /* ---------- AI 오답노트 핵심분석 ---------- */
@@ -1228,19 +1238,13 @@ function stats(){
   var A = analyzeAll();
   var log = S.log;
   var recent = log.slice(-20).reverse();
-  var bySub = {};
-  log.forEach(function(x){
-    if(x.subject === '혼합' || x.subject === '모의고사') return;
-    if(!bySub[x.subject]) bySub[x.subject] = { t:0, c:0 };
-    bySub[x.subject].t += x.total; bySub[x.subject].c += x.correct;
-  });
+  var bySub = A.subjects.slice().sort(function(a,b){ return b.n - a.n; });
   app().innerHTML =
     '<div class="card"><div class="big">' + A.acc + '%</div><p class="muted">푼 문항 ' + nfmt(A.nAnswered) + ' · 오답 ' + A.misses.length + '개 저장</p></div>'
-    + (Object.keys(bySub).length
-        ? '<div class="card"><b style="font-size:14px">과목별 정답률</b>' + Object.keys(bySub).map(function(s){
-            var p = Math.round(bySub[s].c / bySub[s].t * 100);
-            return '<div class="subjrow"><div class="lab"><b style="font-weight:600">' + esc(s) + '</b><span>' + bySub[s].c + '/' + bySub[s].t + ' · ' + p + '%</span></div>'
-              + '<div class="subjbar"><i class="' + (p>=80?'':(p>=50?'warn':'bad')) + '" style="width:' + Math.max(4,p) + '%"></i></div></div>';
+    + (bySub.length
+        ? '<div class="card"><b style="font-size:14px">과목별 정답률</b>' + bySub.map(function(s){
+            return '<div class="subjrow"><div class="lab"><b style="font-weight:600">' + esc(s.subject) + '</b><span>' + nfmt(s.n - s.w) + '/' + nfmt(s.n) + ' · ' + s.acc + '%</span></div>'
+              + '<div class="subjbar"><i class="' + (s.acc>=80?'':(s.acc>=50?'warn':'bad')) + '" style="width:' + Math.max(4,s.acc) + '%"></i></div></div>';
           }).join('') + '</div>'
         : '')
     + (recent.length
