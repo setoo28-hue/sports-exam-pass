@@ -513,9 +513,12 @@ function analyzeAll(){
   A.traps = Object.keys(trapMap).map(function(k){
     var t = trapMap[k], d = trapDef(k) || { name:k, tip:'' };
     return { id:k, name:d.name, tip:d.tip, n:t.n, w:t.w, acc:t.n ? Math.round((t.n - t.w) / t.n * 100) : 0 };
-  }).sort(function(a,b){ return (a.acc - b.acc) || (b.w - a.w); });
+  }).sort(function(a,b){
+    var fa = a.id === 'fig' ? 1 : 0, fb = b.id === 'fig' ? 1 : 0;
+    return (fa - fb) || (a.acc - b.acc) || (b.w - a.w);
+  });
   A.misses.sort(function(a,b){ return (b.w - a.w) || (b.lastWrong - a.lastWrong) || (b.at - a.at); });
-  var cand = A.traps.filter(function(t){ return t.n >= 2 && t.w > 0; });
+  var cand = A.traps.filter(function(t){ return t.n >= 2 && t.w > 0 && t.id !== 'fig'; });
   A.trapTop = cand.length ? cand[0] : null;
   return A;
 }
@@ -998,8 +1001,15 @@ function missCard(r, showAll){
     cpt = '<div class="cpt"><b>핵심 개념 · ' + esc(term.t) + '</b><br>' + esc(term.n) + '</div>';
   } else {
     var ts = m.area ? areaTerms(q.subject, m.area) : [];
+    var label = '이 영역에서 같이 볼 개념';
+    if(!ts.length){
+      var sb = KB.subj[q.subject];
+      ts = (sb && sb.terms ? sb.terms : []).slice(0, 2);
+      label = '이 과목 핵심 개념';
+    }
     if(ts.length){
-      cpt = '<div class="cpt"><b>이 영역에서 같이 볼 개념</b><br>' + ts.slice(0,2).map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>') + '</div>';
+      cpt = '<div class="cpt"><b>' + label + '</b><br>' + ts.slice(0,2).map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>')
+          + (q.imgonly ? '<br><span style="color:#6b7280">그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하세요.</span>' : '') + '</div>';
     } else {
       cpt = '<div class="cpt"><b>개념 정리</b><br>' + (q.imgonly ? '그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하는 것이 가장 빠릅니다.' : '문항에 등장한 용어를 교재 목차에서 찾아 한 줄로 정리해 두세요.') + '</div>';
     }
