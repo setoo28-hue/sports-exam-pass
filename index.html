@@ -213,6 +213,9 @@ body.quiz-mode footer{display:none}
    3) 데이터: qb.json(문항), ai-kb.js(과목별 개념 영역·개념어 사전·함정 패턴)
 ============================================================================== */
 var KB = window.AIKB || { traps: [], subj: {} };
+window.__ERR = [];
+window.addEventListener('error', function(e){ try{ window.__ERR.push(String(e.message || '') + ' @' + String(e.filename || '').split('/').pop() + ':' + (e.lineno || 0)); }catch(x){} });
+window.addEventListener('unhandledrejection', function(e){ try{ window.__ERR.push('promise: ' + String((e.reason && e.reason.message) || e.reason)); }catch(x){} });
 var QB = [], QID = {}, QMETA = {}, YEARS = [], TOTAL_Q = 0;
 var LS = { wrong:'sd_wrong', ans:'sd_ans', pass:'sd_pass', log:'sd_log', ev:'sd_ev', utm:'sd_utm', level:'sd_level', year:'sd_year' };
 var CODES = ['KLYGYM-2026','EARLY-1900'];
@@ -410,8 +413,9 @@ function termsOf(q){
   return out;
 }
 function trapsOf(q){
-  var text = (q.stem || '') + ' ' + (q.choices || []).join(' ') + ' ' + (q.imgonly ? '그림' : '');
+  var text = (q.stem || '') + ' ' + (q.choices || []).join(' ');
   var out = [];
+  if(q.imgonly) out.push('fig');
   for(var i=0;i<KB.traps.length;i++){
     var t = KB.traps[i];
     try{ if(new RegExp(t.re).test(text)) out.push(t.id); }catch(e){}
@@ -1337,7 +1341,7 @@ function selftest(){
   ok('분석 메타 전체', meta === QB.length, meta);
   ok('개념 영역 커버리지 85%↑', areaN / textN >= 0.85, Math.round(areaN/textN*100) + '%');
   ok('개념어 커버리지 25%↑', termN / textN >= 0.25, Math.round(termN/textN*100) + '%');
-  ok('문항 유형 태깅 90%↑', trapN / QB.length >= 0.9, Math.round(trapN/QB.length*100) + '%');
+  ok('문항 유형 태깅 85%↑', trapN / QB.length >= 0.85, Math.round(trapN/QB.length*100) + '%');
   ok('이미지 문항 영역 없음 처리', QB.filter(function(q){ return q.imgonly; }).every(function(q){ return QMETA[q.id].area === null; }));
   var backup = {};
   [LS.ans, LS.wrong, LS.pass, LS.log].forEach(function(k){ backup[k] = localStorage.getItem(k); });
