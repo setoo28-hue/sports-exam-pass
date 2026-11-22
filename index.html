@@ -511,7 +511,7 @@ function analyzeAll(){
   }).sort(function(a,b){ return (b.w - a.w) || (a.acc - b.acc) || (b.n - a.n); });
   A.areas = Object.keys(areaMap).map(function(k){
     var a = areaMap[k]; a.acc = a.n ? Math.round((a.n - a.w) / a.n * 100) : 0; return a;
-  }).sort(function(a,b){ return (b.w - a.w) || (a.acc - b.acc) || (b.n - a.n); });
+  }).sort(function(a,b){ return (b.w - a.w) || (a.acc - b.acc) || (b.n - a.n) || (a.area < b.area ? -1 : (a.area > b.area ? 1 : 0)); });
   A.traps = Object.keys(trapMap).map(function(k){
     var t = trapMap[k], d = trapDef(k) || { name:k, tip:'' };
     return { id:k, name:d.name, tip:d.tip, n:t.n, w:t.w, acc:t.n ? Math.round((t.n - t.w) / t.n * 100) : 0 };
