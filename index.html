@@ -382,17 +382,17 @@ function areaOf(q){
   var s = KB.subj[q.subject];
   if(!s || !s.areas) return null;
   var stem = q.stem || '', ch = (q.choices || []).join(' ');
-  var best = null, bestScore = 0;
+  var best = null, bestScore = 0, bestKw = [];
   for(var i=0;i<s.areas.length;i++){
-    var a = s.areas[i], sc = 0;
+    var a = s.areas[i], sc = 0, kws = [];
     for(var j=0;j<a.kw.length;j++){
       var k = a.kw[j];
-      if(stem.indexOf(k) >= 0) sc += 3;
-      else if(ch.indexOf(k) >= 0) sc += 1;
+      if(stem.indexOf(k) >= 0){ sc += 3; kws.push(k); }
+      else if(ch.indexOf(k) >= 0){ sc += 1; kws.push(k); }
     }
-    if(sc > bestScore){ bestScore = sc; best = a.n; }
+    if(sc > bestScore){ bestScore = sc; best = a.n; bestKw = kws; }
   }
-  return bestScore > 0 ? best : null;
+  return bestScore > 0 ? { name:best, kw:bestKw.slice(0, 4) } : null;
 }
 function termsOf(q){
   var s = KB.subj[q.subject];
@@ -426,8 +426,9 @@ function buildMeta(){
   QID = {}; QMETA = {};
   for(var i=0;i<QB.length;i++){
     var q = QB[i];
+    var ao = q.imgonly ? null : areaOf(q);
     QID[q.id] = q;
-    QMETA[q.id] = { area:q.imgonly ? null : areaOf(q), terms:q.imgonly ? [] : termsOf(q), traps:trapsOf(q) };
+    QMETA[q.id] = { area:ao ? ao.name : null, kw:ao ? ao.kw : [], terms:q.imgonly ? [] : termsOf(q), traps:trapsOf(q) };
   }
 }
 function trapDef(id){
@@ -1011,17 +1012,21 @@ function missCard(r, showAll){
     cpt = '<div class="cpt"><b>핵심 개념 · ' + esc(term.t) + '</b><br>' + esc(term.n) + '</div>';
   } else {
     var ts = m.area ? areaTerms(q.subject, m.area) : [];
-    var label = '이 영역에서 같이 볼 개념';
-    if(!ts.length){
-      var sb = KB.subj[q.subject];
-      ts = (sb && sb.terms ? sb.terms : []).slice(0, 2);
-      label = '이 과목 핵심 개념';
-    }
     if(ts.length){
-      cpt = '<div class="cpt"><b>' + label + '</b><br>' + ts.slice(0,2).map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>')
+      cpt = '<div class="cpt"><b>이 영역에서 같이 볼 개념</b><br>' + ts.slice(0,2).map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>')
           + (q.imgonly ? '<br><span style="color:#6b7280">그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하세요.</span>' : '') + '</div>';
+    } else if(m.kw && m.kw.length){
+      cpt = '<div class="cpt"><b>문항에 나온 개념어</b><br>' + esc(m.kw.join(' · '))
+          + '<br><span style="color:#6b7280">이 개념어로 교재와 공단 문제지를 다시 찾아보세요.</span></div>';
     } else {
-      cpt = '<div class="cpt"><b>개념 정리</b><br>' + (q.imgonly ? '그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하는 것이 가장 빠릅니다.' : '문항에 등장한 용어를 교재 목차에서 찾아 한 줄로 정리해 두세요.') + '</div>';
+      var sb = KB.subj[q.subject];
+      var st = (sb && sb.terms ? sb.terms : []).slice(0, 2);
+      if(st.length){
+        cpt = '<div class="cpt"><b>이 과목에서 자주 나오는 개념</b><br>' + st.map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>')
+            + (q.imgonly ? '<br><span style="color:#6b7280">그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하세요.</span>' : '') + '</div>';
+      } else {
+        cpt = '<div class="cpt"><b>개념 정리</b><br>' + (q.imgonly ? '그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하는 것이 가장 빠릅니다.' : '문항에 등장한 용어를 교재 목차에서 찾아 한 줄로 정리해 두세요.') + '</div>';
+      }
     }
   }
   var stemLine = q.imgonly
