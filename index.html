@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>스포츠지도사 기출 | ALPHA 2027</title>
-<meta name="description" content="2021~2025년 국민체육진흥공단 공개 기출 1,600문항. 2급·1급 전 과목 1~5번 문항을 결제 없이 풀고 즉시 채점합니다. 연도별 기출·5개년 랜덤 모의고사·오답 자동 복습으로 이어집니다.">
+<title>스포츠지도사 기출 1,600문항 무료 | AI 오답노트 핵심분석</title>
+<meta name="description" content="2021~2025년 국민체육진흥공단 공개 기출 1,600문항(2급·1급 전 과목)을 결제 없이 풀고 즉시 채점합니다. 오답노트에서는 틀린 문항을 개념 영역·문항 유형으로 분석해 핵심 개념과 복습 순서를 정리합니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="스포츠지도사 기출 · ALPHA 2027">
-<meta property="og:title" content="스포츠지도사 기출 5개년 1,600문항 | 1~5번 무료">
-<meta property="og:description" content="2021~2025년 공단 공개 기출 1,600문항. 2급·1급 전 과목 1~5번을 결제 없이 풀고 바로 채점합니다. 연도별 학습·실전 모의고사·오답 자동 복습.">
+<meta property="og:title" content="스포츠지도사 기출 1,600문항 전부 무료 | AI 오답노트 핵심분석">
+<meta property="og:description" content="2021~2025년 공단 공개 기출 1,600문항을 결제 없이 풀고 즉시 채점. 내 오답을 개념 영역·문항 유형으로 분석해 취약 순서와 핵심 개념을 정리합니다.">
 <meta property="og:url" content="https://setoo28-hue.github.io/sports-exam-pass/">
 <meta property="og:image" content="https://setoo28-hue.github.io/sports-exam-pass/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="스포츠지도사 기출 5개년 1,600문항 | 1~5번 무료">
-<meta name="twitter:description" content="2021~2025년 공단 공개 기출 1,600문항. 전 과목 1~5번 무료·즉시 채점.">
+<meta name="twitter:title" content="스포츠지도사 기출 1,600문항 전부 무료 | AI 오답노트 핵심분석">
+<meta name="twitter:description" content="2021~2025년 공단 공개 기출 1,600문항 무료·즉시 채점. 틀린 문항은 핵심 개념과 복습 순서로 정리합니다.">
 <meta name="twitter:image" content="https://setoo28-hue.github.io/sports-exam-pass/og-cover.png">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="manifest.webmanifest">
@@ -25,12 +25,11 @@
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--ink:#111827;--sub:#6b7280;--line:#e5e7eb;--brand:#2563eb;--ok:#059669;--bad:#dc2626;--amber:#f59e0b}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:80px}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:96px}
 header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 16px;z-index:5;display:flex;align-items:center;gap:10px}
 header h1{font-size:16px;margin:0;flex:1}
 .back{border:0;background:none;font-size:20px;color:var(--ink);padding:0 4px;cursor:pointer}
 .wrap{padding:16px;max-width:640px;margin:0 auto}
-.note{background:#f3f4f6;border:1px solid var(--line);color:var(--sub);font-size:12px;line-height:1.5;padding:10px 12px;border-radius:10px;margin-bottom:14px}
 .chips{display:flex;gap:8px;margin-bottom:10px}
 .ychips{display:flex;gap:6px;margin:0 0 16px;overflow-x:auto;padding-bottom:2px}
 .ychip{flex:0 0 auto;padding:8px 12px;border:1px solid var(--line);background:#fff;border-radius:99px;font-size:13px;font-weight:700;color:var(--sub);cursor:pointer}
@@ -55,9 +54,8 @@ header h1{font-size:16px;margin:0;flex:1}
 .pbar>i{display:block;height:100%;background:var(--brand);width:0;transition:width .2s}
 .stem{font-size:16px;line-height:1.65;margin:0 0 16px;white-space:pre-wrap}
 .choices{display:flex;flex-direction:column;gap:10px}
-.qfig{margin:10px 0 14px;padding:8px;border:1px solid var(--line,#e3e6ea);border-radius:10px;background:#fff}
+.qfig{margin:10px 0 14px;padding:8px;border:1px solid var(--line,#e3e6ea);border-radius:10px;background:#fff;position:relative}
 .qfig img{display:block;width:100%;height:auto;border-radius:6px;cursor:zoom-in}
-.qfig{position:relative}
 .qfig .zoomhint{display:block;text-align:center;font-size:11px;color:#6b7280;margin-top:6px}
 .lb{position:fixed;inset:0;background:rgba(9,12,20,.93);z-index:80;display:none;touch-action:none;overscroll-behavior:contain}
 .lb.on{display:block}
@@ -80,18 +78,12 @@ header h1{font-size:16px;margin:0;flex:1}
 .big{font-size:40px;font-weight:800;margin:8px 0}
 .muted{color:var(--sub);font-size:13px}
 .lic{font-size:11px;color:var(--sub);line-height:1.6;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
-.lock{background:#111827;color:#fff;border-radius:16px;padding:18px;margin-bottom:12px}
-.lock h3{margin:0 0 6px;font-size:15px}
-.lock p{margin:0 0 12px;font-size:12px;color:#cbd5e1;line-height:1.5}
-.lock input{width:100%;padding:12px;border-radius:10px;border:0;font-size:14px;margin-bottom:10px}
 .card input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid var(--line);font-size:14px;margin-bottom:8px;background:#fff;color:var(--ink)}
-.lock button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;font-size:14px}
-.okmsg{font-size:12px;color:#a7f3d0;margin-top:8px}
 footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
 footer button{flex:1;border:0;background:none;font-size:11px;color:var(--sub);display:flex;flex-direction:column;gap:3px;align-items:center;cursor:pointer}
 footer button.on{color:var(--brand);font-weight:700}
 footer i{font-style:normal;font-size:18px}
-/* ===== ALPHA 2027 전환 레이어 (2026-11-19) ===== */
+/* ===== ALPHA 2027 레이어 ===== */
 .hero{background:linear-gradient(160deg,#111827 0%,#1f2937 70%,#243447 100%);color:#fff;border-radius:18px;padding:18px;margin-bottom:14px}
 .hero .tag{display:inline-block;font-size:11px;font-weight:700;color:#bfdbfe;border:1px solid #3b4a63;border-radius:99px;padding:3px 9px;margin-bottom:8px}
 .hero b{display:block;font-size:17px;line-height:1.4;margin:0 0 8px}
@@ -100,8 +92,6 @@ footer i{font-style:normal;font-size:18px}
 .hero .hero-sub{font-size:12px;color:#93c5fd;margin:10px 0 0}
 .hero .hero-sub a{color:#bfdbfe}
 .sec-title{font-size:13px;font-weight:800;color:var(--sub);margin:18px 0 8px}
-.subj.locked{opacity:.6}
-.subj.locked b::after{content:" 🔒";font-size:11px}
 .kpi{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0 4px}
 .kpi>div{background:#f9fafb;border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center}
 .kpi b{display:block;font-size:19px;line-height:1.3}
@@ -113,23 +103,25 @@ footer i{font-style:normal;font-size:18px}
 .subjbar>i{display:block;height:100%;background:var(--ok)}
 .subjbar>i.warn{background:var(--amber)}
 .subjbar>i.bad{background:var(--bad)}
-.plan{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;background:#fff}
-.plan.live{border-color:#93c5fd;background:#eff6ff}
-.plan .ptop{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.plan b{font-size:14px}
-.plan .price{font-size:14px;font-weight:800;color:var(--brand);white-space:nowrap}
-.plan p{font-size:12px;color:var(--sub);line-height:1.5;margin:6px 0 0}
 .badge{display:inline-block;font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;background:#ecfdf5;color:#065f46;margin-left:4px;vertical-align:1px}
 .badge.soon{background:#fef3c7;color:#92400e}
 .badge.dark{background:#1f2937;color:#e5e7eb}
-.copy-line{background:#f9fafb;border-left:3px solid var(--brand);padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.55;margin-bottom:8px;color:#1f2937}
 .feat{font-size:13px;line-height:1.6;margin:4px 0 0;padding-left:18px;position:relative;color:var(--ink)}
 .feat::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
-.feat.soon::before{content:"•";color:var(--amber)}
-.lockcard{background:#111827;color:#fff;border-radius:16px;padding:16px;margin-bottom:12px}
-.lockcard b{font-size:14px;display:block;margin-bottom:6px}
-.lockcard p{font-size:12px;color:#cbd5e1;line-height:1.55;margin:0 0 12px}
-.lockcard button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:800;font-size:13.5px;cursor:pointer}
+.lock{background:#111827;color:#fff;border-radius:16px;padding:18px;margin-bottom:12px}
+.lock b{display:block;font-size:15px;margin-bottom:6px}
+.lock p{font-size:12px;color:#cbd5e1;line-height:1.6;margin:0 0 10px}
+.lock input{width:100%;padding:12px;border-radius:10px;border:0;font-size:14px;margin-bottom:10px}
+.lock .buybtn{width:100%;padding:13px;border:0;border-radius:10px;background:var(--brand);color:#fff;font-weight:800;font-size:14px;cursor:pointer}
+.lock .codebtn{width:100%;padding:12px;border-radius:10px;border:1px solid #374151;background:#1f2937;color:#e5e7eb;font-weight:700;font-size:13.5px;cursor:pointer}
+.lock .okmsg{font-size:12px;margin-top:8px;color:#fca5a5}
+.lock ul{margin:8px 0 14px;padding-left:0;list-style:none}
+.lock li{font-size:12.5px;color:#e5e7eb;line-height:1.7;padding-left:18px;position:relative}
+.lock li::before{content:"·";position:absolute;left:4px;color:#93c5fd;font-weight:800}
+.buyline{display:flex;align-items:baseline;gap:8px;margin:14px 0 8px;padding-top:12px;border-top:1px solid var(--line)}
+.buyline b{font-size:22px;letter-spacing:-.02em}
+.buyline span{font-size:12px;color:var(--sub)}
+.codebtn2{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer}
 .sharebox{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .sharebox button{padding:12px 8px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer}
 .sharebox button.primary{background:#111827;color:#fff;border-color:#111827}
@@ -142,23 +134,60 @@ footer i{font-style:normal;font-size:18px}
 .modal .sheet p{font-size:13px;line-height:1.6;color:#374151;margin:0 0 10px}
 .modal .sheet .rowx{display:flex;gap:8px;margin-top:6px}
 .modal .sheet .rowx button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:700;cursor:pointer}
-.modal .sheet .rowx button.dark{background:var(--brand);color:#fff;border-color:var(--brand)}
 .mev{font-size:12.5px;line-height:1.9;color:#374151;border-bottom:1px dashed var(--line);padding:6px 0;display:flex;justify-content:space-between;gap:8px}
 .mev b{font-variant-numeric:tabular-nums}
 .mini{font-size:11px;color:var(--sub);line-height:1.6}
 a.inline{color:var(--brand);text-decoration:none;font-weight:700}
-/* 하단 고정 탭이 콘텐츠를 가리지 않도록 여유 확보 */
-body{padding-bottom:96px}
-.row:last-child{margin-bottom:24px}
-/* 풀이 중에는 하단 탭을 숨겨 '다음 문제' 버튼이 가려지지 않게 한다 */
 body.quiz-mode{padding-bottom:24px}
 body.quiz-mode footer{display:none}
-/* ===== 합격 코치 카드 (2026-11-19) ===== */
-.buyline{display:flex;align-items:baseline;gap:8px;margin:14px 0 8px;padding-top:12px;border-top:1px solid var(--line)}
-.buyline b{font-size:22px;letter-spacing:-.02em}
-.buyline span{font-size:12px;color:var(--sub)}
-.codebtn{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:14px;cursor:pointer}
-.card .feat{margin:2px 0}
+.row:last-child{margin-bottom:24px}
+/* ===== AI 오답노트 핵심분석 ===== */
+.aihead{background:linear-gradient(160deg,#111827 0%,#1f2937 100%);color:#fff;border-radius:18px;padding:18px;margin-bottom:14px}
+.aihead .lab{font-size:11px;font-weight:800;color:#93c5fd;letter-spacing:.02em;margin-bottom:8px}
+.aihead b{display:block;font-size:16px;line-height:1.5;margin:0 0 8px}
+.aihead p{font-size:12.5px;color:#cbd5e1;line-height:1.65;margin:0}
+.aihead .kpi{margin-top:12px}
+.aihead .kpi>div{background:rgba(255,255,255,.06);border-color:#374151}
+.aihead .kpi b{color:#fff}
+.aihead .kpi span{color:#9ca3af}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.sec h3{margin:0 0 4px;font-size:14px}
+.sec .desc{font-size:11.5px;color:var(--sub);line-height:1.55;margin:0 0 10px}
+.rk{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.rk:last-child{border-bottom:0}
+.rk .no{font-size:11px;font-weight:800;color:#9ca3af;flex:0 0 16px}
+.rk .nm{flex:1;font-size:13px;line-height:1.4}
+.rk .nm span{display:block;font-size:11px;color:var(--sub);margin-top:2px}
+.rk .val{font-size:12.5px;font-weight:800;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.rk .val em{display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--sub)}
+.bars{height:5px;background:#eef0f3;border-radius:99px;overflow:hidden;margin-top:5px}
+.bars>i{display:block;height:100%;background:var(--ok)}
+.bars>i.warn{background:var(--amber)}
+.bars>i.bad{background:var(--bad)}
+.mcard{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:#fff}
+.mcard .top{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:700}
+.mcard .top span{font-weight:600;color:var(--sub);font-size:11.5px}
+.mcard .tags{margin:6px 0 0}
+.tagm{display:inline-block;font-size:10.5px;font-weight:700;background:#f3f4f6;color:#374151;border-radius:6px;padding:2px 6px;margin:3px 4px 0 0}
+.tagm.area{background:#eff6ff;color:#1d4ed8}
+.mcard .q{font-size:12px;color:var(--sub);line-height:1.55;margin:8px 0 0}
+.mcard .ans{font-size:12.5px;margin:8px 0 0;line-height:1.6}
+.mcard .ans b{font-variant-numeric:tabular-nums}
+.mcard .cpt{font-size:12.5px;line-height:1.65;background:#f9fafb;border-left:3px solid var(--brand);border-radius:8px;padding:9px 11px;margin:8px 0 0;color:#1f2937}
+.mcard .cpt b{color:#111827}
+.mcard .acts{display:flex;gap:6px;margin-top:10px}
+.mcard .acts button{flex:1;padding:9px;border-radius:9px;border:1px solid var(--line);background:#fff;font-size:11.5px;font-weight:700;color:var(--ink);cursor:pointer}
+.mcard .thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line);margin-top:8px;cursor:zoom-in;float:right;margin-left:10px}
+.block{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;background:#fff}
+.block .w{font-size:11px;font-weight:800;color:var(--brand)}
+.block b{display:block;font-size:13.5px;margin:3px 0 2px}
+.block p{font-size:11.5px;color:var(--sub);margin:0 0 9px;line-height:1.5}
+.block button{width:100%;padding:10px;border:0;border-radius:9px;background:#111827;color:#fff;font-size:12.5px;font-weight:700;cursor:pointer}
+.tipbox{font-size:11.5px;color:#374151;line-height:1.65;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 12px;margin-top:8px}
+.tipbox b{color:#92400e}
+.lockedwrap{position:relative}
+.fadeout{position:relative;max-height:150px;overflow:hidden}
+.fadeout::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(rgba(255,255,255,0),#fff)}
 </style>
 </head>
 <body>
@@ -171,50 +200,49 @@ body.quiz-mode footer{display:none}
 <button data-tab="pass"><i>&#128273;</i>이용권</button>
 </footer>
 
+<script src="ai-kb.js"></script>
 <script>
-/* ================= 스포츠지도사 기출 · ALPHA 2027 합격 코치 레이어 =================
-   2026-11-19 개편: 2급·1급 전 과목 1~5번 문항을 결제 없이 오픈하고,
-   6번부터·오답 복습·취약 단원·모의고사에서 담백한 이용권 안내로 이어집니다.
-   2026-11-21 5개년 확장: 2021~2025 공단 기출 1,600문항(qb.json + img/*.webp),
-   2024년 320문항은 스캔 문제지 문항별 이미지(imgonly)로 수록, 정답은 공단 최종 정답표.
-   그림 확대 모달(핀치·닫기), OG 미리보기 카드, 방문자 화면의 유입 라벨 숨김.
-   연도 선택·연도 무작위 모의고사. 코드(EARLY-1900)·이벤트(sd_ev)·오답(sd_wrong) 유지.
+/* ================= 스포츠지도사 기출 · ALPHA 2027 =================
+   2026-11-22 개편
+   1) 전 문항 무료: 2021~2025 공단 기출 1,600문항(2급 1,000·1급 600)과
+      과목별 풀이·랜덤·실전 모의고사·즉시 채점을 결제 없이 모두 연다.
+   2) AI 오답노트 핵심분석: 내가 푼 기록(sd_ans)을 개념 영역·문항 유형으로
+      나눠 ① 취약 과목·영역 랭킹 ② 함정(문항 유형) 진단 ③ 틀린 문항별
+      핵심 개념·암기 포인트 ④ 시험 직전 복습 루틴을 만든다.
+      미리보기(취약 과목 1개 + 문항 1개) 뒤 전체는 이용권(1,900원)으로 연다.
+   3) 데이터: qb.json(문항), ai-kb.js(과목별 개념 영역·개념어 사전·함정 패턴)
 ============================================================================== */
-let QB = [];
-let YEARS = [];
-const LS = { wrong:'sd_wrong', fav:'sd_fav', pass:'sd_pass', log:'sd_log', ev:'sd_ev', utm:'sd_utm', level:'sd_level', free:'sd_free_last', year:'sd_year' };
-const CODES = ['KLYGYM-2026','EARLY-1900'];
-const STORE = {
+var KB = window.AIKB || { traps: [], subj: {} };
+var QB = [], QID = {}, QMETA = {}, YEARS = [], TOTAL_Q = 0;
+var LS = { wrong:'sd_wrong', ans:'sd_ans', pass:'sd_pass', log:'sd_log', ev:'sd_ev', utm:'sd_utm', level:'sd_level', year:'sd_year' };
+var CODES = ['KLYGYM-2026','EARLY-1900'];
+var STORE = {
   home : 'https://www.latpeed.com/stores/U4AOc',
   pass : 'https://www.latpeed.com/products/veLnh',   // 1,900원 평생 이용권
   free : 'https://www.latpeed.com/products/q7pOP',   // 0원 맛보기 PDF
   threads : 'https://www.threads.net/@alpphaflow2027'
 };
-const SUBJ_ORDER = ['스포츠사회학','스포츠교육학','스포츠심리학','한국체육사','운동생리학','운동역학','스포츠윤리','특수체육론','유아체육론','노인체육론','운동상해','체육측정평가론','트레이닝론','스포츠영양학','건강교육론','장애인스포츠론'];
-const CIRC = ['①','②','③','④'];
-const FREE_N = 5;                     // 과목별 무료 문항 수 (1~5번)
-const FREE_SUBJECT = '스포츠사회학';   // 홈 대표 시작 과목
-const FREE_LEVEL = '2급';
+var SUBJ_ORDER = ['스포츠사회학','스포츠교육학','스포츠심리학','한국체육사','운동생리학','운동역학','스포츠윤리','특수체육론','유아체육론','노인체육론','운동상해','체육측정평가론','트레이닝론','스포츠영양학','건강교육론','장애인스포츠론'];
+var CIRC = ['①','②','③','④'];
+var PASS_PRICE = 1900;
 
-function lsGet(k, d){ try{ const v = localStorage.getItem(k); if(v == null) return d; const p = JSON.parse(v); return p == null ? d : p; }catch(e){ return d; } }
+function lsGet(k, d){ try{ var v = localStorage.getItem(k); if(v == null) return d; var p = JSON.parse(v); return p == null ? d : p; }catch(e){ return d; } }
 function lsSet(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 
-const S = {
-  get wrong(){ const v = lsGet(LS.wrong, {}); return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; },
+var S = {
+  get wrong(){ var v = lsGet(LS.wrong, {}); return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; },
   set wrong(v){ lsSet(LS.wrong, v); },
-  get fav(){ const v = lsGet(LS.fav, {}); return (v && typeof v === 'object') ? v : {}; },
-  get passes(){ const v = lsGet(LS.pass, []); return Array.isArray(v) ? v : []; },
-  get log(){ const v = lsGet(LS.log, []); return Array.isArray(v) ? v : []; },
+  get passes(){ var v = lsGet(LS.pass, []); return Array.isArray(v) ? v : []; },
+  get log(){ var v = lsGet(LS.log, []); return Array.isArray(v) ? v : []; },
   get level(){ return lsGet(LS.level, null) === '1급' ? '1급' : '2급'; },
-  get year(){ const v = lsGet(LS.year, null); return (v === 'all' || v == null) ? null : (YEARS.includes(Number(v)) ? Number(v) : null); },
-  set year(v){ lsSet(LS.year, v == null ? 'all' : Number(v)); },
   set level(v){ lsSet(LS.level, v === '1급' ? '1급' : '2급'); },
-  get freeLast(){ const v = lsGet(LS.free, null); return (v && typeof v === 'object' && v.total) ? v : null; }
+  get year(){ var v = lsGet(LS.year, null); return (v === 'all' || v == null) ? null : (YEARS.indexOf(Number(v)) >= 0 ? Number(v) : null); },
+  set year(v){ lsSet(LS.year, v == null ? 'all' : Number(v)); }
 };
 
-/* ---------- 그림 확대(라이트박스): 탭·핀치·닫기 ---------- */
+/* ---------- 그림 확대(라이트박스) ---------- */
 function openLb(src, alt){
-  let lb = document.getElementById('lb');
+  var lb = document.getElementById('lb');
   if(!lb){
     lb = document.createElement('div');
     lb.id = 'lb'; lb.className = 'lb';
@@ -231,144 +259,337 @@ function openLb(src, alt){
   lbReset(lb);
   track('img_zoom', {});
 }
-
-const LB = { s:1, x:0, y:0, base:1, init:1 };
+var LB = { s:1, x:0, y:0, base:1, init:1 };
 function lbApply(lb){
-  const im = lb.querySelector('img');
-  im.style.transform = `translate(-50%,-50%) translate(${LB.x}px,${LB.y}px) scale(${LB.s})`;
+  var im = lb.querySelector('img');
+  im.style.transform = 'translate(-50%,-50%) translate(' + LB.x + 'px,' + LB.y + 'px) scale(' + LB.s + ')';
 }
 function lbReset(lb){
-  const im = lb.querySelector('img');
+  var im = lb.querySelector('img');
   if(!im.naturalWidth){ LB.s = 1; lbApply(lb); return; }
-  const vw = window.innerWidth, vh = window.innerHeight;
-  const fitW = vw / im.naturalWidth, fitH = (vh - 80) / im.naturalHeight;
-  LB.base = Math.min(fitW, 1);                    // 화면에 꽉 차게(전체 보기)
-  LB.init = Math.min(Math.max(fitW * 2, fitH), Math.min(fitW * 3, 1));  // 폰에서 글씨가 읽히는 배율
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var fitW = vw / im.naturalWidth, fitH = (vh - 80) / im.naturalHeight;
+  LB.base = Math.min(fitW, 1);
+  LB.init = Math.min(Math.max(fitW * 2, fitH), Math.min(fitW * 3, 1));
   LB.s = LB.init; LB.x = 0; LB.y = 20;
   lbApply(lb);
 }
 function closeLb(){
-  const lb = document.getElementById('lb');
+  var lb = document.getElementById('lb');
   if(!lb) return;
   lb.classList.remove('on');
   document.body.style.overflow = '';
 }
 function bindLb(lb){
-  const im = lb.querySelector('img');
-  lb.addEventListener('click', e => {
+  var im = lb.querySelector('img');
+  lb.addEventListener('click', function(e){
     if(e.target === lb || e.target.hasAttribute('data-cl')) closeLb();
     if(e.target.dataset && e.target.dataset.z === 'in'){ LB.s = Math.min(LB.s * 1.5, LB.base * 5); lbApply(lb); }
   });
-  im.addEventListener('load', () => { if(lb.classList.contains('on')) lbReset(lb); });
-  let pinch = null, drag = null, lastTap = 0;
-  im.addEventListener('pointerdown', e => {
-    im.setPointerCapture && im.setPointerCapture(e.pointerId);
+  im.addEventListener('load', function(){ if(lb.classList.contains('on')) lbReset(lb); });
+  var pinch = null, drag = null, lastTap = 0;
+  im.addEventListener('pointerdown', function(e){
+    if(im.setPointerCapture) im.setPointerCapture(e.pointerId);
     drag = { x:e.clientX, y:e.clientY, lx:LB.x, ly:LB.y };
   });
-  im.addEventListener('pointermove', e => {
+  im.addEventListener('pointermove', function(e){
     if(!drag || pinch) return;
     LB.x = drag.lx + (e.clientX - drag.x);
     LB.y = drag.ly + (e.clientY - drag.y);
     lbApply(lb);
   });
-  im.addEventListener('pointerup', e => {
+  im.addEventListener('pointerup', function(e){
     if(drag && Math.abs(e.clientX-drag.x) < 6 && Math.abs(e.clientY-drag.y) < 6){
-      const now = Date.now();
+      var now = Date.now();
       if(now - lastTap < 300){ LB.s = (Math.abs(LB.s - LB.init) < 0.01) ? LB.base : LB.init; LB.x = 0; LB.y = 20; lbApply(lb); }
       lastTap = now;
     }
     drag = null;
   });
-  lb.addEventListener('touchstart', e => {
+  lb.addEventListener('touchstart', function(e){
     if(e.touches.length === 2){
-      const [a,b] = e.touches;
-      pinch = { d: Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY), s: LB.s };
+      pinch = { d: Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY), s: LB.s };
     }
   }, { passive:true });
-  lb.addEventListener('touchmove', e => {
+  lb.addEventListener('touchmove', function(e){
     if(e.touches.length === 2 && pinch){
       e.preventDefault();
-      const [a,b] = e.touches;
-      const d = Math.hypot(a.clientX-b.clientX, a.clientY-b.clientY);
+      var d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
       LB.s = Math.max(LB.base * 0.9, Math.min(pinch.s * (d / pinch.d), LB.base * 5));
       lbApply(lb);
     }
   }, { passive:false });
-  lb.addEventListener('touchend', e => { if(e.touches.length < 2) pinch = null; });
-  lb.addEventListener('wheel', e => {
+  lb.addEventListener('touchend', function(e){ if(e.touches.length < 2) pinch = null; });
+  lb.addEventListener('wheel', function(e){
     if(!lb.classList.contains('on')) return;
     e.preventDefault();
     LB.s = Math.max(LB.base * 0.9, Math.min(LB.s * (e.deltaY < 0 ? 1.12 : 0.89), LB.base * 5));
     lbApply(lb);
   }, { passive:false });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
 }
 
 /* ---------- 유입(UTM) ---------- */
-const UTM = (function(){
-  const keys = ['source','medium','campaign','content','term'];
-  let cur = {}, p = null;
+var UTM = (function(){
+  var keys = ['source','medium','campaign','content','term'];
+  var cur = {}, p = null;
   try{ p = new URLSearchParams(location.search); }catch(e){}
-  if(p) keys.forEach(k => { const v = p.get('utm_' + k); if(v) cur[k] = String(v).slice(0,40); });
-  const prev = lsGet(LS.utm, null) || {};
+  if(p) keys.forEach(function(k){ var v = p.get('utm_' + k); if(v) cur[k] = String(v).slice(0,40); });
+  var prev = lsGet(LS.utm, null) || {};
   if(Object.keys(cur).length){
-    const rec = Object.assign({}, prev, cur, { first_at: prev.first_at || Date.now(), last_at: Date.now(), hits: (prev.hits || 0) + 1, landing: String(location.href).split('#')[0].slice(0,300) });
+    var rec = {};
+    Object.keys(prev).forEach(function(k){ rec[k] = prev[k]; });
+    Object.keys(cur).forEach(function(k){ rec[k] = cur[k]; });
+    rec.first_at = prev.first_at || Date.now(); rec.last_at = Date.now(); rec.hits = (prev.hits || 0) + 1;
+    rec.landing = String(location.href).split('#')[0].slice(0,300);
     lsSet(LS.utm, rec);
     return rec;
   }
   return prev;
 })();
-
-/* ---------- 전환 이벤트 ---------- */
 function track(name, extra){
   try{
-    const ev = lsGet(LS.ev, []);
-    const list = Array.isArray(ev) ? ev : [];
-    const rec = Object.assign({ name: name, at: Date.now(), src: UTM.source || '', level: S.level, view: (state && state.mode) || '' }, extra || {});
+    var ev = lsGet(LS.ev, []);
+    var list = Array.isArray(ev) ? ev : [];
+    var rec = { name:name, at:Date.now(), src:UTM.source || '', level:S.level, view:(state && state.mode) || '' };
+    if(extra) Object.keys(extra).forEach(function(k){ rec[k] = extra[k]; });
     list.push(rec);
     lsSet(LS.ev, list.slice(-500));
   }catch(e){}
 }
 
 /* ---------- 기본 도구 ---------- */
-const app = () => document.getElementById('app');
-const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const isPaid = () => S.passes.length > 0;
-const pctOf = (c, t) => t ? Math.round(c / t * 100) : 0;
-const cut = (s, n) => { s = String(s).replace(/\s+/g,' ').trim(); return s.length > n ? s.slice(0, n) + '…' : s; };
-function byLevel(lv, y){ return QB.filter(q => q.level === lv && (!y || q.year === y)); }
-function bySubject(lv, subj, y){ const yy = (y === undefined) ? S.year : y; return byLevel(lv, yy).filter(q => q.subject === subj).sort((a,b)=> (b.year - a.year) || (a.qno - b.qno)); }
+function app(){ return document.getElementById('app'); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function isPaid(){ return S.passes.length > 0; }
+function pctOf(c, t){ return t ? Math.round(c / t * 100) : 0; }
+function cut(s, n){ s = String(s).replace(/\s+/g,' ').trim(); return s.length > n ? s.slice(0, n) + '…' : s; }
+function nfmt(n){ return Number(n).toLocaleString('en-US'); }
+function byLevel(lv, y){ return QB.filter(function(q){ return q.level === lv && (!y || q.year === y); }); }
+function bySubject(lv, subj, y){
+  var yy = (y === undefined) ? S.year : y;
+  return byLevel(lv, yy).filter(function(q){ return q.subject === subj; }).sort(function(a,b){ return (b.year - a.year) || (a.qno - b.qno); });
+}
 function yearCount(lv, y){ return byLevel(lv, y).length; }
-function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-const levelSubjects = (lv) => SUBJ_ORDER.filter(s => bySubject(lv, s).length);
-let TOTAL_Q = 0;
-const nfmt = n => Number(n).toLocaleString('en-US');
+function shuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function levelSubjects(lv){ return SUBJ_ORDER.filter(function(s){ return bySubject(lv, s).length; }); }
 
-/* ---------- 무료 범위: 전 과목 1~5번 ---------- */
-function freeHead(lv, subj){ return bySubject(lv, subj).filter(q => q.qno <= FREE_N); }
-function isFreeQ(q){ return q.qno >= 1 && q.qno <= FREE_N; }
-function freeCount(lv){ return levelSubjects(lv).reduce((n, s) => n + freeHead(lv, s).length, 0); }
-
-const state = { items: [], idx: 0, correct: 0, answered: false, view: 'home', tab: 'home', miss: [], mode: 'practice', label: '', subject: '', lv: '', mockStart: 0 };
-let mockTick = null;
-
-function toast(msg){
-  let t = document.getElementById('toast');
-  if(!t){ t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
-  t.textContent = msg; t.classList.add('on');
-  clearTimeout(toast._tm); toast._tm = setTimeout(() => t.classList.remove('on'), 2200);
+/* ---------- 문항 분석 메타(개념 영역·개념어·문항 유형) ---------- */
+function areaOf(q){
+  var s = KB.subj[q.subject];
+  if(!s || !s.areas) return null;
+  var stem = q.stem || '', ch = (q.choices || []).join(' ');
+  var best = null, bestScore = 0;
+  for(var i=0;i<s.areas.length;i++){
+    var a = s.areas[i], sc = 0;
+    for(var j=0;j<a.kw.length;j++){
+      var k = a.kw[j];
+      if(stem.indexOf(k) >= 0) sc += 3;
+      else if(ch.indexOf(k) >= 0) sc += 1;
+    }
+    if(sc > bestScore){ bestScore = sc; best = a.n; }
+  }
+  return bestScore > 0 ? best : null;
+}
+function termsOf(q){
+  var s = KB.subj[q.subject];
+  if(!s || !s.terms) return [];
+  var stem = q.stem || '';
+  var ans = '';
+  (q.answer || []).forEach(function(i){ ans += (q.choices[i-1] || '') + ' '; });
+  var allc = (q.choices || []).join(' ');
+  var out = [];
+  for(var i=0;i<s.terms.length;i++){
+    var t = s.terms[i], where = '';
+    if(stem.indexOf(t.t) >= 0) where = '문항';
+    else if(ans.indexOf(t.t) >= 0) where = '정답 보기';
+    else if(allc.indexOf(t.t) >= 0) where = '보기';
+    if(where) out.push({ t:t.t, n:t.n, a:t.a, where:where });
+    if(out.length >= 3) break;
+  }
+  return out;
+}
+function trapsOf(q){
+  var text = (q.stem || '') + ' ' + (q.choices || []).join(' ') + ' ' + (q.imgonly ? '그림' : '');
+  var out = [];
+  for(var i=0;i<KB.traps.length;i++){
+    var t = KB.traps[i];
+    try{ if(new RegExp(t.re).test(text)) out.push(t.id); }catch(e){}
+  }
+  return out;
+}
+function buildMeta(){
+  QID = {}; QMETA = {};
+  for(var i=0;i<QB.length;i++){
+    var q = QB[i];
+    QID[q.id] = q;
+    QMETA[q.id] = { area:q.imgonly ? null : areaOf(q), terms:q.imgonly ? [] : termsOf(q), traps:trapsOf(q) };
+  }
+}
+function trapDef(id){
+  for(var i=0;i<KB.traps.length;i++) if(KB.traps[i].id === id) return KB.traps[i];
+  return null;
+}
+function areaTerms(subj, area){
+  var s = KB.subj[subj];
+  if(!s || !s.terms) return [];
+  var out = [];
+  for(var i=0;i<s.terms.length;i++) if(s.terms[i].a === area) out.push(s.terms[i]);
+  return out.slice(0, 3);
 }
 
-/* ---------- 모의고사 타이머 ---------- */
+/* ---------- 풀이 기록 ---------- */
+function answersRaw(){
+  var a = lsGet(LS.ans, null);
+  if(!a || typeof a !== 'object' || Array.isArray(a)) a = {};
+  var w = S.wrong, changed = false;
+  for(var id in w){
+    if(!a[id]){ a[id] = { n:1, w:1, at:w[id].at || Date.now(), legacy:1 }; changed = true; }
+  }
+  if(changed) lsSet(LS.ans, a);
+  return a;
+}
+function recordAns(q, right, pick){
+  var a = answersRaw();
+  var r = a[q.id] || { n:0, w:0 };
+  r.n = (r.n || 0) + 1;
+  if(!right){ r.w = (r.w || 0) + 1; r.wpick = pick; r.lastWrong = Date.now(); }
+  r.pick = pick; r.at = Date.now();
+  a[q.id] = r;
+  lsSet(LS.ans, a);
+  if(!right){
+    var w = S.wrong;
+    w[q.id] = { id:q.id, at:Date.now(), n:((w[q.id] && w[q.id].n) || 0) + 1 };
+    S.wrong = w;
+  }
+}
+function wrongItems(){
+  var w = S.wrong;
+  return QB.filter(function(q){ return w[q.id]; }).sort(function(a,b){ return (w[b.id].at||0) - (w[a.id].at||0); });
+}
+
+/* ---------- 분석 ---------- */
+function answeredRecords(){
+  var a = answersRaw(), out = [];
+  for(var id in a){
+    var q = QID[id];
+    if(!q) continue;
+    var r = a[id];
+    out.push({ q:q, n:Math.max(1, r.n|0), w:Math.max(0, r.w|0), pick:r.pick|0, wpick:r.wpick|0, at:r.at||0, lastWrong:r.lastWrong||0 });
+  }
+  return out;
+}
+function analyzeAll(){
+  var recs = answeredRecords();
+  var A = { recs:recs, nAnswered:0, nCorrect:0, nWrongRecs:0, subjects:[], areas:[], traps:[], misses:[], recurring:0, acc:0, trapTop:null, unknownArea:0, areaKnown:0 };
+  var subMap = {}, areaMap = {}, trapMap = {};
+  recs.forEach(function(r){
+    A.nAnswered += r.n; A.nCorrect += (r.n - r.w); A.nWrongRecs += r.w;
+    var m = QMETA[r.q.id] || { area:null, terms:[], traps:[] };
+    var s = subMap[r.q.subject]; if(!s){ s = subMap[r.q.subject] = { subject:r.q.subject, n:0, w:0 }; }
+    s.n += r.n; s.w += r.w;
+    if(m.area){
+      var k = r.q.subject + '||' + m.area;
+      var a = areaMap[k]; if(!a){ a = areaMap[k] = { subject:r.q.subject, area:m.area, n:0, w:0 }; }
+      a.n += r.n; a.w += r.w; A.areaKnown++;
+    } else if(r.w > 0) A.unknownArea++;
+    (m.traps || []).forEach(function(tid){
+      var t = trapMap[tid]; if(!t){ t = trapMap[tid] = { id:tid, n:0, w:0 }; }
+      t.n += r.n; t.w += r.w;
+    });
+    if(r.w > 0){ A.misses.push(r); if(r.w >= 2) A.recurring++; }
+  });
+  A.acc = A.nAnswered ? Math.round(A.nCorrect / A.nAnswered * 100) : 0;
+  A.subjects = Object.keys(subMap).map(function(k){
+    var s = subMap[k]; s.acc = s.n ? Math.round((s.n - s.w) / s.n * 100) : 0; return s;
+  }).sort(function(a,b){ return (b.w - a.w) || (a.acc - b.acc) || (b.n - a.n); });
+  A.areas = Object.keys(areaMap).map(function(k){
+    var a = areaMap[k]; a.acc = a.n ? Math.round((a.n - a.w) / a.n * 100) : 0; return a;
+  }).sort(function(a,b){ return (b.w - a.w) || (a.acc - b.acc) || (b.n - a.n); });
+  A.traps = Object.keys(trapMap).map(function(k){
+    var t = trapMap[k], d = trapDef(k) || { name:k, tip:'' };
+    return { id:k, name:d.name, tip:d.tip, n:t.n, w:t.w, acc:t.n ? Math.round((t.n - t.w) / t.n * 100) : 0 };
+  }).sort(function(a,b){ return (a.acc - b.acc) || (b.w - a.w); });
+  A.misses.sort(function(a,b){ return (b.w - a.w) || (b.lastWrong - a.lastWrong) || (b.at - a.at); });
+  var cand = A.traps.filter(function(t){ return t.n >= 2 && t.w > 0; });
+  A.trapTop = cand.length ? cand[0] : null;
+  return A;
+}
+function verdict(A){
+  if(!A.nAnswered) return '';
+  var parts = ['지금까지 ' + nfmt(A.nAnswered) + '문항을 풀어 정답률 ' + A.acc + '%입니다.'];
+  var s0 = A.subjects[0];
+  if(s0 && s0.w > 0) parts.push(s0.subject + '에서 ' + s0.w + '문항을 틀려 가장 약합니다(정답률 ' + s0.acc + '%).');
+  if(A.recurring > 0) parts.push('두 번 이상 틀린 반복 오답이 ' + A.recurring + '개 있습니다.');
+  if(A.trapTop) parts.push(A.trapTop.name + ' 유형 정답률이 ' + A.trapTop.acc + '%로 가장 낮습니다.');
+  if(!A.misses.length) parts.push('아직 오답이 없습니다. 이 상태를 유지하려면 새 문항을 계속 풀어 보세요.');
+  parts.push(A.acc >= 60
+    ? '합격 기준(과목별 40% 이상·5과목 평균 60% 이상)을 넘고 있으니, 약한 과목을 40% 아래로 떨어뜨리지 않는 쪽이 중요합니다.'
+    : '합격 기준은 과목별 40% 이상·5과목 평균 60% 이상입니다. 아래 취약 순서대로 채우면 평균이 먼저 올라갑니다.');
+  return parts.join(' ');
+}
+function areaItems(subj, area, limit){
+  var a = answersRaw();
+  var same = QB.filter(function(q){ return q.subject === subj && QMETA[q.id] && QMETA[q.id].area === area; });
+  var wrong = same.filter(function(q){ return a[q.id] && a[q.id].w > 0; }).sort(function(x,y){ return (a[y.id].w||0) - (a[x.id].w||0); });
+  var rest = shuffle(same.filter(function(q){ return !(a[q.id] && a[q.id].w > 0); }));
+  return wrong.concat(rest).slice(0, limit);
+}
+function trapItems(tid, limit){
+  return shuffle(QB.filter(function(q){ return QMETA[q.id] && QMETA[q.id].traps.indexOf(tid) >= 0; })).slice(0, limit);
+}
+function routineBlocks(A){
+  var blocks = [];
+  var ar = A.areas.slice(0, 3);
+  if(ar[0]){
+    blocks.push({ when:'오늘 · 30분', what:ar[0].subject + ' · ' + ar[0].area, why:'1순위 취약 영역 · 오답 ' + ar[0].w + '문항 · 정답률 ' + ar[0].acc + '%',
+      items:areaItems(ar[0].subject, ar[0].area, 12), label:ar[0].area + ' 집중 복습' });
+  } else {
+    var s0 = A.subjects[0];
+    if(s0){
+      var ws = A.misses.filter(function(r){ return r.q.subject === s0.subject; }).map(function(r){ return r.q; });
+      if(ws.length) blocks.push({ when:'오늘 · 30분', what:s0.subject + ' 오답 정리', why:'오답 ' + s0.w + '문항 · 정답률 ' + s0.acc + '%',
+        items:ws.slice(0, 12), label:s0.subject + ' 오답 다시 풀기' });
+    }
+  }
+  if(ar[1]){
+    var items = areaItems(ar[1].subject, ar[1].area, 8);
+    if(ar[2]) items = items.concat(areaItems(ar[2].subject, ar[2].area, 8));
+    blocks.push({ when:'내일 · 25분', what:ar[1].area + (ar[2] ? ' + ' + ar[2].area : ''), why:'2·3순위 취약 영역 교차 복습',
+      items:shuffle(items), label:'2·3순위 영역 복습' });
+  }
+  var rec = A.misses.filter(function(r){ return r.w >= 2; }).slice(0, 20).map(function(r){ return r.q; });
+  if(rec.length){
+    blocks.push({ when:'이틀 뒤 · 20분', what:'반복 오답 ' + rec.length + '문항', why:'두 번 이상 틀린 문항은 개념이 비어 있을 가능성이 큽니다',
+      items:rec, label:'반복 오답 다시 풀기' });
+  }
+  var all = A.misses.slice(0, 20).map(function(r){ return r.q; });
+  if(all.length){
+    blocks.push({ when:'전날·당일 · 15분', what:'오답 ' + all.length + '문항 훑기', why:'시험 직전 최종 점검',
+      items:all, label:'오답 최종 점검' });
+  }
+  return blocks;
+}
+
+/* ---------- 상태 ---------- */
+var state = { items:[], idx:0, correct:0, answered:false, view:'home', tab:'home', miss:[], mode:'practice', label:'', subject:'', lv:'', mockStart:0 };
+var mockTick = null;
+
+function toast(msg){
+  var t = document.getElementById('toast');
+  if(!t){ t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(toast._tm); toast._tm = setTimeout(function(){ t.classList.remove('on'); }, 2200);
+}
 function stopTimer(){ if(mockTick){ clearInterval(mockTick); mockTick = null; } }
 function fmtClock(ms){
-  const s = Math.max(0, Math.floor(ms / 1000));
+  var s = Math.max(0, Math.floor(ms / 1000));
   return String(Math.floor(s / 60)).padStart(2,'0') + ':' + String(s % 60).padStart(2,'0');
 }
 function startTimer(){
   stopTimer();
-  const up = () => {
-    const el = document.getElementById('mtimer');
+  var up = function(){
+    var el = document.getElementById('mtimer');
     if(!el) return;
     el.textContent = fmtClock(Date.now() - (state.mockStart || Date.now()));
   };
@@ -376,323 +597,223 @@ function startTimer(){
   mockTick = setInterval(up, 1000);
 }
 
-/* ---------- 이용권 안내 카드 (담백한 코치 톤) ---------- */
+/* ---------- 이용권 안내 ---------- */
 function offerCard(title, desc){
-  return `<div class="card">
-    <b style="font-size:15px;line-height:1.5">${esc(title)}</b>
-    <p class="muted" style="margin:6px 0 4px;line-height:1.65">${desc}</p>
-    <p class="feat">전 과목 ${nfmt(TOTAL_Q)}문항 — 2급 ${nfmt(byLevel('2급').length)} · 1급 ${nfmt(byLevel('1급').length)}</p>
-    <p class="feat">내 약점 오답 자동 복습 · 오답만 다시 풀기</p>
-    <p class="feat">취약 단원 진단 (내 오답 기록 기준)</p>
-    <p class="feat">실전 모의고사 · 타이머</p>
-    <p class="feat">과목별 정답률 · 학습 기록</p>
-    <div class="buyline"><b>1,900원</b><span>평생 이용권 · 래피드 결제</span></div>
-    <button class="btn" id="buy" style="width:100%">1,900원으로 전체 열기</button>
-    <p class="mini" style="margin:12px 0 6px">이미 코드가 있다면 (예: EARLY-1900)</p>
-    <input id="code" placeholder="이용권 코드" autocomplete="off">
-    <button class="codebtn" id="redeem">코드 등록</button>
-    <p class="mini" id="msg" style="margin:8px 0 0"></p>
-    <p class="mini" style="margin:8px 0 0">결제 후 안내되는 코드를 입력하면 바로 열립니다. 카드 정보는 앱에서 다루지 않습니다.</p>
-  </div>`;
+  return '<div class="card">'
+    + '<b style="font-size:15px;line-height:1.5">' + esc(title) + '</b>'
+    + '<p class="muted" style="margin:6px 0 4px;line-height:1.65">' + desc + '</p>'
+    + '<p class="feat">취약 과목·개념 영역 TOP 랭킹과 정답률</p>'
+    + '<p class="feat">자주 걸리는 함정(문항 유형) 진단</p>'
+    + '<p class="feat">틀린 문항별 핵심 개념·암기 포인트</p>'
+    + '<p class="feat">시험 직전 우선 복습 루틴</p>'
+    + '<div class="buyline"><b>' + nfmt(PASS_PRICE) + '원</b><span>평생 이용권 · 래피드 결제</span></div>'
+    + '<button class="btn" id="buy" style="width:100%">' + nfmt(PASS_PRICE) + '원으로 핵심분석 열기</button>'
+    + '<p class="mini" style="margin:12px 0 6px">이미 코드가 있다면 (예: EARLY-1900)</p>'
+    + '<input id="code" placeholder="이용권 코드" autocomplete="off">'
+    + '<button class="codebtn2" id="redeem">코드 등록</button>'
+    + '<p class="mini" id="msg" style="margin:8px 0 0"></p>'
+    + '<p class="mini" style="margin:8px 0 0">문항·모의고사·오답 다시 풀기는 모두 무료입니다. 이용권은 핵심분석 전체를 여는 데 씁니다. 카드 정보는 앱에서 다루지 않습니다.</p>'
+    + '</div>';
 }
-function bindOffer(){
-  const b = document.getElementById('buy');
-  if(b) b.onclick = () => {
-    track('checkout_click', { product: 'pass_1900', price: 1900, duration: 'lifetime', from: state.view || 'gate' });
+function bindOffer(onDone){
+  var b = document.getElementById('buy');
+  if(b) b.onclick = function(){
+    track('checkout_click', { product:'pass_1900', price:PASS_PRICE, duration:'lifetime', from:state.view || '' });
     window.open(STORE.pass, '_blank');
     toast('래피드 구매 페이지를 열었습니다.');
   };
-  const r = document.getElementById('redeem');
-  if(r) r.onclick = () => {
-    const v = (document.getElementById('code').value || '').trim().toUpperCase();
-    const msg = document.getElementById('msg');
-    if(CODES.includes(v)){
-      const p2 = S.passes.slice(); p2.push({ code: v, at: Date.now() }); lsSet(LS.pass, p2);
-      track('pass_redeem', { code: v, from: state.view || 'gate' });
-      msg.style.color = 'var(--ok)'; msg.textContent = '등록 완료. 전체 문항이 열렸습니다.';
-      setTimeout(() => { state.view = 'home'; home(); }, 700);
-    } else {
+  var r = document.getElementById('redeem');
+  if(r) r.onclick = function(){
+    var el = document.getElementById('code');
+    var v = (el && el.value || '').trim().toUpperCase();
+    var msg = document.getElementById('msg');
+    if(CODES.indexOf(v) >= 0){
+      var p2 = S.passes.slice(); p2.push({ code:v, at:Date.now() }); lsSet(LS.pass, p2);
+      track('pass_redeem', { code:v, from:state.view || '' });
+      if(msg){ msg.style.color = 'var(--ok)'; msg.textContent = '등록 완료. 핵심분석 전체가 열렸습니다.'; }
+      setTimeout(function(){ if(typeof onDone === 'function') onDone(); else aiScreen(); }, 600);
+    } else if(msg){
       msg.style.color = 'var(--bad)'; msg.textContent = '코드를 확인해 주세요.';
     }
   };
 }
 
-/* ---------- 이용권 안내 화면 ---------- */
-function gate(reason, subj){
-  stopTimer();
-  document.body.classList.remove('quiz-mode');
-  track('paywall_view', { reason: reason || 'menu', subject: subj || '' });
-  state.view = 'gate';
-  document.getElementById('title').textContent = '전체 학습 열기';
-  document.getElementById('back').hidden = false;
-  const last = S.freeLast;
-  const heads = {
-    q6: '이 과목 6번부터 20문항이 남아 있습니다',
-    wrong: '틀린 문항부터 다시 푸는 복습',
-    weak: '내 오답 기준 취약 단원 진단',
-    mock: '실전 모의고사',
-    random: '랜덤 20문항',
-    stats: '과목별 정답률과 전체 학습 기록'
-  };
-  const head = subj ? (esc(subj) + ' 6번부터 20문항이 남아 있습니다') : (heads[reason] || '내 약점 오답 자동 복습 · 5개년 기출');
-  const lead = reason === 'wrong'
-    ? '오답노트에 쌓인 틀린 문항을 모아 다시 풀고, 오답이 많은 단원부터 짚습니다.'
-    : (reason === 'mock'
-      ? '실제 시험처럼 20문항을 시간 재고 풀고, 끝나면 과목별 결과를 정리합니다.'
-      : (reason === 'stats'
-        ? '과목별 정답률과 지난 학습 기록을 모아 다음에 볼 과목을 정합니다.'
-        : (reason === 'weak'
-          ? '내가 틀린 문항이 많은 과목부터 순서대로 보여 주고, 그 과목만 골라 풉니다.'
-          : '5문항으로는 약점이 드러나지 않습니다. 틀린 문항이 쌓이는 순서대로 복습하는 쪽이 빠릅니다.')));
-  app().innerHTML = `
-    <div class="card">
-      <p class="mini" style="margin:0">${last ? `최근 무료 5문항 · ${esc(last.subject || '')} ${last.correct}/${last.total} (${pctOf(last.correct, last.total)}%)` : '무료 5문항 학습'}</p>
-      <b style="display:block;font-size:15px;line-height:1.5;margin:6px 0 0">${head}</b>
-      <p class="muted" style="margin:6px 0 0;line-height:1.65">${lead}</p>
-    </div>
-    ${offerCard('내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사', '6번부터 20번까지, 그리고 틀린 문항 복습까지 한 번에 엽니다.')}
-    <p class="mini" style="text-align:center;margin:14px 0 0">무료 범위는 2급·1급 전 과목 1~5번 문항입니다.</p>`;
-  bindOffer();
-  window.scrollTo(0,0);
-}
-
 /* ---------- 풀이 ---------- */
 function start(items, label, mode, opts){
-  if(!items.length){ toast('문항을 준비하지 못했습니다.'); return; }
+  if(!items || !items.length){ toast('문항을 준비하지 못했습니다.'); return; }
   opts = opts || {};
-  if(!isPaid() && opts.gate) return gate(opts.reason || 'locked_start', opts.subject || '');
   stopTimer();
   state.items = items; state.idx = 0; state.correct = 0; state.miss = [];
   state.view = 'quiz'; state.answered = false;
   state.label = label; state.mode = mode || 'practice';
-  state.subject = opts.subject || (items.every(q => q.subject === items[0].subject) ? items[0].subject : '');
+  state.subject = opts.subject || (items.every(function(q){ return q.subject === items[0].subject; }) ? items[0].subject : '');
   state.lv = items[0].level;
   state.mockStart = state.mode === 'mock' ? Date.now() : 0;
   document.getElementById('back').hidden = false;
   renderQ();
 }
-
 function renderQ(){
-  const q = state.items[state.idx];
+  var q = state.items[state.idx];
   state.answered = false;
   document.body.classList.add('quiz-mode');
   document.getElementById('title').textContent = state.label;
-  const pct = Math.round(state.idx / state.items.length * 100);
-  const timer = state.mode === 'mock' ? ' · <b id="mtimer" style="font-variant-numeric:tabular-nums">00:00</b>' : '';
-  app().innerHTML = `
-    <div class="qmeta"><span>${esc(q.subject)} · ${q.year}년 ${esc(q.level)}</span><span>${state.idx+1} / ${state.items.length}${timer}</span></div>
-    <div class="pbar"><i style="width:${pct}%"></i></div>
-    <div class="card">
-      <p class="stem">${esc(q.stem)}</p>
-      ${q.img ? `<figure class="qfig"><img src="${q.img}" alt="문제 자료(그림·표)" loading="lazy" data-zoom="1"${q.imgonly ? ' class="zoomable" style="cursor:zoom-in"' : ''}><span class="zoomhint">탭하면 크게 볼 수 있습니다</span></figure>` : ''}
-      ${q.imgonly ? '<p class="mini" style="margin:2px 0 8px">그림의 ①~④ 중에서 고르세요.</p>' : ''}
-      <div class="choices ${q.imgonly ? 'imgonly' : ''}" id="ch">
-        ${q.choices.map((c,i)=>`<button class="choice" data-i="${i+1}"><i>${CIRC[i]}</i>${q.imgonly ? '' : `<span>${esc(c)}</span>`}</button>`).join('')}
-      </div>
-      <div class="feedback" id="fb"></div>
-      <div class="row" id="nextRow" style="display:none"><button class="btn" id="next">다음 문제</button></div>
-      ${state.mode === 'free5' && state.idx + 1 >= state.items.length ? '<p class="mini" style="text-align:center;margin:0">이 과목은 6번부터 20문항이 남아 있습니다.</p>' : ''}
-    </div>`;
-  document.querySelectorAll('.choice').forEach(b => b.onclick = () => answer(parseInt(b.dataset.i,10), q));
-  document.querySelectorAll('img[data-zoom]').forEach(im => im.onclick = () => openLb(im.src, im.alt));
+  var pct = Math.round(state.idx / state.items.length * 100);
+  var timer = state.mode === 'mock' ? ' · <b id="mtimer" style="font-variant-numeric:tabular-nums">00:00</b>' : '';
+  app().innerHTML =
+    '<div class="qmeta"><span>' + esc(q.subject) + ' · ' + q.year + '년 ' + esc(q.level) + '</span><span>' + (state.idx+1) + ' / ' + state.items.length + timer + '</span></div>'
+    + '<div class="pbar"><i style="width:' + pct + '%"></i></div>'
+    + '<div class="card">'
+    +   '<p class="stem">' + esc(q.stem || '') + '</p>'
+    +   (q.img ? '<figure class="qfig"><img src="' + q.img + '" alt="문제 자료(그림·표)" loading="lazy" data-zoom="1"' + (q.imgonly ? ' style="cursor:zoom-in"' : '') + '><span class="zoomhint">탭하면 크게 볼 수 있습니다</span></figure>' : '')
+    +   (q.imgonly ? '<p class="mini" style="margin:2px 0 8px">그림의 ①~④ 중에서 고르세요.</p>' : '')
+    +   '<div class="choices ' + (q.imgonly ? 'imgonly' : '') + '" id="ch">'
+    +     q.choices.map(function(c,i){
+            return '<button class="choice" data-i="' + (i+1) + '"><i>' + CIRC[i] + '</i>' + (q.imgonly ? '' : '<span>' + esc(c) + '</span>') + '</button>';
+          }).join('')
+    +   '</div>'
+    +   '<div class="feedback" id="fb"></div>'
+    +   '<div class="row" id="nextRow" style="display:none"><button class="btn" id="next">다음 문제</button></div>'
+    + '</div>';
+  Array.prototype.forEach.call(document.querySelectorAll('.choice'), function(b){
+    b.onclick = function(){ answer(parseInt(b.dataset.i,10), q); };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('img[data-zoom]'), function(im){
+    im.onclick = function(){ openLb(im.src, im.alt); };
+  });
   if(state.mode === 'mock') startTimer(); else stopTimer();
 }
-
 function answer(pick, q){
   if(state.answered) return;
   state.answered = true;
-  const ans = q.answer || [];
-  const right = ans.includes(pick);
+  var ans = q.answer || [];
+  var right = ans.indexOf(pick) >= 0;
   if(right) state.correct++;
-  document.querySelectorAll('.choice').forEach(b => {
-    const i = parseInt(b.dataset.i,10);
-    if(ans.includes(i)) b.classList.add('ok');
+  Array.prototype.forEach.call(document.querySelectorAll('.choice'), function(b){
+    var i = parseInt(b.dataset.i,10);
+    if(ans.indexOf(i) >= 0) b.classList.add('ok');
     else if(i === pick) b.classList.add('bad');
     b.onclick = null;
   });
-  const fb = document.getElementById('fb');
+  var fb = document.getElementById('fb');
   fb.className = 'feedback show ' + (right ? 'ok' : 'bad');
   fb.innerHTML = right
-    ? `정답입니다. 정답 ${ans.map(a=>CIRC[a-1]).join('·')}`
-    : `오답입니다. 정답은 ${ans.map(a=>CIRC[a-1]).join('·')}${ans.length===4?' (전 항목 정답 처리 문항)':''}`;
-  if(!right){ const w = S.wrong; w[q.id] = { id:q.id, at:Date.now() }; S.wrong = w; state.miss.push(q); }
+    ? '정답입니다. 정답 ' + ans.map(function(a){ return CIRC[a-1]; }).join('·')
+    : '오답입니다. 정답은 ' + ans.map(function(a){ return CIRC[a-1]; }).join('·') + (ans.length === 4 ? ' (전 항목 정답 처리 문항)' : '');
+  recordAns(q, right, pick);
+  if(!right) state.miss.push(q);
   document.getElementById('nextRow').style.display = 'flex';
-  document.getElementById('next').onclick = next;
-  document.getElementById('next').textContent = state.idx + 1 >= state.items.length ? '결과 보기' : '다음 문제';
-  setTimeout(function(){ const nr = document.getElementById('nextRow'); if(nr && nr.scrollIntoView) nr.scrollIntoView({ block: 'center' }); }, 40);
+  var nx = document.getElementById('next');
+  nx.onclick = next;
+  nx.textContent = state.idx + 1 >= state.items.length ? '결과 보기' : '다음 문제';
+  setTimeout(function(){ var nr = document.getElementById('nextRow'); if(nr && nr.scrollIntoView) nr.scrollIntoView({ block:'center' }); }, 40);
 }
-
 function next(){
   state.idx++;
   if(state.idx >= state.items.length) return finish();
   renderQ();
 }
-
 function finish(){
   stopTimer();
   document.body.classList.remove('quiz-mode');
-  const total = state.items.length, c = state.correct;
-  const subjects = Array.from(new Set(state.items.map(q => q.subject)));
-  const log = S.log.slice();
-  log.push({ level: state.lv || S.level, subject: subjects.length === 1 ? subjects[0] : (state.mode === 'mock' ? '모의고사' : '혼합'), total: total, correct: c, at: Date.now(), mode: state.mode });
+  var total = state.items.length, c = state.correct;
+  var subjects = [];
+  state.items.forEach(function(q){ if(subjects.indexOf(q.subject) < 0) subjects.push(q.subject); });
+  var log = S.log.slice();
+  log.push({ level:state.lv || S.level, subject:subjects.length === 1 ? subjects[0] : (state.mode === 'mock' ? '모의고사' : '혼합'), total:total, correct:c, at:Date.now(), mode:state.mode });
   lsSet(LS.log, log.slice(-200));
-
-  if(state.mode === 'free5'){
-    const res = buildFreeResult(state.lv || S.level, state.items, c, state.miss.map(q => q.id));
-    res.subject = subjects.length === 1 ? subjects[0] : '전 과목';
-    lsSet(LS.free, res);
-    track('free_complete', { level: res.lv, subject: res.subject, correct: c, total: total, pct: pctOf(c,total), n: total });
-    renderFreeResult(res, true);
-    return;
-  }
-
-  const pct = pctOf(c, total);
-  const spent = state.mockStart ? Math.round((Date.now() - state.mockStart) / 1000) : 0;
-  const timeLine = state.mode === 'mock' && spent ? ` · 경과 ${Math.floor(spent/60)}분 ${spent%60}초` : '';
-  app().innerHTML = `
-    <div class="card" style="text-align:center">
-      <p class="muted">${esc(state.label)} 결과</p>
-      <div class="big">${c} / ${total}</div>
-      <p class="muted">정답률 ${pct}%${timeLine} · 오답 ${total-c}문항이 오답노트에 저장됐습니다</p>
-      <div class="row">
-        <button class="btn" id="again">다시 풀기</button>
-        <button class="btn ghost" id="home2">홈으로</button>
-      </div>
-    </div>
-    <div class="card">
-      <b style="font-size:14px">틀린 문항 ${state.miss.length}개</b>
-      ${state.miss.length ? state.miss.map(q=>`<p class="muted" style="margin:8px 0 0">${esc(q.subject)} ${q.qno}번 · 정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p>`).join('') : '<p class="muted" style="margin:8px 0 0">틀린 문항이 없습니다.</p>'}
-    </div>`;
-  document.getElementById('again').onclick = () => start(state.items, state.label, state.mode, { subject: state.subject });
-  document.getElementById('home2').onclick = () => { state.view='home'; home(); };
-}
-
-/* ---------- 무료 5문항 결과 ---------- */
-function buildFreeResult(lv, items, correct, missIds){
-  const map = {};
-  items.forEach(q => { map[q.subject] = map[q.subject] || { subject: q.subject, total: 0, correct: 0, miss: [] }; map[q.subject].total++; });
-  items.forEach(q => {
-    if(!missIds.includes(q.id)) map[q.subject].correct++;
-    else map[q.subject].miss.push(q.id);
-  });
-  const subs = Object.keys(map).map(k => {
-    const s = map[k];
-    return { subject: s.subject, total: s.total, correct: s.correct, miss: s.miss, pct: pctOf(s.correct, s.total) };
-  }).sort((a,b) => a.pct - b.pct || b.miss.length - a.miss.length || a.subject.localeCompare(b.subject));
-  return { at: Date.now(), lv: lv, total: items.length, correct: correct, missIds: missIds.slice(), subs: subs };
-}
-function weakOf(res){ return res.subs.filter(s => s.pct < 100); }
-function missQuestions(res){ return (res.missIds || []).map(id => QB.find(q => q.id === id)).filter(Boolean); }
-
-function renderFreeResult(res, fresh){
-  stopTimer();
-  document.body.classList.remove('quiz-mode');
-  state.view = 'freeResult';
-  const head = res.subject || '무료 5문항';
-  document.getElementById('title').textContent = head + ' 5문항 결과';
+  var pct = pctOf(c, total);
+  var spent = state.mockStart ? Math.round((Date.now() - state.mockStart) / 1000) : 0;
+  var timeLine = state.mode === 'mock' && spent ? ' · 경과 ' + Math.floor(spent/60) + '분 ' + (spent%60) + '초' : '';
+  state.view = 'result';
+  document.getElementById('title').textContent = '채점 결과';
   document.getElementById('back').hidden = false;
-  const pct = pctOf(res.correct, res.total);
-  const misses = missQuestions(res);
-  const when = new Date(res.at);
-  app().innerHTML = `
-    <div class="card">
-      <p class="muted" style="margin:0 0 2px">무료 ${res.total}문항 · ${esc(res.lv || '')} ${esc(head)} · ${when.getMonth()+1}/${when.getDate()} ${String(when.getHours()).padStart(2,'0')}:${String(when.getMinutes()).padStart(2,'0')}</p>
-      <div class="big">${res.correct} / ${res.total}</div>
-      <p class="muted" style="margin:0">정답률 <b style="color:var(--ink)">${pct}%</b> · 오답 ${res.total - res.correct}문항은 오답노트에 저장됐습니다</p>
-      <div class="kpi">
-        <div><b>${res.correct}</b><span>정답</span></div>
-        <div><b style="color:var(--bad)">${res.total - res.correct}</b><span>오답</span></div>
-        <div><b>${pct}%</b><span>정답률</span></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <b style="font-size:14px">틀린 문항 ${misses.length}개</b>
-      ${misses.length ? misses.map(q => `
-        <p class="muted" style="margin:8px 0 0;line-height:1.6">
-          <b style="color:var(--ink)">${esc(q.subject)} ${q.qno}번</b> · 정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}<br>
-          <span style="color:var(--sub)">${q.stem ? esc(cut(q.stem, 54)) : '그림·표 문항 — 앱에서 문제 보기'}</span>
-        </p>`).join('')
-      : '<p class="muted" style="margin:8px 0 0">5문항을 모두 맞혔습니다. 이 과목 6번부터 이어서 확인해 보세요.</p>'}
-      <p class="mini" style="margin-top:10px">5문항 표본이라 합격 판정은 참고용입니다. 실제 검정은 과목별 20문항, 과목별 40% 이상·5과목 평균 60% 이상입니다.</p>
-    </div>
-
-    ${offerCard('이 과목은 6번부터 20문항이 남아 있습니다', '내 약점 오답 자동 복습 · 5개년 기출 & 실전 모의고사 열기 — 1,900원 평생 이용권.')}
-
-    <div class="card">
-      <b style="font-size:14px">결과 공유</b>
-      <p class="mini" style="margin:4px 0 0">정답률만 공유됩니다. 틀린 문항과 상세 기록은 공유 문구에 포함되지 않습니다.</p>
-      ${shareBox()}
-    </div>
-
-    <div class="row">
-      <button class="btn ghost" id="retake">${esc(head)} 1~5번 다시 풀기</button>
-      <button class="btn ghost" id="home2">다른 과목 5문항</button>
-    </div>`;
-  bindOffer();
-  bindShare(res);
-  document.getElementById('retake').onclick = () => start(freeHead(res.lv || FREE_LEVEL, head), head + ' 1~5번 · 무료', 'free5', { subject: head });
-  document.getElementById('home2').onclick = () => { state.view='home'; home(); };
-  if(fresh) window.scrollTo(0,0);
+  app().innerHTML =
+    '<div class="card" style="text-align:center">'
+    + '<p class="muted">' + esc(state.label) + ' 결과</p>'
+    + '<div class="big">' + c + ' / ' + total + '</div>'
+    + '<p class="muted">정답률 ' + pct + '%' + timeLine + ' · 오답 ' + (total-c) + '문항이 오답노트에 저장됐습니다</p>'
+    + '<div class="row"><button class="btn" id="again">다시 풀기</button><button class="btn ghost" id="home2">홈으로</button></div>'
+    + '</div>'
+    + '<div class="card"><b style="font-size:14px">틀린 문항 ' + state.miss.length + '개</b>'
+    + (state.miss.length
+        ? state.miss.map(function(q){ return '<p class="muted" style="margin:8px 0 0">' + esc(q.subject) + ' ' + q.qno + '번 · 정답 ' + (q.answer||[]).map(function(a){ return CIRC[a-1]; }).join('·') + '</p>'; }).join('')
+        : '<p class="muted" style="margin:8px 0 0">틀린 문항이 없습니다.</p>')
+    + '</div>'
+    + (state.miss.length || Object.keys(S.wrong).length
+        ? '<button class="btn" id="toAi" style="width:100%;margin-bottom:12px">AI 오답노트 핵심분석 보기</button>'
+        : '')
+    + '<div class="card"><b style="font-size:14px">결과 공유</b><p class="mini" style="margin:4px 0 0">정답률만 공유됩니다. 틀린 문항과 상세 기록은 공유 문구에 포함되지 않습니다.</p>'
+    + shareBox() + '</div>';
+  document.getElementById('again').onclick = function(){ start(state.items, state.label, state.mode, { subject:state.subject }); };
+  document.getElementById('home2').onclick = function(){ state.view='home'; home(); };
+  var ta = document.getElementById('toAi');
+  if(ta) ta.onclick = function(){ aiScreen(); };
+  bindShare(c, total);
+  window.scrollTo(0,0);
 }
 
 /* ---------- 공유 ---------- */
-const APP_URL = 'https://setoo28-hue.github.io/sports-exam-pass/';
-function shareUrl(){ return APP_URL + '?utm_source=threads&utm_medium=share&utm_campaign=free5'; }
-function shareText(res){
-  return '스포츠지도사 기출 ' + res.total + '문항 중 ' + res.correct + '문항 정답 (' + pctOf(res.correct, res.total) + '%).\n전 과목 1~5번 문항은 무료로 풀 수 있습니다.\n\n무료 학습은 ALPHA 2027에서.';
+var APP_URL = 'https://setoo28-hue.github.io/sports-exam-pass/';
+function shareUrl(){ return APP_URL + '?utm_source=threads&utm_medium=share&utm_campaign=free_all'; }
+function shareText(c, total){
+  return '스포츠지도사 기출 ' + total + '문항 중 ' + c + '문항 정답 (' + pctOf(c, total) + '%).\n'
+       + '2021~2025년 기출 1,600문항을 전부 무료로 풀 수 있습니다.\n\n무료 학습은 ALPHA 2027에서.';
 }
 function shareBox(){
-  return `<div class="sharebox">
-    <button class="primary" data-share="threads">스레드로 공유</button>
-    <button data-share="copy">문구·링크 복사</button>
-    <button class="wide" data-share="native">다른 앱으로 공유 (모바일)</button>
-  </div>`;
+  return '<div class="sharebox">'
+    + '<button class="primary" data-share="threads">스레드로 공유</button>'
+    + '<button data-share="copy">문구·링크 복사</button>'
+    + '<button class="wide" data-share="native">다른 앱으로 공유 (모바일)</button>'
+    + '</div>';
 }
 function copyText(t){
-  try{ if(navigator.clipboard && window.isSecureContext){ return navigator.clipboard.writeText(t).then(() => true).catch(() => legacyCopy(t)); } }catch(e){}
+  try{ if(navigator.clipboard && window.isSecureContext){ return navigator.clipboard.writeText(t).then(function(){ return true; }).catch(function(){ return legacyCopy(t); }); } }catch(e){}
   return Promise.resolve(legacyCopy(t));
 }
 function legacyCopy(t){
   try{
-    const ta = document.createElement('textarea');
+    var ta = document.createElement('textarea');
     ta.value = t; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-1000px'; ta.style.opacity='0';
     document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, ta.value.length);
-    const ok = document.execCommand('copy'); document.body.removeChild(ta); return !!ok;
+    var ok = document.execCommand('copy'); document.body.removeChild(ta); return !!ok;
   }catch(e){ return false; }
 }
-function bindShare(res){
-  const text = shareText(res), url = shareUrl();
-  document.querySelectorAll('[data-share]').forEach(b => b.onclick = async () => {
-    const kind = b.dataset.share;
-    if(kind === 'threads'){
-      track('share_click', { type: 'threads', pct: pctOf(res.correct, res.total) });
-      const ok = await copyText(text + '\n\n' + url);
-      window.open('https://www.threads.net/intent/post?text=' + encodeURIComponent(text + '\n\n' + url), '_blank');
-      toast(ok ? '공유 문구를 복사했습니다. 스레드에 붙여넣으세요.' : '스레드 공유 창을 열었습니다.');
-      return;
-    }
-    if(kind === 'copy'){
-      const ok = await copyText(text + '\n\n' + url);
-      track('share_copy', { ok: ok, pct: pctOf(res.correct, res.total) });
-      toast(ok ? '문구와 링크를 복사했습니다.' : '복사에 실패했습니다. 길게 눌러 직접 복사해 주세요.');
-      return;
-    }
-    track('share_click', { type: 'native' });
-    if(navigator.share){
-      try{
-        await navigator.share({ title: '스포츠지도사 기출 무료 5문항', text: text, url: url });
-        track('share_done', { type: 'native' });
-      }catch(e){
-        const ok = await copyText(text + '\n\n' + url);
-        track('share_copy', { ok: ok, fallback: 'native_cancel' });
-        toast(ok ? '공유가 취소되어 문구와 링크를 복사했습니다.' : '공유가 취소되었습니다.');
+function bindShare(c, total){
+  var text = shareText(c, total), url = shareUrl();
+  Array.prototype.forEach.call(document.querySelectorAll('[data-share]'), function(b){
+    b.onclick = function(){
+      var kind = b.dataset.share;
+      if(kind === 'threads'){
+        track('share_click', { type:'threads', pct:pctOf(c,total) });
+        copyText(text + '\n\n' + url);
+        window.open('https://www.threads.net/intent/post?text=' + encodeURIComponent(text + '\n\n' + url), '_blank');
+        toast('공유 문구를 복사했습니다. 스레드에 붙여넣으세요.');
+        return;
       }
-    }else{
-      const ok = await copyText(text + '\n\n' + url);
-      track('share_copy', { ok: ok, fallback: 'no_native' });
-      toast(ok ? '이 브라우저는 앱 공유를 지원하지 않아 문구를 복사했습니다.' : '복사에 실패했습니다.');
-    }
+      if(kind === 'copy'){
+        copyText(text + '\n\n' + url).then(function(ok){
+          track('share_copy', { ok:ok, pct:pctOf(c,total) });
+          toast(ok ? '문구와 링크를 복사했습니다.' : '복사에 실패했습니다. 길게 눌러 직접 복사해 주세요.');
+        });
+        return;
+      }
+      track('share_click', { type:'native' });
+      if(navigator.share){
+        navigator.share({ title:'스포츠지도사 기출 1,600문항 무료', text:text, url:url }).then(function(){
+          track('share_done', { type:'native' });
+        }).catch(function(){
+          copyText(text + '\n\n' + url).then(function(ok){
+            track('share_copy', { ok:ok, fallback:'native_cancel' });
+            toast(ok ? '공유가 취소되어 문구와 링크를 복사했습니다.' : '공유가 취소되었습니다.');
+          });
+        });
+      } else {
+        copyText(text + '\n\n' + url).then(function(ok){
+          track('share_copy', { ok:ok, fallback:'no_native' });
+          toast(ok ? '이 브라우저는 앱 공유를 지원하지 않아 문구를 복사했습니다.' : '복사에 실패했습니다.');
+        });
+      }
+    };
   });
 }
 
@@ -700,167 +821,383 @@ function bindShare(res){
 function home(){
   stopTimer();
   document.body.classList.remove('quiz-mode');
-  const lv = S.level, paid = isPaid();
-  const y = S.year;
-  const subs = levelSubjects(lv);
-  const wrongN = Object.keys(S.wrong).length;
-  const last = S.freeLast;
-  const yLabel = y ? `${y}년` : '5개년';
+  var lv = S.level, paid = isPaid(), y = S.year;
+  var subs = levelSubjects(lv);
+  var wrongN = Object.keys(S.wrong).length;
+  var yLabel = y ? (y + '년') : '5개년';
   state.view = 'home'; state.mode = 'practice';
   document.getElementById('title').textContent = '스포츠지도사 기출';
   document.getElementById('back').hidden = true;
-  const tag = `<span class="tag">공단 공개 기출 ${YEARS.slice().sort((a,b)=>a-b).join('·')} · ${nfmt(TOTAL_Q)}문항</span>`;
-  app().innerHTML = `
-  <div class="hero">
-    ${tag}
-    <b>연도를 골라 기출을, 랜덤으로 실전을</b>
-    <p>2021~2025년 공단 공개 기출 ${nfmt(TOTAL_Q)}문항. 2급·1급 전 과목 1~5번은 결제 없이 바로 풀고 채점합니다. 6번부터는 이용권으로 이어집니다.</p>
-    <button id="freeStart">${subs[0]} 1~5번 무료로 풀기</button>
-    <p class="hero-sub">${last ? `지난 ${esc(last.subject || '')} ${last.correct}/${last.total} (${pctOf(last.correct,last.total)}%) · <a href="#" id="lastRes">결과 보기</a>` : (paid ? '이용권 사용 중 · 전체 문항을 쓸 수 있습니다' : `이미 코드가 있다면 <a href="#" id="openCode">코드 등록</a>`)}</p>
-  </div>
-  <div class="chips">
-    <button class="chip ${lv==='2급'?'on':''}" data-lv="2급">2급 (${nfmt(byLevel('2급').length)}문항)</button>
-    <button class="chip ${lv==='1급'?'on':''}" data-lv="1급">1급 (${nfmt(byLevel('1급').length)}문항)</button>
-  </div>
-  <div class="sec-title" style="margin-bottom:6px">연도별 기출 ${paid ? '' : '· 1~5번 무료'}</div>
-  <div class="ychips">
-    <button class="ychip ${!y?'on':''}" data-year="all">전체 ${nfmt(yearCount(lv, null))}</button>
-    ${YEARS.slice().sort((a,b)=>b-a).map(v => `<button class="ychip ${y===v?'on':''}" data-year="${v}">${v} <span>${nfmt(yearCount(lv, v))}</span></button>`).join('')}
-  </div>
-  <div class="sec-title">과목별 학습 · ${yLabel} ${paid ? '' : '· 과목마다 1~5번 무료'}</div>
-  <div class="grid">
-    ${subs.map(sb => `<button class="subj" data-subj="${esc(sb)}"><b>${esc(sb)}${paid ? '' : ' <span class="badge" style="vertical-align:2px">5문항 무료</span>'}</b><span>${bySubject(lv,sb).length}문항 · 정답률 ${rateOf(lv,sb)}</span></button>`).join('')}
-  </div>
-  <div class="row">
-    <button class="btn" id="quick">랜덤 20문항 풀기</button>
-    <button class="btn ghost" id="wrongBtn">오답 ${wrongN}개</button>
-  </div>
-  <div class="row">
-    <button class="btn ghost" id="mockBtn">실전 모의고사 (5개년 랜덤)</button>
-  </div>
-  <div class="row">
-    <button class="btn ghost" id="weakBtn">취약 과목 집중</button>
-    <button class="btn ghost" id="allYearBtn">${yLabel} 전체 랜덤</button>
-  </div>
-  ${paid ? '<div class="card" style="padding:12px 14px"><p class="muted" style="margin:0">이용권 사용 중 · 전체 문항과 오답노트를 제한 없이 쓸 수 있습니다.</p></div>'
-         : `<div class="card" style="padding:12px 14px"><p class="muted" style="margin:0">지금은 2급·1급 전 과목 1~5번 문항을 무료로 풀 수 있습니다. 6번부터·오답 복습·모의고사는 <a href="#" class="inline" id="openPlan">이용권</a>으로 이어집니다.</p></div>`}
-  <div class="lic">문항 출처: 국민체육진흥공단 체육지도자 자격검정·연수원 공개 문제지(${YEARS.slice().sort((a,b)=>a-b).join('·')}년). 정답: 공단 최종 정답표. 해설은 공단 자료에 없어 미포함.</div>`;
+  var tag = '<span class="tag">공단 공개 기출 ' + YEARS.slice().sort(function(a,b){ return a-b; }).join('·') + ' · ' + nfmt(TOTAL_Q) + '문항</span>';
+  app().innerHTML =
+    '<div class="hero">'
+    + tag
+    + '<b>1,600문항 전부 무료로 풀고, 내 오답만 따로 정리</b>'
+    + '<p>2021~2025년 공단 공개 기출 ' + nfmt(TOTAL_Q) + '문항(2급·1급 전 과목). 과목별 풀이·랜덤·실전 모의고사·즉시 채점까지 결제 없이 다 됩니다. 오답노트에서는 틀린 문항을 개념 영역과 문항 유형으로 나눠 핵심만 다시 짚습니다.</p>'
+    + '<button id="freeStart">' + esc(subs[0] || '') + ' 전체 풀기</button>'
+    + '<p class="hero-sub">' + (wrongN
+        ? '오답 ' + wrongN + '문항이 쌓였습니다 · <a href="#" id="goAi">핵심분석 보기</a>'
+        : (paid ? '이용권 사용 중 · 핵심분석 전체를 볼 수 있습니다' : '틀린 문항이 쌓이면 오답노트에서 분석합니다')) + '</p>'
+    + '</div>'
+    + '<div class="chips">'
+    +   '<button class="chip ' + (lv==='2급'?'on':'') + '" data-lv="2급">2급 (' + nfmt(byLevel('2급').length) + '문항)</button>'
+    +   '<button class="chip ' + (lv==='1급'?'on':'') + '" data-lv="1급">1급 (' + nfmt(byLevel('1급').length) + '문항)</button>'
+    + '</div>'
+    + '<div class="sec-title" style="margin-bottom:6px">연도별 기출</div>'
+    + '<div class="ychips">'
+    +   '<button class="ychip ' + (!y?'on':'') + '" data-year="all">전체 ' + nfmt(yearCount(lv, null)) + '</button>'
+    +   YEARS.slice().sort(function(a,b){ return b-a; }).map(function(v){
+          return '<button class="ychip ' + (y===v?'on':'') + '" data-year="' + v + '">' + v + ' <span>' + nfmt(yearCount(lv, v)) + '</span></button>';
+        }).join('')
+    + '</div>'
+    + '<div class="sec-title">과목별 학습 · ' + yLabel + ' · 전 문항 무료</div>'
+    + '<div class="grid">'
+    +   subs.map(function(sb){
+          return '<button class="subj" data-subj="' + esc(sb) + '"><b>' + esc(sb) + '</b><span>' + bySubject(lv,sb).length + '문항 · 정답률 ' + rateOf(lv,sb) + '</span></button>';
+        }).join('')
+    + '</div>'
+    + '<div class="row">'
+    +   '<button class="btn" id="quick">랜덤 20문항 풀기</button>'
+    +   '<button class="btn ghost" id="wrongBtn">오답노트 ' + wrongN + '</button>'
+    + '</div>'
+    + '<div class="row">'
+    +   '<button class="btn ghost" id="mockBtn">실전 모의고사 (5개년 랜덤)</button>'
+    + '</div>'
+    + '<div class="row">'
+    +   '<button class="btn ghost" id="weakBtn">취약 과목 집중</button>'
+    +   '<button class="btn ghost" id="allYearBtn">' + yLabel + ' 전체 랜덤</button>'
+    + '</div>'
+    + '<div class="card" style="padding:14px">'
+    +   '<b style="font-size:14px">AI 오답노트 핵심분석</b>'
+    +   '<p class="mini" style="margin:6px 0 10px">틀린 문항 ' + wrongN + '개를 개념 영역·문항 유형으로 나눠 취약 순서, 자주 걸리는 함정, 문항별 핵심 개념, 시험 직전 복습 순서를 정리합니다.</p>'
+    +   '<button class="btn ghost" id="aiBtn" style="width:100%">' + (wrongN ? '내 오답 분석 열기' : '오답노트 열기') + '</button>'
+    + '</div>'
+    + '<div class="lic">문항 출처: 국민체육진흥공단 체육지도자 자격검정·연수원 공개 문제지(' + YEARS.slice().sort(function(a,b){ return a-b; }).join('·') + '년). 정답: 공단 최종 정답표. 해설은 공단 자료에 없어 개념 정리로 대신합니다.</div>';
 
-  document.querySelectorAll('[data-lv]').forEach(b => b.onclick = () => { S.level = b.dataset.lv; home(); });
-  document.querySelectorAll('[data-year]').forEach(b => b.onclick = () => {
-    const v = b.dataset.year;
-    S.year = (v === 'all') ? null : Number(v);
-    track('year_select', { year: S.year || 'all', level: S.level });
-    home();
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lv]'), function(b){
+    b.onclick = function(){ S.level = b.dataset.lv; home(); };
   });
-  document.querySelectorAll('[data-subj]').forEach(b => b.onclick = () => {
-    const subj = b.dataset.subj;
-    const items = bySubject(lv, subj);
-    if(isPaid()) return start(items, `${subj}${y?` ${y}년`:' · 5개년'}`, 'practice', { gate: true, subject: subj });
-    const free = freeHead(lv, subj);
-    track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
-    start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function(b){
+    b.onclick = function(){
+      var v = b.dataset.year;
+      S.year = (v === 'all') ? null : Number(v);
+      track('year_select', { year:S.year || 'all', level:S.level });
+      home();
+    };
   });
-  document.getElementById('freeStart').onclick = () => {
-    const subj = levelSubjects(lv)[0];
-    const free = freeHead(lv, subj);
-    track('free_start', { level: lv, subject: subj, year: y || 'all', n: free.length, free: FREE_N });
-    start(free, subj + ' 1~5번 · 무료' + (free.length > 5 ? ` (${free.length}문항)` : ''), 'free5', { subject: subj });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-subj]'), function(b){
+    b.onclick = function(){
+      var subj = b.dataset.subj;
+      var items = bySubject(lv, subj);
+      track('subject_start', { level:lv, subject:subj, year:y || 'all', n:items.length });
+      start(items, subj + (y ? ' ' + y + '년' : ' · 5개년'), 'practice', { subject:subj });
+    };
+  });
+  document.getElementById('freeStart').onclick = function(){
+    var subj = levelSubjects(lv)[0];
+    if(!subj) return;
+    var items = bySubject(lv, subj);
+    track('subject_start', { level:lv, subject:subj, year:y || 'all', n:items.length, from:'hero' });
+    start(items, subj + (y ? ' ' + y + '년' : ' · 5개년'), 'practice', { subject:subj });
   };
-  document.getElementById('quick').onclick = () => { if(!isPaid()) return gate('random'); start(shuffle(byLevel(lv)).slice(0,20), `${yLabel} 랜덤 20문항`, 'practice', { gate: true }); };
-  document.getElementById('allYearBtn').onclick = () => { if(!isPaid()) return gate('random'); start(shuffle(byLevel(lv, y)), `${yLabel} 전체 랜덤`, 'practice', { gate: true }); };
-  document.getElementById('wrongBtn').onclick = showWrong;
+  document.getElementById('quick').onclick = function(){ start(shuffle(byLevel(lv)).slice(0,20), yLabel + ' 랜덤 20문항', 'practice'); };
+  document.getElementById('allYearBtn').onclick = function(){ start(shuffle(byLevel(lv, y)), yLabel + ' 전체 랜덤', 'practice'); };
+  document.getElementById('wrongBtn').onclick = aiScreen;
+  document.getElementById('aiBtn').onclick = aiScreen;
   document.getElementById('mockBtn').onclick = mock;
   document.getElementById('weakBtn').onclick = weakScreen;
-  const op = document.getElementById('openPlan'); if(op) op.onclick = (e) => { e.preventDefault(); gate('home'); };
-  const oc = document.getElementById('openCode'); if(oc) oc.onclick = (e) => { e.preventDefault(); pass(); };
-  const lr = document.getElementById('lastRes'); if(lr) lr.onclick = (e) => { e.preventDefault(); if(last) renderFreeResult(last, false); };
+  var ga = document.getElementById('goAi'); if(ga) ga.onclick = function(e){ e.preventDefault(); aiScreen(); };
 }
 function rateOf(lv, subj){
-  const log = S.log.filter(x => x.level === lv && x.subject === subj);
+  var log = S.log.filter(function(x){ return x.level === lv && x.subject === subj; });
   if(!log.length) return '-';
-  const t = log.reduce((a,b)=>a+b.total,0), c = log.reduce((a,b)=>a+b.correct,0);
+  var t = 0, c = 0;
+  log.forEach(function(x){ t += x.total; c += x.correct; });
   return pctOf(c, t) + '%';
 }
 
-/* ---------- 오답노트 ---------- */
-function wrongItems(){
-  const w = S.wrong;
-  return QB.filter(q => w[q.id]).sort((a,b) => (w[b.id].at||0) - (w[a.id].at||0));
+/* ---------- AI 오답노트 핵심분석 ---------- */
+function aiHeader(A){
+  var s0 = A.subjects[0];
+  return '<div class="aihead">'
+    + '<div class="lab">AI 오답노트 · 핵심분석</div>'
+    + '<b>' + (A.misses.length ? '내 오답 ' + A.misses.length + '문항, 어디서 무너지는지 먼저 봅니다' : '아직 정리할 오답이 없습니다') + '</b>'
+    + '<p>' + esc(verdict(A)) + '</p>'
+    + '<div class="kpi">'
+    +   '<div><b style="font-size:15px;line-height:1.3">' + (s0 ? esc(s0.subject) : '-') + '</b><span>취약 과목</span></div>'
+    +   '<div><b>' + A.acc + '%</b><span>전체 정답률</span></div>'
+    +   '<div><b>' + A.misses.length + '</b><span>오답 문항</span></div>'
+    + '</div>'
+    + '</div>';
 }
-function wrongCard(q){
-  return `<div class="card"><div style="font-size:13px"><b>${esc(q.subject)} ${q.qno}번</b> <span class="muted">· ${q.year}년 ${esc(q.level)}</span></div>
-    <p class="mini" style="margin:6px 0 0">${q.stem ? esc(cut(q.stem, 70)) : '그림·표 문항 — 앱에서 문제 보기'}</p>
-    <p class="muted" style="margin:6px 0 0">정답 ${(q.answer||[]).map(a=>CIRC[a-1]).join('·')}</p></div>`;
+function aiSubjectRank(A, limit){
+  var list = A.subjects.filter(function(s){ return s.n > 0; }).slice(0, limit);
+  if(!list.length) return '';
+  var html = '<div class="sec"><h3>취약 과목 랭킹</h3><p class="desc">오답이 많은 순서입니다. 정답률은 그 과목에서 내가 푼 문항 기준입니다.</p>';
+  list.forEach(function(s, i){
+    var cls = s.acc >= 80 ? '' : (s.acc >= 50 ? 'warn' : 'bad');
+    html += '<div class="rk"><div class="no">' + (i+1) + '</div>'
+      + '<div class="nm">' + esc(s.subject) + '<span>푼 문항 ' + nfmt(s.n) + ' · 오답 ' + nfmt(s.w) + '</span>'
+      + '<div class="bars"><i class="' + cls + '" style="width:' + Math.max(3, s.acc) + '%"></i></div></div>'
+      + '<div class="val">' + s.acc + '%<em>정답률</em></div></div>';
+  });
+  html += '</div>';
+  return html;
 }
-
-function showWrong(){
+function aiAreaRank(A, limit){
+  var list = A.areas.slice(0, limit);
+  if(!list.length) return '';
+  var html = '<div class="sec"><h3>취약 개념 영역</h3><p class="desc">과목 안에서도 어느 개념 영역에서 틀렸는지 봅니다. 그 영역에서 함께 외울 개념을 붙였습니다.</p>';
+  list.forEach(function(a, i){
+    var cls = a.acc >= 80 ? '' : (a.acc >= 50 ? 'warn' : 'bad');
+    var ts = areaTerms(a.subject, a.area);
+    html += '<div class="rk"><div class="no">' + (i+1) + '</div>'
+      + '<div class="nm">' + esc(a.area) + '<span>' + esc(a.subject) + ' · 오답 ' + nfmt(a.w) + ' / 푼 문항 ' + nfmt(a.n) + '</span>'
+      + '<div class="bars"><i class="' + cls + '" style="width:' + Math.max(3, a.acc) + '%"></i></div>'
+      + (ts.length ? '<span style="margin-top:6px">' + ts.map(function(t){ return esc(t.t); }).join(' · ') + '</span>' : '')
+      + '</div>'
+      + '<div class="val">' + a.acc + '%<em>정답률</em></div></div>';
+  });
+  if(A.unknownArea > 0) html += '<p class="mini" style="margin-top:10px">그림·표 문항 등 ' + A.unknownArea + '문항의 오답은 개념 영역을 나누지 않았습니다.</p>';
+  html += '</div>';
+  return html;
+}
+function aiTrapBlock(A){
+  var list = A.traps.filter(function(t){ return t.n >= 2; });
+  if(!list.length){
+    return '<div class="sec"><h3>함정(문항 유형) 진단</h3><p class="desc">유형별로 비교하려면 같은 유형 문항을 2개 이상 풀어야 합니다. 지금은 표본이 부족합니다.</p></div>';
+  }
+  var html = '<div class="sec"><h3>함정(문항 유형) 진단</h3><p class="desc">같은 개념을 알아도 문항 형태에서 미끄러지는 지점을 찾습니다. 정답률이 낮은 순서입니다.</p>';
+  list.slice(0, 5).forEach(function(t){
+    var cls = t.acc >= 80 ? '' : (t.acc >= 50 ? 'warn' : 'bad');
+    html += '<div class="subjrow"><div class="lab"><b style="font-weight:600">' + esc(t.name) + '</b><span>푼 문항 ' + t.n + ' · 정답률 ' + t.acc + '%</span></div>'
+      + '<div class="subjbar"><i class="' + cls + '" style="width:' + Math.max(4, t.acc) + '%"></i></div></div>';
+  });
+  var top = list[0];
+  if(top && top.tip) html += '<div class="tipbox"><b>' + esc(top.name) + '</b> — ' + esc(top.tip) + '</div>';
+  html += '</div>';
+  return html;
+}
+function missCard(r, showAll){
+  var q = r.q, m = QMETA[q.id] || { area:null, terms:[], traps:[] };
+  var ans = (q.answer || []).map(function(a){ return CIRC[a-1]; }).join('·');
+  var mine = r.wpick ? CIRC[r.wpick-1] : '';
+  var term = (m.terms && m.terms[0]) || null;
+  var tags = '';
+  if(m.area) tags += '<span class="tagm area">' + esc(m.area) + '</span>';
+  (m.traps || []).slice(0,2).forEach(function(tid){
+    var d = trapDef(tid); if(d) tags += '<span class="tagm">' + esc(d.name) + '</span>';
+  });
+  var cpt = '';
+  if(term){
+    cpt = '<div class="cpt"><b>핵심 개념 · ' + esc(term.t) + '</b><br>' + esc(term.n) + '</div>';
+  } else {
+    var ts = m.area ? areaTerms(q.subject, m.area) : [];
+    if(ts.length){
+      cpt = '<div class="cpt"><b>이 영역에서 같이 볼 개념</b><br>' + ts.slice(0,2).map(function(t){ return esc(t.t) + ' — ' + esc(t.n); }).join('<br>') + '</div>';
+    } else {
+      cpt = '<div class="cpt"><b>개념 정리</b><br>' + (q.imgonly ? '그림 문항이라 문제 이미지를 다시 보며 개념어를 확인하는 것이 가장 빠릅니다.' : '문항에 등장한 용어를 교재 목차에서 찾아 한 줄로 정리해 두세요.') + '</div>';
+    }
+  }
+  var stemLine = q.imgonly
+    ? '<img class="thumb" src="' + q.img + '" alt="문제 자료" data-zoom="1">'
+    : '<p class="q">' + esc(cut(q.stem || '', 80)) + '</p>';
+  return '<div class="mcard">'
+    + '<div class="top">' + esc(q.subject) + ' ' + q.qno + '번 <span>' + q.year + '년 ' + esc(q.level) + (r.w >= 2 ? ' · ' + r.w + '회 오답' : '') + '</span></div>'
+    + '<div class="tags">' + tags + '</div>'
+    + stemLine
+    + '<p class="ans">내 답 <b>' + (mine || '기록 없음') + '</b> · 정답 <b>' + ans + '</b></p>'
+    + cpt
+    + '<div class="acts"><button data-retry="' + q.id + '">이 문항 다시 풀기</button>'
+    + (m.area ? '<button data-block="s|' + esc(q.subject) + '|' + esc(m.area) + '">같은 영역 문제</button>' : '')
+    + '</div>'
+    + '</div>';
+}
+function aiMissCards(A, limit){
+  var list = A.misses.slice(0, limit);
+  if(!list.length){
+    return '<div class="sec"><h3>틀린 문항별 핵심 개념</h3><p class="desc">아직 틀린 문항이 없습니다. 문제를 풀면 여기에 문항별 개념과 암기 포인트가 쌓입니다.</p></div>';
+  }
+  var html = '<div class="sec"><h3>틀린 문항별 핵심 개념</h3><p class="desc">내가 고른 답과 정답, 그 문항이 묻는 개념을 한 줄로 붙였습니다. 다시 풀어 바로 확인할 수 있습니다.</p>';
+  list.forEach(function(r){ html += missCard(r, true); });
+  if(A.misses.length > limit) html += '<p class="mini">최근 ' + limit + '문항만 표시했습니다. 전체 ' + A.misses.length + '문항은 아래 오답 문항 목록에서 볼 수 있습니다.</p>';
+  html += '</div>';
+  return html;
+}
+function aiRoutine(A){
+  var blocks = routineBlocks(A);
+  if(!blocks.length) return '';
+  var html = '<div class="sec"><h3>시험 직전 우선 복습 루틴</h3><p class="desc">내 오답 순서대로 짠 순서입니다. 각 블록은 그 문항만 모아 바로 풀 수 있습니다.</p>';
+  blocks.forEach(function(b, i){
+    html += '<div class="block"><div class="w">' + esc(b.when) + '</div><b>' + esc(b.what) + '</b><p>' + esc(b.why) + ' · ' + b.items.length + '문항</p>'
+      + '<button data-block="r|' + i + '">' + esc(b.label) + '</button></div>';
+  });
+  var top = A.traps.filter(function(t){ return t.n >= 2 && t.tip; }).slice(0, 3);
+  if(top.length){
+    html += '<div class="tipbox"><b>당일 체크리스트</b><br>' + top.map(function(t){ return '· ' + esc(t.name) + ': ' + esc(t.tip); }).join('<br>') + '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+function aiLockCard(){
+  return '<div class="lock">'
+    + '<b>핵심분석 전체 열기</b>'
+    + '<p>미리보기에서는 취약 과목 1개와 문항 1개의 개념만 보여 드립니다. 이용권으로 아래를 전부 엽니다.</p>'
+    + '<ul>'
+    +   '<li>취약 과목·개념 영역 전체 랭킹과 정답률</li>'
+    +   '<li>자주 걸리는 함정(문항 유형) 진단</li>'
+    +   '<li>틀린 문항별 핵심 개념·암기 포인트</li>'
+    +   '<li>시험 직전 우선 복습 루틴</li>'
+    + '</ul>'
+    + '<div class="buyline" style="border-color:#374151"><b>' + nfmt(PASS_PRICE) + '원</b><span style="color:#9ca3af">평생 이용권 · 래피드 결제</span></div>'
+    + '<button class="buybtn" id="buy">' + nfmt(PASS_PRICE) + '원으로 핵심분석 열기</button>'
+    + '<p class="mini" style="margin:12px 0 6px;color:#9ca3af">이미 코드가 있다면 (예: EARLY-1900)</p>'
+    + '<input id="code" placeholder="이용권 코드" autocomplete="off">'
+    + '<button class="codebtn" id="redeem">코드 등록</button>'
+    + '<p class="okmsg" id="msg"></p>'
+    + '<p class="mini" style="margin:10px 0 0;color:#6b7280">문항·모의고사·오답 다시 풀기는 모두 무료입니다. 카드 정보는 앱에서 다루지 않습니다.</p>'
+    + '</div>';
+}
+function aiEmpty(){
+  var lv = S.level, subs = levelSubjects(lv);
+  var subj = subs[0] || '';
+  return '<div class="aihead"><div class="lab">AI 오답노트 · 핵심분석</div><b>아직 푼 문항이 없습니다</b>'
+    + '<p>문항을 풀면 틀린 문항이 기록되고, 그 기록으로 취약 영역·함정 유형·문항별 핵심 개념·복습 순서를 정리합니다. 문항은 전부 무료입니다.</p></div>'
+    + '<div class="card"><b style="font-size:14px">먼저 20문항만 풀어 보기</b>'
+    + '<p class="mini" style="margin:6px 0 10px">' + esc(lv) + ' 전 과목에서 무작위로 뽑습니다. 5분이면 분석할 기록이 생깁니다.</p>'
+    + '<button class="btn" id="quickStart" style="width:100%">랜덤 20문항 풀기</button></div>'
+    + '<div class="row"><button class="btn ghost" id="goHome">과목 골라 풀기</button></div>';
+}
+function aiScreen(){
   stopTimer();
   document.body.classList.remove('quiz-mode');
-  track('wrong_note_open', { paid: isPaid() });
-  state.view = 'wrong';
-  document.getElementById('title').textContent = '오답노트';
-  document.getElementById('back').hidden = false;
-  const items = wrongItems();
-
-  if(!isPaid()){
-    const free = items.filter(isFreeQ);
-    const firstSubj = levelSubjects(S.level)[0];
-    app().innerHTML = `
-      <p class="muted" style="margin-top:0">5문항에서 틀린 문항 ${free.length}개${items.length > free.length ? ` · 6번 이후 오답 ${items.length - free.length}개는 이용권에 포함` : ''}</p>
-      ${free.length ? free.map(wrongCard).join('')
-        : `<div class="empty">아직 오답이 없습니다.<br>과목을 골라 1~5번 문항을 풀면 틀린 문항이 여기 쌓입니다.
-             <div class="row"><button class="btn" id="goFree">${firstSubj} 1~5번 풀기</button></div></div>`}
-      ${free.length ? `<div class="card"><b style="font-size:14px">오답 자동 복습</b><p class="muted" style="margin:6px 0 10px;line-height:1.6">틀린 문항을 모아 다시 풀고, 오답이 많은 과목부터 정리합니다. 전체 오답노트도 함께 열립니다.</p><button class="btn" id="review" style="width:100%">오답 복습 열기</button></div>` : ''}
-    `;
-    const rv = document.getElementById('review');
-    if(rv) rv.onclick = () => gate('wrong');
-    const g = document.getElementById('goFree');
-    if(g) g.onclick = () => { const it = freeHead(S.level, firstSubj); track('free_start', { level: S.level, subject: firstSubj, n: it.length, free: FREE_N }); start(it, firstSubj + ' 1~5번 · 무료', 'free5', { subject: firstSubj }); };
-    bindOffer();
+  track('ai_note_open', { paid:isPaid() });
+  state.view = 'ai';
+  document.getElementById('title').textContent = 'AI 오답노트';
+  document.getElementById('back').hidden = true;
+  var A = analyzeAll();
+  var paid = isPaid();
+  if(!A.nAnswered){
+    app().innerHTML = aiEmpty();
+    document.getElementById('quickStart').onclick = function(){
+      start(shuffle(byLevel(S.level)).slice(0,20), '랜덤 20문항', 'practice');
+    };
+    document.getElementById('goHome').onclick = function(){ state.view='home'; home(); };
     return;
   }
+  var html = aiHeader(A);
+  if(!A.misses.length){
+    html += aiSubjectRank(A, paid ? 99 : 1)
+         + '<div class="sec"><h3>지금은 오답이 없습니다</h3><p class="desc">푼 ' + nfmt(A.nAnswered) + '문항에서 틀린 문항이 없습니다. 새 문항을 풀어 약점이 드러나면 여기에 정리됩니다.</p>'
+         + '<button class="btn ghost" id="morePractice" style="width:100%">랜덤 20문항 더 풀기</button></div>';
+    app().innerHTML = html;
+    document.getElementById('morePractice').onclick = function(){ start(shuffle(byLevel(S.level)).slice(0,20), '랜덤 20문항', 'practice'); };
+    return;
+  }
+  if(paid){
+    html += aiSubjectRank(A, 99)
+         + aiAreaRank(A, 8)
+         + aiTrapBlock(A)
+         + aiMissCards(A, 20)
+         + aiRoutine(A)
+         + '<div class="row"><button class="btn ghost" id="wrongList">오답 문항 목록</button><button class="btn ghost" id="morePractice">랜덤 20문항</button></div>';
+  } else {
+    html += aiSubjectRank(A, 1)
+         + '<p class="mini" style="margin:-4px 0 12px">취약 과목 ' + (A.subjects.length > 1 ? '2위부터 ' + (A.subjects.length-1) + '개 과목' : '전체') + '와 개념 영역 랭킹은 이용권으로 열립니다.</p>'
+         + aiMissCards(A, 1)
+         + aiLockCard();
+  }
+  app().innerHTML = html;
+  bindOffer(aiScreen);
+  Array.prototype.forEach.call(document.querySelectorAll('[data-retry]'), function(b){
+    b.onclick = function(){
+      var q = QID[b.dataset.retry];
+      if(!q) return;
+      start([q], q.subject + ' ' + q.qno + '번 · 다시 풀기', 'practice', { subject:q.subject });
+    };
+  });
+  var blocks = routineBlocks(A);
+  Array.prototype.forEach.call(document.querySelectorAll('[data-block]'), function(b){
+    b.onclick = function(){
+      var parts = b.dataset.block.split('|');
+      var items = [], label = '복습';
+      if(parts[0] === 's'){
+        items = areaItems(parts[1], parts[2], 12); label = parts[2] + ' 집중 복습';
+      } else {
+        var bl = blocks[Number(parts[1])];
+        if(bl){ items = bl.items; label = bl.label; }
+      }
+      if(!items.length) return toast('문항을 준비하지 못했습니다.');
+      start(items, label, 'practice', { subject: items[0].subject });
+    };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.mcard img[data-zoom]'), function(im){
+    im.onclick = function(){ openLb(im.src, im.alt); };
+  });
+  var mp = document.getElementById('morePractice');
+  if(mp) mp.onclick = function(){ start(shuffle(byLevel(S.level)).slice(0,20), '랜덤 20문항', 'practice'); };
+  var wl = document.getElementById('wrongList');
+  if(wl) wl.onclick = wrongList;
+  window.scrollTo(0,0);
+}
 
+/* ---------- 오답 문항 목록 ---------- */
+function wrongList(){
+  stopTimer();
+  document.body.classList.remove('quiz-mode');
+  state.view = 'wrongList';
+  document.getElementById('title').textContent = '오답 문항';
+  document.getElementById('back').hidden = false;
+  var items = wrongItems();
   if(!items.length){
     app().innerHTML = '<div class="empty">아직 오답이 없습니다.<br>문제를 풀면 틀린 문항이 여기 쌓입니다.</div>';
     return;
   }
-  app().innerHTML = `
-    <p class="muted">${items.length}문항 · 최근 순</p>
-    <div class="row"><button class="btn" id="solve">오답만 다시 풀기</button><button class="btn ghost" id="clear">비우기</button></div>
-    ${items.slice(0,30).map(wrongCard).join('')}`;
-  document.getElementById('solve').onclick = () => start(items, '오답 다시 풀기', 'practice');
-  document.getElementById('clear').onclick = () => { if(confirm('오답노트를 비울까요? 저장된 오답 기록이 삭제됩니다.')){ S.wrong = {}; showWrong(); } };
+  app().innerHTML = '<p class="muted">' + items.length + '문항 · 최근 순</p>'
+    + '<div class="row"><button class="btn" id="solve">오답만 다시 풀기</button><button class="btn ghost" id="clear">비우기</button></div>'
+    + items.slice(0, 60).map(function(q){
+        return '<div class="card"><div style="font-size:13px"><b>' + esc(q.subject) + ' ' + q.qno + '번</b> <span class="muted">· ' + q.year + '년 ' + esc(q.level) + '</span></div>'
+          + '<p class="mini" style="margin:6px 0 0">' + (q.stem ? esc(cut(q.stem, 70)) : '그림·표 문항 — 앱에서 문제 보기') + '</p>'
+          + '<p class="muted" style="margin:6px 0 0">정답 ' + (q.answer||[]).map(function(a){ return CIRC[a-1]; }).join('·') + '</p></div>';
+      }).join('');
+  document.getElementById('solve').onclick = function(){ start(items, '오답 다시 풀기', 'practice'); };
+  document.getElementById('clear').onclick = function(){
+    if(confirm('오답 기록을 비울까요? 저장된 오답과 풀이 기록이 삭제됩니다.')){
+      S.wrong = {}; lsSet(LS.ans, {}); aiScreen();
+    }
+  };
 }
 
-/* ---------- 취약 과목 집중 학습 ---------- */
+/* ---------- 취약 과목 집중 ---------- */
 function weakScreen(){
   stopTimer();
   document.body.classList.remove('quiz-mode');
-  if(!isPaid()) return gate('weak');
   document.getElementById('title').textContent = '취약 과목 집중 학습';
   document.getElementById('back').hidden = false;
   state.view = 'weak';
-  const lv = S.level, w = S.wrong;
-  const rows = {};
-  byLevel(lv).forEach(q => { if(w[q.id]) rows[q.subject] = (rows[q.subject] || 0) + 1; });
-  const list = Object.keys(rows).map(s => ({ subject: s, n: rows[s], total: bySubject(lv, s).length })).sort((a,b) => b.n - a.n);
-  app().innerHTML = `
-    <p class="muted">${esc(lv)} · 내 오답 기록에서 과목별로 모았습니다.</p>
-    ${list.length ? list.map(r => `<button class="subj" data-ws="${esc(r.subject)}" style="display:block;width:100%;margin-bottom:8px">
-        <b>${esc(r.subject)}</b><span>오답 ${r.n}개 · 전체 ${r.total}문항</span></button>`).join('')
-    : '<div class="empty">아직 오답 기록이 없습니다.<br>문제를 먼저 풀어 주세요.</div>'}
-    <p class="mini">오답이 많은 과목부터 배치했습니다.</p>`;
-  document.querySelectorAll('[data-ws]').forEach(b => b.onclick = () => start(bySubject(lv, b.dataset.ws), b.dataset.ws + ' 집중 학습', 'practice'));
+  var lv = S.level, A = analyzeAll();
+  var rows = A.subjects.filter(function(s){ return s.w > 0; });
+  app().innerHTML =
+    '<p class="muted">' + esc(lv) + ' · 내 오답 기록에서 과목별로 모았습니다.</p>'
+    + (rows.length
+        ? rows.map(function(r){
+            return '<button class="subj" data-ws="' + esc(r.subject) + '" style="display:block;width:100%;margin-bottom:8px">'
+              + '<b>' + esc(r.subject) + '</b><span>오답 ' + r.w + '개 · 푼 문항 ' + r.n + ' · 정답률 ' + r.acc + '%</span></button>';
+          }).join('')
+        : '<div class="empty">아직 오답 기록이 없습니다.<br>문제를 먼저 풀어 주세요.</div>')
+    + '<p class="mini">오답이 많은 과목부터 배치했습니다.</p>';
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ws]'), function(b){
+    b.onclick = function(){ start(bySubject(lv, b.dataset.ws), b.dataset.ws + ' 집중 학습', 'practice'); };
+  });
 }
 
 /* ---------- 실전 모의고사 ---------- */
 function mock(){
-  if(!isPaid()) return gate('mock');
-  const lv = S.level;
-  let items = [];
-  levelSubjects(lv).forEach(sb => { items = items.concat(shuffle(bySubject(lv, sb, null)).slice(0, 2)); });
+  var lv = S.level;
+  var items = [];
+  levelSubjects(lv).forEach(function(sb){ items = items.concat(shuffle(bySubject(lv, sb, null)).slice(0, 2)); });
   if(!items.length){ toast('문항이 없습니다.'); return; }
+  track('mock_start', { level:lv, n:items.length });
   start(shuffle(items), '실전 모의고사 · ' + lv + ' ' + items.length + '문항', 'mock');
 }
 
@@ -871,27 +1208,29 @@ function stats(){
   document.getElementById('title').textContent = '학습 통계';
   document.getElementById('back').hidden = true;
   state.view = 'stats';
-  const log = S.log;
-  const t = log.reduce((a,b) => a + b.total, 0), c = log.reduce((a,b) => a + b.correct, 0);
-  if(!isPaid()){
-    const recent = log.slice(-2).reverse();
-    app().innerHTML = `
-      <div class="card"><div class="big">${t ? Math.round(c/t*100) : 0}%</div><p class="muted">누적 ${t}문항 · 오답 ${Object.keys(S.wrong).length}개 저장</p></div>
-      ${recent.length ? recent.map(x => `<div class="card" style="display:flex;justify-content:space-between;font-size:13px"><span>${esc(x.subject)}</span><span>${x.correct}/${x.total}</span></div>`).join('') : '<div class="empty">기록이 없습니다.</div>'}
-      <div class="card"><b style="font-size:14px">과목별 정답률 · 전체 기록</b><p class="muted" style="margin:6px 0 10px;line-height:1.6">과목별 정답률로 다음에 볼 과목을 정하고, 지난 기록을 이어서 봅니다.</p><button class="btn" id="goPay" style="width:100%">학습 기록 열기</button></div>`;
-    document.getElementById('goPay').onclick = () => gate('stats');
-    return;
-  }
-  const recent = log.slice(-20).reverse();
-  const bySub = {};
-  log.forEach(x => { if(x.subject === '혼합' || x.subject === '모의고사') return; bySub[x.subject] = bySub[x.subject] || { t:0, c:0 }; bySub[x.subject].t += x.total; bySub[x.subject].c += x.correct; });
-  app().innerHTML = `
-    <div class="card"><div class="big">${t ? Math.round(c/t*100) : 0}%</div><p class="muted">누적 ${t}문항 · 오답 ${Object.keys(S.wrong).length}개 저장</p></div>
-    ${Object.keys(bySub).length ? `<div class="card"><b style="font-size:14px">과목별 정답률</b>${Object.keys(bySub).map(s => {
-      const p = Math.round(bySub[s].c / bySub[s].t * 100);
-      return `<div class="subjrow"><div class="lab"><b style="font-weight:600">${esc(s)}</b><span>${bySub[s].c}/${bySub[s].t} · ${p}%</span></div><div class="subjbar"><i class="${p>=80?'':(p>=50?'warn':'bad')}" style="width:${Math.max(4,p)}%"></i></div></div>`;
-    }).join('')}</div>` : ''}
-    ${recent.length ? recent.map(x => `<div class="card" style="display:flex;justify-content:space-between;font-size:13px"><span>${esc(x.subject)}</span><span>${x.correct}/${x.total}</span></div>`).join('') : '<div class="empty">기록이 없습니다.</div>'}`;
+  var A = analyzeAll();
+  var log = S.log;
+  var recent = log.slice(-20).reverse();
+  var bySub = {};
+  log.forEach(function(x){
+    if(x.subject === '혼합' || x.subject === '모의고사') return;
+    if(!bySub[x.subject]) bySub[x.subject] = { t:0, c:0 };
+    bySub[x.subject].t += x.total; bySub[x.subject].c += x.correct;
+  });
+  app().innerHTML =
+    '<div class="card"><div class="big">' + A.acc + '%</div><p class="muted">푼 문항 ' + nfmt(A.nAnswered) + ' · 오답 ' + A.misses.length + '개 저장</p></div>'
+    + (Object.keys(bySub).length
+        ? '<div class="card"><b style="font-size:14px">과목별 정답률</b>' + Object.keys(bySub).map(function(s){
+            var p = Math.round(bySub[s].c / bySub[s].t * 100);
+            return '<div class="subjrow"><div class="lab"><b style="font-weight:600">' + esc(s) + '</b><span>' + bySub[s].c + '/' + bySub[s].t + ' · ' + p + '%</span></div>'
+              + '<div class="subjbar"><i class="' + (p>=80?'':(p>=50?'warn':'bad')) + '" style="width:' + Math.max(4,p) + '%"></i></div></div>';
+          }).join('') + '</div>'
+        : '')
+    + (recent.length
+        ? recent.map(function(x){
+            return '<div class="card" style="display:flex;justify-content:space-between;font-size:13px"><span>' + esc(x.subject) + '</span><span>' + x.correct + '/' + x.total + '</span></div>';
+          }).join('')
+        : '<div class="empty">기록이 없습니다.</div>');
 }
 
 /* ---------- 이용권 ---------- */
@@ -901,86 +1240,156 @@ function pass(){
   document.getElementById('title').textContent = '이용권';
   document.getElementById('back').hidden = true;
   state.view = 'pass';
-  const paid = isPaid();
-  app().innerHTML = `
-    ${paid ? `<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">5개년 ${nfmt(TOTAL_Q)}문항과 오답 복습·모의고사를 제한 없이 씁니다.</p><p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>` : ''}
-    ${paid ? '' : offerCard('전체 학습 이용권', `1,900원 한 번으로 5개년 ${nfmt(TOTAL_Q)}문항, 오답 복습, 취약 단원, 실전 모의고사까지 엽니다.`)}
-    ${paid ? '' : `<div class="card"><b style="font-size:14px">무료로 쓸 수 있는 범위</b><p class="muted" style="margin:6px 0 0;line-height:1.6">2급·1급 전 과목 1~5번 문항 — 즉시 채점과 정답 확인까지 무료입니다. 6번부터 20번, 오답 복습, 모의고사, 학습 기록은 이용권이 필요합니다.</p></div>`}
-    <div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021~2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 해설은 공단 자료에 없어 아직 제공하지 않습니다.</p></div>
-    <p style="text-align:center;margin:18px 0 8px"><a href="#" id="mt" class="mini" style="text-decoration:underline">전환 지표 보기 (관리자)</a></p>`;
-  bindOffer();
-  const rl = document.getElementById('release');
-  if(rl) rl.onclick = (e) => { e.preventDefault(); if(confirm('이 기기에서 이용권을 해제할까요? 다시 쓰려면 코드를 입력해야 합니다.')){ lsSet(LS.pass, []); track('pass_release', {}); pass(); } };
-  document.getElementById('mt').onclick = (e) => { e.preventDefault(); metrics(); };
+  var paid = isPaid();
+  app().innerHTML =
+    (paid ? '<div class="card"><b>이용권 사용 중</b><p class="muted" style="margin:6px 0 0">AI 오답노트 핵심분석 전체를 볼 수 있습니다. 문항·모의고사·오답 다시 풀기는 원래 모두 무료입니다.</p>'
+          + '<p class="mini" style="margin:8px 0 0"><a href="#" id="release" style="text-decoration:underline">이 기기에서 이용권 해제</a></p></div>' : '')
+    + (paid ? '' : offerCard('AI 오답노트 핵심분석 이용권', '문항은 전부 무료입니다. 이용권은 ' + '내 오답을 개념 영역·문항 유형으로 나눈 전체 분석과 복습 루틴을 여는 데 씁니다.'))
+    + '<div class="card"><b style="font-size:14px">무료로 되는 것</b><p class="muted" style="margin:6px 0 0;line-height:1.6">5개년 ' + nfmt(TOTAL_Q) + '문항(2급·1급 전 과목) 풀이·즉시 채점, 과목별 학습, 랜덤 20문항, 5개년 실전 모의고사, 오답 다시 풀기, 학습 통계까지 모두 무료입니다.</p></div>'
+    + '<div class="card"><b style="font-size:14px">안내</b><p class="muted" style="margin:6px 0 0;line-height:1.6">문항은 2021~2025년 국민체육진흥공단 공개 문제지 기반이며, 정답은 공단 최종 정답표를 따릅니다. 공단 자료에 해설이 없어, 앱은 과목별 개념 영역·개념어 사전으로 핵심 개념을 정리해 보여 줍니다.</p></div>'
+    + '<p style="text-align:center;margin:18px 0 8px"><a href="#" id="mt" class="mini" style="text-decoration:underline">전환 지표 보기 (관리자)</a></p>';
+  bindOffer(aiScreen);
+  var rl = document.getElementById('release');
+  if(rl) rl.onclick = function(e){
+    e.preventDefault();
+    if(confirm('이 기기에서 이용권을 해제할까요? 다시 쓰려면 코드를 입력해야 합니다.')){
+      lsSet(LS.pass, []); track('pass_release', {}); pass();
+    }
+  };
+  document.getElementById('mt').onclick = function(e){ e.preventDefault(); metrics(); };
 }
 
 /* ---------- 전환 지표 ---------- */
 function metrics(){
-  const ev = lsGet(LS.ev, []); const list = Array.isArray(ev) ? ev : [];
-  const cnt = n => list.filter(e => e.name === n).length;
-  const fs = cnt('free_start'), fc = cnt('free_complete'), pv = cnt('paywall_view'), cc = cnt('checkout_click');
-  const sc = cnt('share_click') + cnt('share_copy');
-  const rate = (a,b) => b ? Math.min(100, Math.round(a/b*100)) + '%' : '-';
-  const row = (label, v) => `<div class="mev"><span>${label}</span><b>${v}</b></div>`;
-  const utmSrc = {};
-  list.forEach(e => { if(e.src) utmSrc[e.src] = (utmSrc[e.src] || 0) + 1; });
-  const sheet = document.createElement('div');
+  var ev = lsGet(LS.ev, []), list = Array.isArray(ev) ? ev : [];
+  var cnt = function(n){ return list.filter(function(e){ return e.name === n; }).length; };
+  var rate = function(a,b){ return b ? Math.min(100, Math.round(a/b*100)) + '%' : '-'; };
+  var row = function(label, v){ return '<div class="mev"><span>' + label + '</span><b>' + v + '</b></div>'; };
+  var utmSrc = {};
+  list.forEach(function(e){ if(e.src) utmSrc[e.src] = (utmSrc[e.src] || 0) + 1; });
+  var sheet = document.createElement('div');
   sheet.className = 'modal';
-  sheet.innerHTML = `<div class="sheet">
-    <h3>전환 지표 (이 브라우저 기록)</h3>
-    <p>이 기기의 localStorage에 쌓인 이벤트입니다. 방문자 전체 통계는 서버 저장소가 필요합니다.</p>
-    ${row('앱 방문', cnt('app_visit'))}
-    ${row('무료 문제 시작', fs)}
-    ${row('무료 문제 완료', fc)}
-    ${row('무료 완료율', rate(fc, fs))}
-    ${row('오답노트 진입', cnt('wrong_note_open'))}
-    ${row('이용권 안내 진입', pv)}
-    ${row('이용권 안내율', rate(pv, fc))}
-    ${row('결제 시도(클릭)', cc)}
-    ${row('결제 클릭률', rate(cc, pv))}
-    ${row('공유 클릭/복사', sc)}
-    ${row('공유 이용률', rate(sc, fc))}
-    ${row('이용권 코드 등록', cnt('pass_redeem'))}
-    <p class="mini" style="margin-top:12px">비율은 기기 안 이벤트 횟수 기준(무료 학습 재시작이 많으면 100%로 표시)</p>
-    <p class="mini">유입 경로(utm_source): ${Object.keys(utmSrc).length ? Object.keys(utmSrc).map(k => esc(k) + ' ' + utmSrc[k]).join(' · ') : '기록 없음'}</p>
-    <p class="mini">최근 이벤트: ${list.slice(-5).reverse().map(e => esc(e.name)).join(' ← ') || '없음'}</p>
-    <p class="mini">결제 성공·실패는 래피드(외부 결제)에서 처리되어 앱에서는 확인할 수 없습니다.</p>
-    <div class="rowx"><button id="mClose">닫기</button></div>
-  </div>`;
+  sheet.innerHTML = '<div class="sheet">'
+    + '<h3>전환 지표 (이 브라우저 기록)</h3>'
+    + '<p>이 기기의 localStorage에 쌓인 이벤트입니다. 방문자 전체 통계는 서버 저장소가 필요합니다.</p>'
+    + row('앱 방문', cnt('app_visit'))
+    + row('과목 학습 시작', cnt('subject_start'))
+    + row('모의고사 시작', cnt('mock_start'))
+    + row('오답노트 열기', cnt('ai_note_open'))
+    + row('결제 시도(클릭)', cnt('checkout_click'))
+    + row('결제 클릭률', rate(cnt('checkout_click'), cnt('ai_note_open')))
+    + row('공유 클릭/복사', cnt('share_click') + cnt('share_copy'))
+    + row('이용권 코드 등록', cnt('pass_redeem'))
+    + '<p class="mini" style="margin-top:12px">비율은 기기 안 이벤트 횟수 기준입니다.</p>'
+    + '<p class="mini">유입 경로(utm_source): ' + (Object.keys(utmSrc).length ? Object.keys(utmSrc).map(function(k){ return esc(k) + ' ' + utmSrc[k]; }).join(' · ') : '기록 없음') + '</p>'
+    + '<p class="mini">최근 이벤트: ' + (list.slice(-6).reverse().map(function(e){ return esc(e.name); }).join(' ← ') || '없음') + '</p>'
+    + '<p class="mini">결제 성공·실패는 래피드(외부 결제)에서 처리되어 앱에서는 확인할 수 없습니다.</p>'
+    + '<div class="rowx"><button id="mClose">닫기</button></div></div>';
   document.body.appendChild(sheet);
-  sheet.addEventListener('click', (e) => { if(e.target === sheet) sheet.remove(); });
-  sheet.querySelector('#mClose').onclick = () => sheet.remove();
+  sheet.addEventListener('click', function(e){ if(e.target === sheet) sheet.remove(); });
+  sheet.querySelector('#mClose').onclick = function(){ sheet.remove(); };
 }
 
 /* ---------- 탭 ---------- */
-document.querySelectorAll('footer button').forEach(b => b.onclick = () => {
-  document.querySelectorAll('footer button').forEach(x => x.classList.remove('on'));
-  b.classList.add('on');
-  const t = b.dataset.tab;
-  if(t==='home'){ state.view='home'; state.mode='practice'; home(); }
-  if(t==='wrong'){ showWrong(); }
-  if(t==='stats'){ stats(); }
-  if(t==='pass'){ pass(); }
+Array.prototype.forEach.call(document.querySelectorAll('footer button'), function(b){
+  b.onclick = function(){
+    Array.prototype.forEach.call(document.querySelectorAll('footer button'), function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    var t = b.dataset.tab;
+    if(t === 'home'){ home(); }
+    if(t === 'wrong'){ aiScreen(); }
+    if(t === 'stats'){ stats(); }
+    if(t === 'pass'){ pass(); }
+  };
 });
-document.getElementById('back').onclick = () => { state.view='home'; state.mode='practice'; home(); };
+document.getElementById('back').onclick = function(){ state.view = 'home'; state.mode = 'practice'; home(); };
 
 /* ---------- 시작 ---------- */
-const QB_VER = '2026-11-21b';
-async function loadQB(){
-  const res = await fetch('qb.json?v=' + QB_VER, { cache: 'no-cache' });
-  if(!res.ok) throw new Error('qb.json ' + res.status);
-  QB = await res.json();
-  YEARS = Array.from(new Set(QB.map(q => q.year))).sort((a,b) => b - a);
-  TOTAL_Q = QB.length;
+var QB_VER = '2026-11-22';
+function loadQB(){
+  return fetch('qb.json?v=' + QB_VER, { cache:'no-cache' }).then(function(res){
+    if(!res.ok) throw new Error('qb.json ' + res.status);
+    return res.json();
+  }).then(function(data){
+    QB = data;
+    YEARS = [];
+    QB.forEach(function(q){ if(YEARS.indexOf(q.year) < 0) YEARS.push(q.year); });
+    YEARS.sort(function(a,b){ return b - a; });
+    TOTAL_Q = QB.length;
+    buildMeta();
+  });
 }
+function selftest(){
+  var out = [], fail = 0;
+  function ok(name, cond, extra){
+    out.push((cond ? 'PASS' : 'FAIL') + ' · ' + name + (extra !== undefined ? ' — ' + extra : ''));
+    if(!cond) fail++;
+  }
+  ok('문항 로드', QB.length === 1600, QB.length);
+  ok('연도 5개', YEARS.length === 5, YEARS.join(','));
+  var meta = 0, areaN = 0, termN = 0, textN = 0, trapN = 0;
+  QB.forEach(function(q){
+    var m = QMETA[q.id];
+    if(m) meta++;
+    if(m && m.traps.length) trapN++;
+    if(q.stem){ textN++; if(m && m.area) areaN++; if(m && m.terms.length) termN++; }
+  });
+  ok('분석 메타 전체', meta === QB.length, meta);
+  ok('개념 영역 커버리지 85%↑', areaN / textN >= 0.85, Math.round(areaN/textN*100) + '%');
+  ok('개념어 커버리지 25%↑', termN / textN >= 0.25, Math.round(termN/textN*100) + '%');
+  ok('문항 유형 태깅 90%↑', trapN / QB.length >= 0.9, Math.round(trapN/QB.length*100) + '%');
+  ok('이미지 문항 영역 없음 처리', QB.filter(function(q){ return q.imgonly; }).every(function(q){ return QMETA[q.id].area === null; }));
+  var backup = {};
+  [LS.ans, LS.wrong, LS.pass, LS.log].forEach(function(k){ backup[k] = localStorage.getItem(k); });
+  try{
+    var sim = {}, picks = QB.filter(function(q){ return q.stem; }).slice(0, 40), expW = 0;
+    picks.forEach(function(q, i){
+      var ans = (q.answer || [])[0] || 1, right = (i % 3 !== 0);
+      if(!right) expW++;
+      sim[q.id] = { n:1, w:right ? 0 : 1, pick:right ? ans : (ans % 4) + 1, at:Date.now() };
+    });
+    lsSet(LS.ans, sim); lsSet(LS.wrong, {}); lsSet(LS.pass, []);
+    var A = analyzeAll();
+    ok('푼 문항 집계', A.nAnswered === 40, A.nAnswered);
+    ok('오답 집계', A.nWrongRecs === expW, A.nWrongRecs + '/' + expW);
+    ok('오답 문항 목록', A.misses.length === expW, A.misses.length);
+    ok('전체 정답률', A.acc === Math.round((40-expW)/40*100), A.acc + '%');
+    ok('과목 랭킹 정렬', A.subjects.length > 0 && A.subjects[0].w >= A.subjects[A.subjects.length-1].w);
+    ok('영역 랭킹 생성', A.areas.length > 0, A.areas.length);
+    ok('함정 통계 생성', A.traps.length > 0, A.traps.length);
+    ok('함정 TOP 표본 조건', !A.trapTop || A.trapTop.n >= 2);
+    ok('정답률 범위', A.subjects.concat(A.areas).every(function(x){ return x.acc >= 0 && x.acc <= 100; }));
+    ok('복습 루틴 생성', routineBlocks(A).length > 0, routineBlocks(A).length);
+    ok('종합 진단 문장', verdict(A).length > 40);
+    ok('문항 카드 정답·내답', missCard(A.misses[0]).indexOf('내 답') >= 0);
+    var preview = aiHeader(A) + aiSubjectRank(A, 1) + aiMissCards(A, 1) + aiLockCard();
+    ok('미리보기 구성', preview.indexOf('취약 과목 랭킹') >= 0 && preview.indexOf('1,900원') >= 0);
+    ok('미리보기에서 전체 영역 숨김', preview.indexOf('취약 개념 영역') < 0);
+    lsSet(LS.pass, [{ code:'EARLY-1900', at:Date.now() }]);
+    ok('코드 등록 후 이용권', isPaid() === true);
+    var full = aiSubjectRank(A, 99) + aiAreaRank(A, 8) + aiTrapBlock(A) + aiMissCards(A, 20) + aiRoutine(A);
+    ok('전체 분석 구성', full.indexOf('취약 개념 영역') >= 0 && full.indexOf('복습 루틴') >= 0);
+    ok('전체 분석에서 상위 20문항', (full.match(/mcard/g) || []).length <= 20);
+  } finally {
+    [LS.ans, LS.wrong, LS.pass, LS.log].forEach(function(k){
+      try{ if(backup[k] == null) localStorage.removeItem(k); else localStorage.setItem(k, backup[k]); }catch(e){}
+    });
+  }
+  out.push(fail ? ('실패 ' + fail + '건') : '전체 통과');
+  document.getElementById('title').textContent = 'selftest';
+  document.getElementById('back').hidden = true;
+  app().innerHTML = '<pre style="white-space:pre-wrap;font-size:12px;line-height:1.7">' + esc(out.join('\n')) + '</pre>';
+}
+
 (function boot(){
-  track('app_visit', { ref: document.referrer ? String(document.referrer).slice(0,160) : '', path: location.pathname });
+  track('app_visit', { ref:document.referrer ? String(document.referrer).slice(0,160) : '', path:location.pathname });
   app().innerHTML = '<div class="empty">기출 문항을 불러오는 중입니다…</div>';
-  loadQB().then(() => home()).catch(() => {
+  var TEST = String(location.search).indexOf('selftest=1') >= 0;
+  loadQB().then(function(){ if(TEST) selftest(); else home(); }).catch(function(){
     app().innerHTML = '<div class="empty">문항을 불러오지 못했습니다.<br>잠시 후 새로고침해 주세요.</div>';
   });
   if('serviceWorker' in navigator){
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
   }
 })();
 </script>

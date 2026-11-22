@@ -1,5 +1,5 @@
-const C = 'sd-v6';
-const CORE = ['./', './index.html', './qb.json', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
+const C = 'sd-v7';
+const CORE = ['./', './index.html', './qb.json', './ai-kb.js', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
   self.skipWaiting();
@@ -18,8 +18,8 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return;
   const isHTML = e.request.mode === 'navigate' || (e.request.headers.get('accept') || '').includes('text/html')
     || url.pathname.endsWith('/') || url.pathname.endsWith('index.html');
-  if (isHTML || url.pathname.endsWith('/qb.json')) {
-    // 네트워크 우선: 새 배포·새 문항이 바로 반영되고, 오프라인일 때만 캐시 사용
+  if (isHTML || url.pathname.endsWith('/qb.json') || url.pathname.endsWith('/ai-kb.js')) {
+    // 네트워크 우선: 새 배포·새 문항·새 분석 기준이 바로 반영되고, 오프라인일 때만 캐시 사용
     e.respondWith(fetch(e.request).then(res => {
       const cl = res.clone();
       caches.open(C).then(c => c.put(e.request, cl));
