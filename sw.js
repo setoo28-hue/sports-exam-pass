@@ -1,4 +1,4 @@
-const C = 'sd-v8';
+const C = 'sd-v9';
 const CORE = ['./', './index.html', './qb.json', './ai-kb.js', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
