@@ -188,6 +188,17 @@ body.quiz-mode footer{display:none}
 .lockedwrap{position:relative}
 .fadeout{position:relative;max-height:150px;overflow:hidden}
 .fadeout::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(rgba(255,255,255,0),#fff)}
+/* ===== 집중 BGM 링크 (2026-11-25) ===== */
+.bgmb{display:flex;gap:8px;margin:0 0 14px}
+.bgmb a{flex:1;display:flex;align-items:center;gap:9px;min-width:0;padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.bgmb a:active{background:#f3f4f6}
+.bgmb .ic{font-size:17px;line-height:1;flex:none}
+.bgmb .tx{min-width:0;display:block}
+.bgmb b{display:block;font-size:12.5px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bgmb small{display:block;font-size:11px;color:var(--sub);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bgmin{display:flex;justify-content:center;gap:16px;margin:14px 0 0;font-size:12px;color:var(--sub)}
+.bgmin a{color:var(--sub);text-decoration:none}
+.bgmin a:active{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -682,7 +693,8 @@ function renderQ(){
     +   '</div>'
     +   '<div class="feedback" id="fb"></div>'
     +   '<div class="row" id="nextRow" style="display:none"><button class="btn" id="next">다음 문제</button></div>'
-    + '</div>';
+    + '</div>'
+    + bgmLine();
   Array.prototype.forEach.call(document.querySelectorAll('.choice'), function(b){
     b.onclick = function(){ answer(parseInt(b.dataset.i,10), q); };
   });
@@ -826,6 +838,19 @@ function bindShare(c, total){
   });
 }
 
+/* ---------- 집중 BGM 링크 ---------- */
+var BGM_FOCUS  = 'https://youtu.be/OXh9Jkm-Wa4';                 /* 공부용 집중 카페 재즈 11곡 · 29분 (YouTube) */
+var BGM_RHYTHM = 'https://setoo28-hue.github.io/-2027-/?bgm=1';  /* 클라이짐·운동·리듬 BGM 플레이어 (웹 바로 재생) */
+function bgmBanner(){
+  return '<div class="bgmb">'
+    + '<a href="' + BGM_FOCUS + '" target="_blank" rel="noopener" data-bgm="focus"><span class="ic">&#127911;</span><span class="tx"><b>집중 BGM 듣기</b><small>카페 재즈 11곡 · 29분</small></span></a>'
+    + '<a href="' + BGM_RHYTHM + '" target="_blank" rel="noopener" data-bgm="rhythm"><span class="ic">&#127925;</span><span class="tx"><b>리듬 BGM 플레이어</b><small>운동용 · 바로 재생</small></span></a>'
+    + '</div>';
+}
+function bgmLine(){
+  return '<p class="bgmin"><a href="' + BGM_FOCUS + '" target="_blank" rel="noopener" data-bgm="focus">&#127911; 집중 BGM</a><a href="' + BGM_RHYTHM + '" target="_blank" rel="noopener" data-bgm="rhythm">&#127925; 리듬 BGM</a></p>';
+}
+
 /* ---------- 홈 ---------- */
 function home(){
   stopTimer();
@@ -848,6 +873,7 @@ function home(){
         ? '오답 ' + wrongN + '문항이 쌓였습니다 · <a href="#" id="goAi">핵심분석 보기</a>'
         : (paid ? '이용권 사용 중 · 핵심분석 전체를 볼 수 있습니다' : '틀린 문항이 쌓이면 오답노트에서 분석합니다')) + '</p>'
     + '</div>'
+    + bgmBanner()
     + '<div class="chips">'
     +   '<button class="chip ' + (lv==='2급'?'on':'') + '" data-lv="2급">2급 (' + nfmt(byLevel('2급').length) + '문항)</button>'
     +   '<button class="chip ' + (lv==='1급'?'on':'') + '" data-lv="1급">1급 (' + nfmt(byLevel('1급').length) + '문항)</button>'
@@ -1354,6 +1380,9 @@ function selftest(){
   }
   ok('문항 로드', QB.length === 1600, QB.length);
   ok('연도 5개', YEARS.length === 5, YEARS.join(','));
+  var bb = bgmBanner();
+  ok('BGM 링크 2종·새 탭', bb.indexOf('youtu.be/OXh9Jkm-Wa4') > 0 && bb.indexOf('-2027-/?bgm=1') > 0
+      && (bb.match(/target="_blank"/g) || []).length === 2 && (bb.match(/rel="noopener"/g) || []).length === 2);
   var meta = 0, areaN = 0, termN = 0, textN = 0, trapN = 0;
   QB.forEach(function(q){
     var m = QMETA[q.id];
@@ -1406,6 +1435,12 @@ function selftest(){
   document.getElementById('back').hidden = true;
   app().innerHTML = '<pre style="white-space:pre-wrap;font-size:12px;line-height:1.7">' + esc(out.join('\n')) + '</pre>';
 }
+
+/* BGM 링크 클릭 기록 */
+document.addEventListener('click', function(e){
+  var a = (e.target && e.target.closest) ? e.target.closest('[data-bgm]') : null;
+  if(a) track('bgm_click', { k:a.dataset.bgm, from:state.view || '' });
+});
 
 (function boot(){
   track('app_visit', { ref:document.referrer ? String(document.referrer).slice(0,160) : '', path:location.pathname });
